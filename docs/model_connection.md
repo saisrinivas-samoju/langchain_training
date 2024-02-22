@@ -3,8 +3,8 @@
 Let's explore how to connect OpenAI models and any one open source model for understanding.
 
 ## OpenAI API setup
-* Adding credit card information and some money in your openAI account.
-* create the API key and save it safely.
+* Add credit card information and some money in your openAI account at the given [LINK](https://platform.openai.com/account/billing/overview) by logging in.
+* create the [API key](https://platform.openai.com/api-keys) and save it safely.
 
 ###  Storing API keys
 * Wrong way of storing API keys
