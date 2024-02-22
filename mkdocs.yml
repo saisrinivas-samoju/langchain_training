@@ -1,5 +1,5 @@
 site_name: Langchain Training Material
-# defeine TOC or order of website-
+
 nav:
   - Home: index.md
 
@@ -7,11 +7,11 @@ site_author: Sai Srinivas
 site_description: >-
   DESCRIPTION
 
-# Repository
+
 repo_name: saisrinivas-samoju/langchain_training
 repo_url: https://github.com/saisrinivas-samoju/langchain_training
 
-# Configuration
+
 theme:
   name: material
   features:
@@ -32,8 +32,7 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
       primary: red
-      accent: lime    
-  # logo: PyTorch_logo_icon.svg
+      accent: lime
   
 extra:
   social:
@@ -44,8 +43,7 @@ extra:
 
 extra_javascript:
   - javascripts/mathjax.js
-  # - javascripts/tawk.js
-  - https://polyfill.io/v3/polyfill.min.js #?features=es6
+  - https://polyfill.io/v3/polyfill.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
