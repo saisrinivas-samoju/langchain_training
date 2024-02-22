@@ -29,4 +29,4 @@
 
 ## Latest available Reference code
 
-* [Model Connection] (https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
+* [Model Connection](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
