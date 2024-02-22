@@ -10,7 +10,7 @@
 
 ## Topics covered
 
-1. Langchain Introduction
+1. [Langchain Introduction] (https://saisrinivas-samoju.github.io/langchain_training/introduction/)
     * Modules Overview
     * OpenAI API Connection
     * Loading LLMs
@@ -23,10 +23,10 @@
 
 * Model I/O
 
-## Latest available Reference code
-
-* Model Connection
-
 ## Latest available Tutorial code
 
-* Model Connection
+* [Model Connection] (https://github.com/saisrinivas-samoju/langchain_training/blob/main/tutorials/model_connection.ipynb)
+
+## Latest available Reference code
+
+* [Model Connection] (https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
