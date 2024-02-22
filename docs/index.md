@@ -1,17 +1,32 @@
-# Welcome to MkDocs
+# Langchain Training Material
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Content
+1. Introduction
+2. Model I/O
+3. Retreival
+4. Chains
+5. Memory
+6. Agents
 
-## Commands
+## Topics covered
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+1. Langchain Introduction
+    * Modules Overview
+    * OpenAI API Connection
+    * Loading LLMs
+        * OpenAI
+        * Open source models
+    * Basic Prompting
+    * Referring Documentation
 
-## Project layout
+## Upcoming topics
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* Model I/O
+
+## Latest available Reference code
+
+* Model Connection
+
+## Latest available Tutorial code
+
+* Model Connection
