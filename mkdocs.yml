@@ -2,6 +2,9 @@ site_name: Langchain Training Material
 
 nav:
   - Home: index.md
+  - Setup: setup.md
+  - Introduction: introduction.md
+  - Model Connection: model_connection.md
 
 site_author: Sai Srinivas
 site_description: >-
@@ -33,13 +36,6 @@ theme:
         name: Switch to light mode
       primary: red
       accent: lime
-  
-extra:
-  social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/saisrinivas-samoju
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/sai-srinivas-samoju/
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -67,4 +63,9 @@ copyright: |
   &copy; 2024 <a href="https://github.com/saisrinivas-samoju"  target="_blank" rel="noopener">Sai Srinivas</a>
 
 extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/saisrinivas-samoju
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/sai-srinivas-samoju/
   generator: false
