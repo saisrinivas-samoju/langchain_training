@@ -23,7 +23,6 @@ os.environ['OPENAI_API_KEY'] = api_key
 
 ```python
 from langchain.llms import OpenAI
-
 llm = OpenAI()
 ```
 ---
@@ -180,7 +179,7 @@ print(response.content)
 ```
 
 ```
-> Ugh Cyril hung increased values Guards gala? Buck through ik St battleground
+>   Ugh Cyril hung increased values Guards gala? Buck through ik St battleground
 ```
 ---
 * Few Shot Prompting
@@ -220,8 +219,9 @@ print(response.content)
 ```
 
 ```
-> Stomach pain, huh? Maybe your stomach is just trying to tell a joke! Have you tried asking it to lighten up a bit?
+>   Stomach pain, huh? Maybe your stomach is just trying to tell a joke! Have you tried asking it to lighten up a bit?
 ```
+
 ---
 ## Exercise
 * Create a cross-questioning bot with and without a system prompt
