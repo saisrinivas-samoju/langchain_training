@@ -160,5 +160,6 @@ cython_debug/
 #.idea/
 
 # Reference files
-notebooks/model_io.ipynb
 openai_api_key.txt
+models/cache.db
+notebooks/model_io.ipynb
