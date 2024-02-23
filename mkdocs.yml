@@ -5,6 +5,7 @@ nav:
   - Setup: setup.md
   - Introduction: introduction.md
   - Model Connection: model_connection.md
+  - Model IO: model_io.md
 
 site_author: Sai Srinivas
 site_description: >-
