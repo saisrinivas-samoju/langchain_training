@@ -21,7 +21,7 @@
 
 ## Upcoming topics
 
-* [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_io.ipynb)
+* [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/)
     * Prompt for text-completion and chat-completion models
     * Response Caching
     * Few Shot Prompting
