@@ -4,7 +4,7 @@
 
 ### Steps:
 
-* API key loading
+#### API key loading
 ```python
 import os
 import warnings
@@ -19,7 +19,7 @@ os.environ['OPENAI_API_KEY'] = api_key
 ```
 ---
 
-* Load the text completion model
+#### Load the text completion model
 
 ```python
 from langchain.llms import OpenAI
@@ -27,7 +27,7 @@ llm = OpenAI()
 ```
 ---
 
-* Single Prompt
+#### Single Prompt
 
 ```python
 prompt = "The impact of the globalization on diverse cultures can be explained as:"
@@ -48,7 +48,7 @@ print(response)
 ```
 ---
 
-* Multiple prompts
+#### Multiple prompts
 
 ```python
 prompts = [
@@ -83,20 +83,20 @@ for gen_list in response.generations:
 > 1. Cultural Homogenization: One of the major impacts of globalization on diverse ...
 ```
 
-* LLM usage Information
+#### LLM usage Information
 
 ```python
 response.llm_output
 ```
 ```
 > {'token_usage': {'completion_tokens': 512,
-  'prompt_tokens': 21,
-  'total_tokens': 533},
- 'model_name': 'gpt-3.5-turbo-instruct'}
+'prompt_tokens': 21,
+'total_tokens': 533},
+'model_name': 'gpt-3.5-turbo-instruct'}
 ```
 ---
 
-* Response Caching
+#### Response Caching
 
 ```python
 from langchain.globals import set_llm_cache
@@ -126,7 +126,7 @@ response = llm("Give all the details about Bali...")
 # time: 0.0s
 ```
 ---
-* Schema
+#### Schema
 
     * SystemMessage: Role assigned to the AI.
     * HumanMessage: Human request or the prompt.
@@ -159,9 +159,9 @@ response
 > AIMessage(content="Ah, yes, the fascinating topic of globalization and its impact on diverse
 ```
 ---
-* Parameters
+#### Parameters
 
-[Click Here](https://platform.openai.com/docs/api-reference/chat/create) for the official documentation
+    [Click Here](https://platform.openai.com/docs/api-reference/chat/create) for the official documentation
 
 ```python
 response = chat(
@@ -182,7 +182,7 @@ print(response.content)
 >   Ugh Cyril hung increased values Guards gala? Buck through ik St battleground
 ```
 ---
-* Few Shot Prompting
+#### Few Shot Prompting
 
 ```python
 from langchain.schema import AIMessage
