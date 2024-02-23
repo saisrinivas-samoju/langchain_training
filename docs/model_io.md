@@ -3,7 +3,8 @@
 ## Implementation
 
 ### Steps:
-1. API key loading
+
+* API key loading
 ```python
 import os
 import warnings
@@ -17,14 +18,18 @@ os.environ['OPENAI_API_KEY'] = api_key
 # os.getenv('OPENAI_API_KEY')
 ```
 ---
-2. Load the text completion model
+
+* Load the text completion model
+
 ```python
 from langchain.llms import OpenAI
 
 llm = OpenAI()
 ```
 ---
-3. Single Prompt
+
+* Single Prompt
+
 ```python
 prompt = "The impact of the globalization on diverse cultures can be explained as:"
 
@@ -43,7 +48,8 @@ print(response)
 > 1. Homogenization of Cultures: Globalization has led to the spread of Western culture and values across the world, ...
 ```
 ---
-4. Multiple prompts
+
+* Multiple prompts
 
 ```python
 prompts = [
@@ -78,7 +84,8 @@ for gen_list in response.generations:
 > 1. Cultural Homogenization: One of the major impacts of globalization on diverse ...
 ```
 
-4. 1. LLM usage Information
+* LLM usage Information
+
 ```python
 response.llm_output
 ```
@@ -89,7 +96,8 @@ response.llm_output
  'model_name': 'gpt-3.5-turbo-instruct'}
 ```
 ---
-5. Response Caching
+
+* Response Caching
 
 ```python
 from langchain.globals import set_llm_cache
@@ -119,7 +127,7 @@ response = llm("Give all the details about Bali...")
 # time: 0.0s
 ```
 ---
-6. Schema
+* Schema
 
     * SystemMessage: Role assigned to the AI.
     * HumanMessage: Human request or the prompt.
@@ -152,7 +160,7 @@ response
 > AIMessage(content="Ah, yes, the fascinating topic of globalization and its impact on diverse
 ```
 ---
-7. Parameters
+* Parameters
 
 [Click Here](https://platform.openai.com/docs/api-reference/chat/create) for the official documentation
 
@@ -175,7 +183,7 @@ print(response.content)
 > Ugh Cyril hung increased values Guards gala? Buck through ik St battleground
 ```
 ---
-8. Few Shot Prompting
+* Few Shot Prompting
 
 ```python
 from langchain.schema import AIMessage
