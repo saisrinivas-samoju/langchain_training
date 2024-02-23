@@ -20,7 +20,6 @@ os.environ['OPENAI_API_KEY'] = api_key
 ---
 
 #### Load the text completion model
-
 ```python
 from langchain.llms import OpenAI
 llm = OpenAI()
@@ -28,7 +27,6 @@ llm = OpenAI()
 ---
 
 #### Single Prompt
-
 ```python
 prompt = "The impact of the globalization on diverse cultures can be explained as:"
 
@@ -49,7 +47,6 @@ print(response)
 ---
 
 #### Multiple prompts
-
 ```python
 prompts = [
     "The impact of the globalization on diverse cultures can be explained as:",
@@ -84,7 +81,6 @@ for gen_list in response.generations:
 ```
 
 #### LLM usage Information
-
 ```python
 response.llm_output
 ```
@@ -97,7 +93,6 @@ response.llm_output
 ---
 
 #### Response Caching
-
 ```python
 from langchain.globals import set_llm_cache
 
@@ -183,7 +178,6 @@ print(response.content)
 ```
 ---
 #### Few Shot Prompting
-
 ```python
 from langchain.schema import AIMessage
 
