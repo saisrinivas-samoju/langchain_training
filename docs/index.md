@@ -21,7 +21,13 @@
 
 ## Upcoming topics
 
-* Model I/O
+* [Model I/O](https://python.langchain.com/docs/modules/model_io/)
+    * Prompt for text-completion and chat-completion models
+    * Response Caching
+    * Few Shot Prompting
+    * Prompt Templating
+    * Ouptut Parsing
+    * Serialization - Saving & Loading Prompts
 
 ## Latest available Tutorial code
 
