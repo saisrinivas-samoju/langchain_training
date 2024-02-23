@@ -5,7 +5,7 @@
 ### Steps:
 
 #### API key loading
-```python
+```py
 import os
 import warnings
 warnings.filterwarnings('ignore')
@@ -20,14 +20,14 @@ os.environ['OPENAI_API_KEY'] = api_key
 ---
 
 #### Load the text completion model
-```python
+```py
 from langchain.llms import OpenAI
 llm = OpenAI()
 ```
 ---
 
 #### Single Prompt
-```python
+```py
 prompt = "The impact of the globalization on diverse cultures can be explained as:"
 
 response = llm(prompt=prompt)
@@ -38,7 +38,7 @@ response
 > '\n\n1. Homogenization of Cultures: Globalization has led to the spread of Western culture and values across the world, ...
 ```
 
-```python
+```py
 print(response)
 ```
 ```
@@ -47,7 +47,7 @@ print(response)
 ---
 
 #### Multiple prompts
-```python
+```py
 prompts = [
     "The impact of the globalization on diverse cultures can be explained as:",
     "Ecosystems maintains biodiversity as follows:"
@@ -61,14 +61,14 @@ response
 > LLMResult(generations=[[Generation(text='\n\n1. Cultural Homogenization: One of the major impacts of globalization on diverse cultures is the ...
 ```
 
-```python
+```py
 print(response.generations[0][0].text)
 ```
 ```
 > 1. Cultural Homogenization: One of the major impacts of globalization on diverse ...
 ```
 
-```python
+```py
 # Print individual responses
 for gen_list in response.generations:
     gen = gen_list[0]
@@ -81,7 +81,7 @@ for gen_list in response.generations:
 ```
 
 #### LLM usage Information
-```python
+```py
 response.llm_output
 ```
 ```
@@ -93,7 +93,7 @@ response.llm_output
 ---
 
 #### Response Caching
-```python
+```py
 from langchain.globals import set_llm_cache
 
 # In memory caching
@@ -111,12 +111,12 @@ set_llm_cache(SQLiteCache(database_path='../models/cache.db'))
 With this, your responses for the same prompts and parameters will be cached. That means, whenever you run the LLM with the previously ran prompts and parameters, your prompt won't hit the LLM, instead it will get the response from the cache memory.
 
 Example: Let's get the response from the LLM for a random prompt
-```python
+```py
 response = llm("Give all the details about Bali...")
 # time: 2.8s
 ```
 When we run the same command again, after running the caching code
-```python
+```py
 response = llm("Give all the details about Bali...")
 # time: 0.0s
 ```
@@ -127,7 +127,7 @@ response = llm("Give all the details about Bali...")
     * HumanMessage: Human request or the prompt.
     * AIMessage: AI Response as per it's role to the Human request.
 
-```python
+```py
 from langchain.schema import SystemMessage, HumanMessage
 
 response = chat(messages = [HumanMessage(content='What is the longest river in the world?')])
@@ -138,7 +138,7 @@ response # Response is an AIMessage
 > AIMessage(content='The longest river in the world is the Nile River, which flows through northeastern Africa for about 4,135 miles (6,650 kilometers).')
 ```
 
-```python
+```py
 # Adding system message
 
 messages = [
@@ -158,7 +158,7 @@ response
 
     [Click Here](https://platform.openai.com/docs/api-reference/chat/create) for the official documentation
 
-```python
+```py
 response = chat(
     messages=[
         SystemMessage(content='You are an angry doctor'),
@@ -178,7 +178,7 @@ print(response.content)
 ```
 ---
 #### Few Shot Prompting
-```python
+```py
 from langchain.schema import AIMessage
 
 system_message = "You are a funny doctor"
