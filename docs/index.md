@@ -26,7 +26,7 @@
     * Response Caching
     * Few Shot Prompting
     * Prompt Templating
-    * Ouptut Parsing
+    * Output Parsing
     * Serialization - Saving & Loading Prompts
 
 ## Latest available Tutorial code
