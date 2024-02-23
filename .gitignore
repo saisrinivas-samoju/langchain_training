@@ -161,3 +161,4 @@ cython_debug/
 
 # Reference files
 notebooks/model_io.ipynb
+openai_api_key.txt
