@@ -35,7 +35,9 @@
 ## Latest available Tutorial code
 
 * [Model Connection](https://github.com/saisrinivas-samoju/langchain_training/blob/main/tutorials/model_connection.ipynb)
+* [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/tutorials/model_io.ipynb)
 
 ## Latest available Reference code
 
 * [Model Connection](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
+* [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_io.ipynb)
