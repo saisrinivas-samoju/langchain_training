@@ -1,0 +1,16 @@
+{
+    "name": null,
+    "input_variables": [
+        "num_words",
+        "topic"
+    ],
+    "input_types": {},
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "Write an essay on {topic} in {num_words} words",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}
