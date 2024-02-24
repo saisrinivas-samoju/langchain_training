@@ -10,7 +10,7 @@
 
 ## Topics covered
 
-1. [Langchain Introduction](https://saisrinivas-samoju.github.io/langchain_training/introduction/)
+1. [Langchain Introduction](https://saisrinivas-samoju.github.io/langchain_training/introduction/) [1 Hour]
     * Modules Overview
     * OpenAI API Connection
     * Loading LLMs
@@ -19,16 +19,16 @@
     * Basic Prompting
     * Referring Documentation
 
-2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/)
+2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/) [2 Hours]
     * Prompt for text-completion and chat-completion models
     * Response Caching
     * Few Shot Prompting
+    * Prompt Templating
+    * Serialization - Saving & Loading Prompts
 
 ## Upcoming topics
 
 * [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/)
-    * Prompt Templating
-    * Serialization - Saving & Loading Prompts
     * Output Parsing
 
 
