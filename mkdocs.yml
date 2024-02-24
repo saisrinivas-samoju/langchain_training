@@ -59,6 +59,10 @@ markdown_extensions:
   - pymdownx.details
   # - pymdownx.superfences
   - pymdownx.mark
+  - markdown.extensions.codehilite:
+      noclasses: True
+      pygments_style: perldoc
+    # https://pygments.org/styles/
   
   
 plugins:
