@@ -43,7 +43,7 @@
 * [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_io.ipynb)
 
 ## Smart Chef Project code
-* [Smart Chef Code](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/app.py)
+* [Smart Chef Code](https://saisrinivas-samoju.github.io/langchain_training/model_io/#exercise-create-a-smart-chef-bot-that-can-give-you-recipes-based-on-the-available-food-items-you-have-in-your-kitchen)
 
 ## Tasks/Exercies/Projects assigned
 * Create a cross-questioning model with and without a system prompt
