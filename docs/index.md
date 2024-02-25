@@ -41,3 +41,16 @@
 
 * [Model Connection](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
 * [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_io.ipynb)
+
+## Smart Chef Project code
+* [Smart Chef Code](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/app.py)
+
+## Tasks/Exercies/Projects assigned
+* Create a cross-questioning model with and without a system prompt
+* Write a blog on few shot prompting
+* Project ideas (Pick any one of them)
+    * Real time text translation
+    * Text Summarization tool
+    * Q&A System
+    * Travel Planner
+    * Tweet Responder

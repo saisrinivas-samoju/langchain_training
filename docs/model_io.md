@@ -516,3 +516,408 @@ response
 ```
 > AIMessage(content="Rice is a staple food for many people around the world and can provide several health benefits when consumed regularly as part of a balanced diet. ...
 ```
+---
+## Implementation - Part 3
+### Steps
+#### Output Parsers
+Loading the language model and setting the cache
+```py
+import os
+from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
+from langchain.globals import set_llm_cache
+from langchain.cache import InMemoryCache
+import warnings
+warnings.filterwarnings('ignore')
+
+with open('../openai_api_key.txt', 'r') as f:
+    api_key = f.read()
+    
+os.environ['OPENAI_API_KEY'] = api_key
+
+llm = OpenAI()
+chat = ChatOpenAI()
+
+
+set_llm_cache(InMemoryCache())
+```
+
+##### Steps to use the output parser
+* format_instructions
+* parse
+
+Step 1: Create and instance of the parser
+```py
+from langchain.output_parsers import CommaSeparatedListOutputParser
+
+output_parser = CommaSeparatedListOutputParser()
+
+output_parser
+```
+```
+> CommaSeparatedListOutputParser()
+```
+Step 2: Get the format instructions
+```py
+output_parser.get_format_instructions()
+```
+```
+> 'Your response should be a list of comma separated values, eg: `foo, bar, baz`'
+```
+
+Step 3: Send the instructions to the model
+```py
+from langchain.prompts import HumanMessagePromptTemplate, ChatPromptTemplate
+
+human_template = "{user_request}\n{format_instructions}"
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(user_request="What are the 7 wonders?", format_instructions=output_parser.get_format_instructions())
+
+prompt
+```
+```
+> ChatPromptValue(messages=[HumanMessage(content='What are the 7 wonders?\nYour response should be a list of comma separated values, eg: `foo, bar, baz`')])
+```
+```py
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+print(response.content)
+```
+```
+> Great Pyramid of Giza, Hanging Gardens of Babylon, Statue of Zeus at Olympia, Temple of Artemis at Ephesus, Mausoleum at Halicarnassus, Colossus of Rhodes, Lighthouse of Alexandria
+```
+Step 4: use the parser to parse the output
+```py
+output_parser.parse(response.content)
+```
+```
+> ['Great Pyramid of Giza',
+ 'Hanging Gardens of Babylon',
+ 'Statue of Zeus at Olympia',
+ 'Temple of Artemis at Ephesus',
+ 'Mausoleum at Halicarnassus',
+ 'Colossus of Rhodes',
+ 'Lighthouse of Alexandria']
+```
+#### When parser fails?
+```py
+from langchain.output_parsers import DatetimeOutputParser
+
+output_parser = DatetimeOutputParser()
+
+format_instructions = output_parser.get_format_instructions()
+
+print(format_instructions)
+```
+```
+> Write a datetime string that matches the following pattern: '%Y-%m-%dT%H:%M:%S.%fZ'.
+
+Examples: 0278-08-03T19:42:55.481110Z, 1567-04-05T01:30:42.197571Z, 0101-06-24T18:20:21.443663Z
+
+Return ONLY this string, no other words!
+```
+```py
+human_template = "{human_messsage}\n{format_instructions}"
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_messsage="When was Jesus Christ born?", format_instructions=format_instructions)
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+output = output_parser.parse(response.content)
+
+output
+```
+```
+> ---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+File d:\CodeWork\GitHub\langchain_training\.venv\lib\site-packages\langchain\output_parsers\datetime.py:50, in DatetimeOutputParser.parse(self, response)
+     49 try:
+---> 50     return datetime.strptime(response.strip(), self.format)
+     51 except ValueError as e: ...
+```
+##### OutputFixingParser
+
+```py
+from langchain.output_parsers import OutputFixingParser
+
+fixing_parser = OutputFixingParser.from_llm(parser=output_parser, llm=chat)
+
+fixed_output = fixing_parser.parse(response.content)
+
+fixed_output
+```
+```
+> datetime.datetime(1, 1, 1, 0, 0)
+```
+Fixing might not always work, So let's try multiple times
+```py
+for chance in range(1, 10):
+    try:
+        fixed_output = fixing_parser.parse(response.content)
+    except:
+        continue
+    else:
+        break
+    
+fixed_output
+```
+```
+> datetime.datetime(1, 1, 1, 0, 0)
+```
+
+#### Custom Parsers
+##### Structured Output Parser
+Define the response schema
+```py
+from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+
+response_schemas = [
+    ResponseSchema(name="answer", description="answer to the user's question"),
+    ResponseSchema(
+        name="source",
+        description="source used to answer the user's question, should be a website.",
+    ),
+]
+```
+
+Define the output parser
+
+```py
+from langchain.output_parsers import StructuredOutputParser
+
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+output_parser
+```
+```
+> StructuredOutputParser(response_schemas=[ResponseSchema(name='answer', description="answer to the user's question", type='string'), ResponseSchema(name='source', description="source used to answer the user's question, should be a website.", type='string')])
+```
+
+Get the format instructions
+
+```py
+format_instructions = output_parser.get_format_instructions()
+format_instructions
+```
+```
+> 'The output should be a markdown code snippet formatted in the following schema, including the leading and trailing "```json" and "```":\n\n```json\n{\n\t"answer": string  // answer to the user\'s question\n\t"source": string  // source used to answer the user\'s question, should be a website.\n}\n```
+```
+
+Get the response
+
+```py
+human_template = "{human_message}\n{format_instructions}"
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_message = "What's the world's largest man made structure?", format_instructions=format_instructions)
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+output = output_parser.parse(response.content)
+
+output
+```
+```
+> {'answer': 'The Great Wall of China',
+ 'source': 'https://www.history.com/topics/great-wall-of-china'}
+```
+
+Let's look at the more powerful way of creating custom parser
+
+#### PydanticOutputParser
+
+Let's quickly learn about pydantic
+
+Conventional pythonic way of building classes
+
+```py
+class Student:
+    def __init__(self, name: str):
+        self.name = name
+        
+john = Student(name='John')
+john.name
+```
+```
+> 'John'
+```
+
+Similarily
+```py
+jane = Student(name=1) # Taking int even after defining the name to be str
+jane.name
+```
+```
+> 1
+```
+
+```py
+type(jane.name) # Returning int too
+
+# Conventional approach doesn't have strict type validation
+```
+```
+> int
+```
+
+Pydantic has simple syntax with strict type validation
+
+```py
+from pydantic import BaseModel
+
+class Student(BaseModel):
+    name: str
+    
+jane = Student(name=1) # THIS WILL THROW AN ERROR
+
+jane = Student(name='jane')
+jane.name
+```
+```
+> 'jane'
+```
+
+Let's get back to langchain
+
+When we want our output to be in a specific class object format
+
+First let's define the class
+
+```py
+from pydantic import BaseModel, Field
+from typing import List
+
+class Car(BaseModel):
+    name: str = Field(description="Name of the car")
+    model_number: str = Field(description="Model number of the car")
+    features: List[str] = Field(description="List of features of the car")
+```
+
+create an instance of our custom parser
+
+```py
+from langchain.output_parsers import PydanticOutputParser
+
+output_parser = PydanticOutputParser(pydantic_object=Car)
+
+print(output_parser.get_format_instructions())
+```
+```
+> The output should be formatted as a JSON instance that conforms to the JSON schema below.
+
+As an example, for the schema ...
+```
+
+Getting the response
+
+```py
+human_template = "{human_message}\n{format_instructions}"
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_message='Tell me about the most expensive car in the world',
+                                   format_instructions=output_parser.get_format_instructions())
+
+response = chat(messages=prompt.to_messages())
+output = output_parser.parse(response.content)
+
+output
+```
+```
+> Car(name='Bugatti La Voiture Noire', model_number='Divo', features=['1500 horsepower engine', '8.0-liter quad-turbocharged W16 engine', 'carbon fiber body', 'top speed of 261 mph'])
+```
+```py
+type(output)
+```
+```
+> __main__.Car
+```
+
+#### Project ideas
+* Real time text translation
+* Text Summarization tool
+* Q&A System
+* Travel Planner
+* Tweet Responder
+
+#### Exercise: Create a Smart Chef bot that can give you recipes based on the available food items you have in your kitchen.
+
+Let's build a gradio app
+```py
+import os
+from typing import List
+import gradio as gr
+from pydantic import Field, BaseModel
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import HumanMessagePromptTemplate, ChatPromptTemplate
+from langchain.output_parsers import PydanticOutputParser
+
+# Creating the instance of the chat model
+
+with open('openai_api_key.txt', 'r') as f:
+    api_key = f.read()
+    
+os.environ['OPENAI_API_KEY'] = api_key
+
+chat = ChatOpenAI()
+
+# Define the Pydantic Model
+
+class SmartChef(BaseModel):
+    name: str = Field(description="Name fo the dish")
+    ingredients: dict = Field(description="Python dictionary of ingredients and their corresponding quantities as keys and values of the python dictionary respectively")
+    instructions: List[str] = Field(description="Python list of instructions to prepare the dish")
+    
+# Get format instructions
+
+from langchain.output_parsers import PydanticOutputParser
+
+output_parser = PydanticOutputParser(pydantic_object=SmartChef)
+format_instructions = output_parser.get_format_instructions()
+format_instructions
+
+def smart_chef(food_items: str) -> list:
+
+    # Getting the response
+    human_template = """I have the following list of the food items:
+
+    {food_items}
+
+    Suggest me a recipe only using these food items
+
+    {format_instructions}"""
+
+    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+    chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+    prompt = chat_prompt.format_prompt(
+        food_items=food_items, format_instructions=format_instructions)
+
+    messages = prompt.to_messages()
+    response = chat(messages=messages)
+    output = output_parser.parse(response.content)
+
+    dish_name, ingredients, instructions = output.name, output.ingredients, output.instructions
+    return dish_name, ingredients, instructions
+
+# Building interface
+with gr.Blocks() as demo:
+    gr.HTML("<h1 align='center'>Smart Chef</h1>")
+    gr.HTML("<h3 align='center'><i>Cook with whatever you have</i></h3>")
+    inputs = [gr.Textbox(label='Enter the list of ingredients you have, in a comma separated text', lines=3, placeholder='Example: Chicken, Onion, Tomatoes, ... etc.')]
+    generate_btn = gr.Button(value="Generate")
+    outputs = [gr.Text(label='Name of the dish'), gr.JSON(label="Ingredients with corresponding quantities"), gr.Textbox(label="Instructions to prepare")]
+    generate_btn.click(fn=smart_chef, inputs=inputs, outputs=outputs)
+
+if __name__=="__main__":
+    demo.launch(share=True)
+```
+
+In the terminal, run the following command
+```console
+python src/app.py
+```
