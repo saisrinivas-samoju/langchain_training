@@ -19,18 +19,18 @@
     * Basic Prompting
     * Referring Documentation
 
-2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/) [2 Hours]
+2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/) [4 Hours]
     * Prompt for text-completion and chat-completion models
     * Response Caching
     * Few Shot Prompting
     * Prompt Templating
     * Serialization - Saving & Loading Prompts
+    * Output Parsing
+    * Sample Project
 
 ## Upcoming topics
 
-* [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/)
-    * Output Parsing
-
+* [Retreival](https://python.langchain.com/docs/modules/data_connection/)
 
 ## Latest available Tutorial code
 
