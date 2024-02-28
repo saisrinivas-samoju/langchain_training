@@ -838,6 +838,35 @@ type(output)
 > __main__.Car
 ```
 
+#### PydanticStructuredOutputParser
+The new ChatOpenAI model from langchain_openai supports <code>with_structured_output</code> method, which can take the pydantic models built with **pydantic_v1** from **langchain_core**
+```console
+pip install langchain_openai
+```
+We will still be using <code>from langchain.chat_models import ChatOpenAI</code> for loading the chat model, to follow the standard structure of langchain (though it is depreciated)
+```py
+import os
+from typing import List
+from langchain_openai import ChatOpenAI
+from langchain_core.pydantic_v1 import BaseModel, Field
+
+with open('../openai_api_key.txt') as f:
+    os.environ['OPENAI_API_KEY'] = f.read()
+
+class Car(BaseModel):
+    name: str = Field(description="Name of the car")
+    model_number: str = Field(description="Model number of the car")
+    features: List[str] = Field(description="List of features of the car")
+    
+model = ChatOpenAI()
+model_with_structure = model.with_structured_output(Car)
+model_with_structure.invoke('Tell me about the most expensive car in the world')
+```
+
+```
+> Car(name='Bugatti La Voiture Noire', model_number='1', features=['Luxurious design', 'Powerful engine', 'Top speed of 261 mph', 'Exclusive and limited edition'])
+```
+
 #### Project ideas
 * Real time text translation
 * Text Summarization tool
