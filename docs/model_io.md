@@ -874,7 +874,8 @@ model_with_structure.invoke('Tell me about the most expensive car in the world')
 * Travel Planner
 * Tweet Responder
 
-#### Exercise: Create a Smart Chef bot that can give you recipes based on the available food items you have in your kitchen.
+#### Exercise
+**Create a Smart Chef bot that can give you recipes based on the available food items you have in your kitchen.**
 
 Let's build a gradio app
 ```py
@@ -950,3 +951,7 @@ In the terminal, run the following command
 ```console
 python src/app.py
 ```
+
+**Deploying Gradio application in HuggingFace Spaces**
+* Create a HuggingFace account
+* Install Gitbash (Optional)

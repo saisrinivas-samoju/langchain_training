@@ -30,6 +30,7 @@
 
 ## Upcoming topics
 
+* Deploying Gradio Applications in Hugging Face Spaces
 * [Retreival](https://python.langchain.com/docs/modules/data_connection/)
 
 ## Latest available Tutorial code
