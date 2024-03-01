@@ -39,12 +39,20 @@ source ./env_name/Scripts/activate
 ```
 
 ## Required packages
-* langchain
-* langchain-core
-* langchain-community
-* langchain-experimentation
-* openai
-* llama_cpp_python
+ipykernel
+langchain==0.0.351
+langchain-community==0.0.4
+langchain-core==0.1.1
+langsmith==0.0.72
+<!-- langchain-experimentation -->
+openai==1.6.0
+llama_cpp_python
+mkdocs-material
+pydantic==2.5.2
+pydantic_core==2.14.5
+gradio==4.19.2
+gradio_client==0.10.1
+langchain_openai==0.0.8
 
 ## Install requirements.txt file
 Prepare the requirements.txt file with the above package list
