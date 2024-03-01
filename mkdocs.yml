@@ -6,7 +6,7 @@ nav:
   - Introduction: introduction.md
   - Model Connection: model_connection.md
   - Model IO: model_io.md
-  - Retrieval: retreival.md
+  - Retrieval: retrieval.md
 
 site_author: Sai Srinivas
 site_description: This website contains all the course materials and quick revision concepts.
