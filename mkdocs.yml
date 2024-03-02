@@ -18,6 +18,7 @@ repo_url: https://github.com/saisrinivas-samoju/langchain_training
 
 theme:
   name: material
+  logo: img/langchain_icon.png
   font:
     text: Fira Sans
     code: Fira Code
