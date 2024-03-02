@@ -18,6 +18,9 @@ repo_url: https://github.com/saisrinivas-samoju/langchain_training
 
 theme:
   name: material
+  font:
+    text: Fira Sans
+    code: Fira Code
   features:
     - navigation.tabs
     - navigation.sections
@@ -29,16 +32,27 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline 
+        # icon: material/toggle-switch-off-outline
+        icon: material/weather-sunny
         name: Switch to dark mode
-      primary: 161f6d
-      accent: purple 
+      # primary: 161f6d
+      # accent: purple 
+      # primary: indigo
+      primary: red
+      accent: indigo
+      background: grey
     - scheme: slate 
       toggle:
-        icon: material/toggle-switch
+        # icon: material/toggle-switch
+        icon: material/weather-night
         name: Switch to light mode
-      primary: red
-      accent: lime
+      # primary: red
+      # accent: lime
+      primary: black
+      accent: black
+  icon:
+      repo: fontawesome/brands/github
+  custom.css: custom.css
     
 
 extra_javascript:

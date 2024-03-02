@@ -163,3 +163,5 @@ cython_debug/
 openai_api_key.txt
 models/cache.db
 # notebooks/model_io.ipynb
+
+notebooks/retrieval.ipynb
