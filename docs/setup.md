@@ -45,9 +45,6 @@ langchain==0.0.351
 langchain-community==0.0.4
 langchain-core==0.1.1
 langsmith==0.0.72
-<!-- langchain-experimentation -->
-openai==1.6.0
-llama_cpp_python
 pydantic==2.5.2
 pydantic_core==2.14.5
 gradio==4.19.2
@@ -59,7 +56,8 @@ beautifulsoup4==4.12.3
 lxml==4.9.4
 wikipedia==1.4.0
 pypdf==4.0.2
-unstructured==0.12.5
+unstructured
+openai
 ```
 
 ## Install requirements.txt file
