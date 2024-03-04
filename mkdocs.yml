@@ -34,7 +34,7 @@ theme:
     - scheme: default
       toggle:
         # icon: material/toggle-switch-off-outline
-        icon: material/weather-sunny
+        icon: material/weather-night
         name: Switch to dark mode
       # primary: 161f6d
       # accent: purple 
@@ -45,7 +45,7 @@ theme:
     - scheme: slate 
       toggle:
         # icon: material/toggle-switch
-        icon: material/weather-night
+        icon: material/weather-sunny
         name: Switch to light mode
       # primary: red
       # accent: lime

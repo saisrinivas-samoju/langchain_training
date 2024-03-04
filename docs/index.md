@@ -1,4 +1,4 @@
-# Langchain Training Material
+# **Langchain Training Material**
 
 ## Content
 1. Introduction
