@@ -19,7 +19,7 @@
     * Basic Prompting
     * Referring Documentation
 
-2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/) [4 Hours]
+2. [Model I/O](https://saisrinivas-samoju.github.io/langchain_training/model_io/) [4.5 Hours]
     * Prompt for text-completion and chat-completion models
     * Response Caching
     * Few Shot Prompting
@@ -27,11 +27,19 @@
     * Serialization - Saving & Loading Prompts
     * Output Parsing
     * Sample Project
+    * Deploying Project with a Frontend (Local & Cloud)
+
+3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [0.5 Hours]
+    * Introduction
+
+
 
 ## Upcoming topics
 
-* Deploying Gradio Applications in Hugging Face Spaces
+<!-- * Deploying Gradio Applications in Hugging Face Spaces -->
 * [Retreival](https://python.langchain.com/docs/modules/data_connection/)
+    * Data Loaders (with Assignment)
+
 
 ## Latest available Tutorial code
 
@@ -55,3 +63,4 @@
     * Q&A System
     * Travel Planner
     * Tweet Responder
+* Deploy your own project or the sample project
