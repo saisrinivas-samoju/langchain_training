@@ -45,6 +45,7 @@ langchain==0.0.351
 langchain-community==0.0.4
 langchain-core==0.1.1
 langsmith==0.0.72
+openai==1.6.0
 pydantic==2.5.2
 pydantic_core==2.14.5
 gradio==4.19.2
@@ -56,12 +57,18 @@ beautifulsoup4==4.12.3
 lxml==4.9.4
 wikipedia==1.4.0
 pypdf==4.0.2
-unstructured
-openai
+unstructured==0.12.5
+tiktoken==0.6.0
+# llama_cpp_python
 ```
 
 ## Install requirements.txt file
 Prepare the requirements.txt file with the above package list
-```bash
-pip install -r requirements.txt
+```console
+pip install -r requirements.txt 
+```
+
+If you are already having existing packages installed, use the below command for installing the exact versions
+```console
+pip install --force-reinstall -v -r requirements.txt 
 ```
