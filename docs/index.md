@@ -29,17 +29,17 @@
     * Sample Project
     * Deploying Project with a Frontend (Local & Cloud)
 
-3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [0.5 Hours]
+3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [4.5 Hours]
     * Introduction
-
+    * Data Loaders (with Assignment)
+    * Text Splitters
 
 
 ## Upcoming topics
 
 <!-- * Deploying Gradio Applications in Hugging Face Spaces -->
 * [Retreival](https://python.langchain.com/docs/modules/data_connection/)
-    * Data Loaders (with Assignment)
-
+    
 
 ## Latest available Tutorial code
 

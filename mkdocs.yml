@@ -8,6 +8,10 @@ nav:
   - Model IO: model_io.md
   - Retrieval: retrieval.md
 
+pages:
+  - Home: index.md
+    thumbnail: img/langchain_thumbnail.jpeg
+
 site_author: Sai Srinivas
 site_description: This website contains all the course materials and quick revision concepts.
 
