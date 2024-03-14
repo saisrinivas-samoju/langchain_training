@@ -165,3 +165,5 @@ models/cache.db
 # notebooks/model_io.ipynb
 
 notebooks/retrieval.ipynb
+output/elon_musk_db/
+docs/img/langchain_icon.ico

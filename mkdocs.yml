@@ -8,7 +8,7 @@ nav:
   - Model IO: model_io.md
   - Retrieval: retrieval.md
 
-
+thumbnail: docs/img/langchain_thumbnail.jped
 
 site_author: Sai Srinivas
 site_description: This website contains all the course materials and quick revision concepts.

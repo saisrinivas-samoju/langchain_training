@@ -288,4 +288,255 @@ print(peer_review(article_id='2201.03514')) # Black-Box Tuning for Language-Mode
 
       1. Lack of Clarity in Problem Statement: The paper does not clearly define the problem statement or research question it aims to address. It is unclear why optimizing task prompts through black-box tuning for Language-Model-as-a-Service (LMaaS) is important or how it contributes to the existing body of knowledge.
 
+## Implementation - Part 2
+### Text Splitter
+#### Split by character
+
+Reading the data
+
+```python
+filepath = "../datasets/Harry Potter 1 - Sorcerer's Stone.txt"
+
+with open(filepath, 'r') as f:
+    hp_book = f.read()
+    
+print("Number of characters letters in the document:", len(hp_book))
+print("Number of words in the document:", len(hp_book.split()))
+print("Number of lines in the document:", len(hp_book.split("\n")))
+```
+      Number of characters letters in the document: 439742
+      Number of words in the document: 78451
+      Number of lines in the document: 10703
+
+To understand the how the number of characters if we use any separator manually
+
+```python
+from collections import Counter
+
+line_len_list = []
+
+for line in hp_book.split("\n"):
+    curr_line_len = len(line)
+    line_len_list.append(curr_line_len)
+    
+Counter(line_len_list) # It show how many those chunks with the same character length is present
+```
+
+      > Counter({37: 57,
+            0: 3057,
+            11: 38,
+      ...
+            4: 15,
+            3: 9,
+            2: 1})
+
+#### Character Text Splitter
+
+Splitting the text at a specific character only if the chunk exceeds the given chunk size
+
+```python
+from langchain.text_splitter import CharacterTextSplitter
+
+def len_func(text): # In this case, you can just use >len<
+    return len(text)
+
+text_splitter = CharacterTextSplitter(
+    separator="\n\n",
+    chunk_size=1200,
+    chunk_overlap=100,
+    length_function=len_func,
+    is_separator_regex=False
+)
+
+para_list = text_splitter.create_documents(texts=[hp_book])
+
+para_list
+```
+
+      > [Document(page_content="Harry Potter and the Sorcerer's Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+      ...
+      I\'m going to have a lot of fun with Dudley this summer...."\n\nTHE END')]
+
+To add metadata for the document objects
+
+```python
+first_chunk = para_list[0]
+
+# Just assign/reassign
+first_chunk.metadata = {"source": filepath}
+
+first_chunk.metadata
+```
+      > {'source': "../datasets/Harry Potter 1 - Sorcerer's Stone.txt"}
+
+What if the text exceeds the chunk length and there is not separator to chunk the text?
+
+```python
+# Adding the extra line
+extra_line = " ".join(['word']*500)
+
+para_list = text_splitter.create_documents(texts = [extra_line + hp_book])
+
+# checking the length of the first line as the extra line is added there
+first_chunk_text = para_list[0].page_content
+
+len(first_chunk_text)
+```
+      Created a chunk of size 2536, which is longer than the specified 1200
+      > 2536
+
+Can we add multiple separators to make it working better?
+
+That's where Recursive Character Text Splitter comes in.
+
+#### Recursive Character Splitter
+
+It tries to split on them in order until the chunks are small enough.
+The default list is <code>["\n\n", "\n", " ", ""]</code>. This has the effect of trying to keep all paragraphs (and then sentences, and then words) together as long as possible, as those would generically seem to be the strongest semantically related pieces of text.
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+text_splitter = RecursiveCharacterTextSplitter(
+    separators=["\n\n", "\n", ' '],
+    chunk_size = 200,
+    chunk_overlap = 100,
+    length_function = len_func,
+    is_separator_regex=False
+)
+
+# Here, the split first happens at "\n\n", if the chunk size exceeds, it will move to the next separator, if it still exceeds, it will move to the next separator which is a " ".
+
+chunk_list = text_splitter.create_documents(texts = [hp_book])
+
+chunk_list
+```
+      > [Document(page_content='CHAPTER ONE\n\nTHE BOY WHO LIVED'),
+      ...]
+
+Let's see how this chunking process work in the previous scenario
+
+```python
+chunk_list = text_splitter.create_documents(texts = [extra_line + hp_book]) # Adding the extra line
+
+chunk_list
+```
+
+      > [Document(page_content='word word word word word word ...
+
+      ...]
+
+The text got chunked at spaces to maintain the chunk size in the first line.
+
+#### Split by tokens
+
+tiktoken is a python library developed by openAI to count the number of tokens in a string without making an API call.
+```console
+pip install tiktoken
+```
+
+Splitting based on the token limit
+
+```python
+from langchain.text_splitter import CharacterTextSplitter
+
+text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
+    separator="\n\n", 
+    chunk_size=1200, 
+    chunk_overlap=100, 
+    is_separator_regex=False,
+    model_name='text-embedding-3-small',
+    encoding_name='text-embedding-3-small', # same as model name
+)
+
+doc_list = text_splitter.create_documents([hp_book])
+
+doc_list
+```
+      > [Document(page_content="Harry Potter and the Sorcerer's Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+      ...
+      I\'m going to have a lot of fun with Dudley this summer...."\n\nTHE END')]
+
+The model name here refers to the model used for calculating the tokens.
+
+To split the text and return the text chunks
+
+```python
+line_list = text_splitter.split_text(hp_book)
+
+line_list
+```
+      > ['Harry Potter and the Sorcerer\'s Stone\n\n\nCHAPTER ONE\...
+      ...Dudley this summer...."\n\nTHE END']
+
+If you want to convert the split text into list of document objects
+```python
+from langchain.docstore.document import Document
+
+doc_list = []
+
+for line in line_list:
+    curr_doc = Document(page_content=line, metadata={"source": filepath})
+    doc_list.append(curr_doc)
+    
+doc_list
+```
+      > [Document(page_content="Harry Potter and the Sorcerer's Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+      ...
+      I\'m going to have a lot of fun with Dudley this summer...."\n\nTHE END')]
+
+# Code Splitting
+
+Let's learn a generic way of splitting code that's written in any language. For this let's convert the previous peer_review function code into text.
+
+```python
+python_code = """def peer_review(article_id):
+    chat = ChatOpenAI()
+    loader = ArxivLoader(query=article_id, load_max_docs=2)
+    data = loader.load()
+    first_record = data[0]
+    page_content = first_record.page_content
+    title = first_record.metadata['Title']
+    summary = first_record.metadata['Summary']
+    
+    summary_list = []
+    for record in data:
+        summary_list.append(record.metadata['Summary'])
+    full_summary = "\n\n".join(summary_list)
+    
+    system_template = "You are a Peer Reviewer"
+    human_template = "Read the paper with the title: '{title}'\n\nAnd Content: {content} and critically list down all the issues in the paper"
+
+    systemp_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
+    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+    chat_prompt = ChatPromptTemplate.from_messages([systemp_message_prompt, human_message_prompt])
+    prompt = chat_prompt.format_prompt(title=title, content=page_content)
+
+    response = chat(messages = prompt.to_messages())
+
+    return response.content"""
+```
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter, Language
+
+text_splitter = RecursiveCharacterTextSplitter.from_language(
+    language=Language.PYTHON,
+    chunk_size=50,
+    chunk_overlap=10
+)
+
+text_splitter.create_documents(texts = [python_code])
+```
+
+      > [Document(page_content='def peer_review(article_id):'),
+      Document(page_content='chat = ChatOpenAI()'),
+      ...
+      Document(page_content='= prompt.to_messages())'),
+      Document(page_content='return response.content')]
+
+Similar to python code, you can also split any the code in programming language. For example: To split javascript code use <code>Language.JS</code>
+
+#### Embeddings
 
