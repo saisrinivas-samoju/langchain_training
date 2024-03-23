@@ -1,0 +1,12 @@
+.columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-left, .column-right {
+    width: 50%; /* Adjust as needed */
+    padding: 10px; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+/* Optional: Add more styling as needed */

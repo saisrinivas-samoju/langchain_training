@@ -540,3 +540,348 @@ Similar to python code, you can also split any the code in programming language.
 
 #### Embeddings
 
+Embeddngs are stored along with their corresponding text in the vector database. When queried, the query text is converted to embeddngs using the same embedding function and find the similar embeddings in the vector database and returns corresponding matching text.
+
+##### OpenAI Embeddings
+```py
+import os
+from langchain.embeddings import OpenAIEmbeddings
+
+with open('../openai_api_key.txt', 'r') as f:
+    api_key = f.read()
+    
+os.environ['OPENAI_API_KEY'] = api_key
+```
+
+Either set the environment variable or pass it as a keyword parameter as shown below, just like any llm
+
+```py
+embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+```
+Creating a sample text
+```py
+text = "The scar had not pained Harry for nineteen years. All was well."
+```
+Embedding the text
+```py
+embedded_text = embeddings.embed_query(text)
+
+embedded_text
+```
+      > [-0.00598582291957263,
+      0.02148159007746089,
+      ...]
+
+
+```py
+len(embedded_text)
+```
+      > 1536
+
+```py
+# If we have n lines in langchain document format
+from langchain.docstore.document import Document
+
+doc_lines = [
+    Document(page_content=text, metadata={"source": "Harry Potter"}),
+    Document(page_content="It is our choices, Harry, that show what we truly are, far more than our abilities",
+             metadata={"source": "Harry Potter"})
+]
+
+doc_lines # consider this to be the response from text splitters
+```
+      > [Document(page_content='The scar had not pained Harry for nineteen years. All was well.', metadata={'source': 'Harry Potter'}),
+      Document(page_content='It is our choices, Harry, that show what we truly are, far more than our abilities', metadata={'source': 'Harry Potter'})]
+
+```py
+# We will extract the page content
+
+line_list = [doc.page_content for doc in doc_lines]
+```
+
+```py
+embedded_docs = [embeddings.embed_query(line) for line in line_list]
+
+np.array(embedded_docs).shape
+```
+      > (2, 1536)
+
+* OpenAI embeddings are not the best ranked MTEB (Massive text embedding benchmark) models (https://huggingface.co/spaces/mteb/leaderboard)
+* On top of it, they are expensive.
+* *So, let's explore some open source best performing text embedding models
+
+##### BGE Embeddings
+
+* BGE models on the HuggingFace are the best open-source embedding models that are also integrated with langchain as of now.
+* BGE Model is created by the Beijing Academy of Artificial Intelligence (BAAI).
+* BAAI is a private non-profit organization engaged in AI research and development.
+
+```console
+pip install sentence_transformers
+```
+
+```py
+import numpy as np
+from langchain.embeddings import HuggingFaceBgeEmbeddings
+
+model_name = "BAAI/bge-base-en-v1.5"
+model_kwargs = {"device": "cpu"}
+encode_kwargs = {"normalize_embeddings": True}
+
+hf = HuggingFaceBgeEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+    encode_kwargs=encode_kwargs
+)
+```
+
+##### Fake Embeddings
+For testing purposes, if you have some hardware restrictions, you can use Fake Embeddings from Langchain
+
+```py
+from langchain_community.embeddings import FakeEmbeddings
+fake_embeddings = FakeEmbeddings(size=300) # Define the embedding size
+
+fake_embedded_record = fake_embeddings.embed_query("This is some random text")
+fake_embedded_records = fake_embeddings.embed_documents(["This is some random text"])
+```
+Single record
+```py
+np.array(fake_embedded_record).shape
+```
+      (300,)
+
+For multiple records
+```py
+np.array(fake_embedded_records).shape
+```
+      (1, 300)
+
+#### Vector Store
+```console
+pip install chromadb qdrant-client faiss-cpu
+```
+Imports
+
+```py
+from langchain_community.document_loaders import WikipediaLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import HuggingFaceBgeEmbeddings
+from langchain_community.vectorstores import FAISS
+```
+
+Document Loading
+
+```py
+loader = WikipediaLoader(query='Elon Musk', load_max_docs=5)
+documents = loader.load()
+documents
+```
+      > [Document(page_content='Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman...)
+      Document(page_content='Business magnate Elon Musk initiated an acquisition of American...
+      Document(page_content='Elon Musk completed his acquisition of Twitter...
+      Document(page_content='The Musk family is a wealthy family of South African origin...
+      Document(page_content='Elon Musk is the CEO or owner of multiple companies including Tesla...]
+
+
+Text splitting
+```py
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=100)
+docs = text_splitter.split_documents(documents=documents)
+print(len(docs))
+docs
+```
+      > [Document(page_content='Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor...
+      Document(page_content='of Neuralink and OpenAI; and president of the Musk Foundation....
+      Document(page_content="Tesla and SpaceX.A member of the wealthy South African Musk family,...
+      ...]
+
+Defining the embedding function
+```py
+model_name = "BAAI/bge-large-en-v1.5"
+model_kwargs = {'device': 'cpu'}
+encode_kwargs = {"normalize_embeddings": True}
+
+embedding_function = HuggingFaceBgeEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+    encode_kwargs=encode_kwargs
+)
+```
+Query:
+```py
+query = "Who is elon musk's father?"
+```
+##### FAISS
+Creating a vector database (FAISS - in memory database)
+```py
+db = FAISS.from_documents(
+    docs,
+    embedding_function
+)
+```
+
+Querying the vector database
+```py
+matched_docs = db.similarity_search(query=query, k=5)
+
+matched_docs
+```
+      > [Document(page_content="Elon Musk's paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk's father, Errol Musk, is a South African former electrical ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content="Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa's administrative capital. ...,
+      Document(page_content='Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....,
+      Document(page_content='father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...,
+      Document(page_content="Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]
+
+Check if the answer is present in results
+
+```py
+['errol musk' in doc.page_content.lower() for doc in matched_docs] # Errol Musk is the answer
+```
+      > [True, True, False, True, False]
+
+FAISS is an in-memory vector store.
+
+And most of the times, we don't use these in-memory vector stores.
+
+Let's start with chromaDB and understand how to...
+* Save the vector store
+* Load the vector store
+* Add new records to vector store.
+
+```py
+import chromadb
+from langchain.vectorstores import Chroma
+```
+
+Creating a Chroma Vector Store
+
+```py
+db = Chroma.from_documents(docs, embedding_function, persist_directory='../output/elon_musk_db')
+```
+
+Loading the db
+
+```py
+laoded_db = Chroma(persist_directory="../output/elon_musk_db", embedding_function=embedding_function)
+```
+
+Querying the DBs
+
+```py
+print(query)
+
+matched_docs = db.similarity_search(
+    query = query,
+    k = 5
+)
+
+matched_docs
+```
+      Who is elon musk's father?
+      > [Document(page_content="Elon Musk's paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk's father, Errol Musk, is a South African former electrical ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content="Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa's administrative capital. ...,
+      Document(page_content='Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....,
+      Document(page_content='father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...,
+      Document(page_content="Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]
+
+As the embedding function and the text splitter are same in both the previous FAISS and current ChromaDB, the results are also the same.
+
+```py
+['errol musk' in doc.page_content.lower() for doc in matched_docs]
+```
+      > [True, True, False, True, False]
+
+Adding a new record to the existing vector store
+```py
+family_data_loader = WikipediaLoader(query='Musk Family', load_max_docs=1)
+family_documents = family_data_loader.load()
+family_documents
+```
+      > [Document(page_content='The Musk family is a wealthy family of South African origin that is largely active in the United States and Canada. ... metadata={'title': 'Musk family', 'summary': 'The Musk family is a wealthy family ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'})]
+
+Using the exising text splitter
+
+```py
+family_docs = text_splitter.split_documents(documents=family_documents)
+print(len(family_docs))
+family_docs
+```
+11
+      [Document(page_content='The Musk family is a wealthy family of South African...', metadata={'title': 'Musk family', 'summary': 'The Musk family is a wealthy family...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content='in the world, with an estimated net worth of US$232 billion ...', 'summary': 'The Musk family is a wealthy family...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content='== History ==', metadata={'title': 'Musk family', 'summary': 'The Musk...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content="Elon Musk's paternal great-grandmother...', metadata={'title': 'Musk family', 'summary': 'The Musk family ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      ...]
+
+Using the same loaded embedded function
+
+```py
+db = Chroma.from_documents(
+    family_docs, # The new docs that we want to add
+    embedding_function, # Should be the same embedding function
+    persist_directory="../output/elon_musk_db" # Existing vectorstore where we want to add the new records
+)
+```
+
+Getting the matching documents with the query
+```py
+matched_docs = db.similarity_search(query=query, k=5)
+
+['errol musk' in doc.page_content.lower() for doc in matched_docs]
+```
+      > [True, True, True, False, True]
+
+More number of records are getting matched.
+
+#### Retrievers
+Making a retriever from vector store
+
+We can also define how the vectorstores should search and how many items to return
+```py
+retriever = db.as_retriever()
+
+retriever
+```
+      > VectorStoreRetriever(tags=['Chroma', 'HuggingFaceBgeEmbeddings'], vectorstore=<langchain_community.vectorstores.chroma.Chroma object at 0x000001B97D293EE0>
+
+Querying a retriever
+```py
+matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+```
+
+      > [Document(page_content="Elon Musk's paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk's father, Errol Musk, is a South African former electrical ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content="Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa's administrative capital. ...,
+      Document(page_content='Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....,
+      Document(page_content='father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...,
+      Document(page_content="Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]
+
+```py
+len(matched_docs)
+```
+      > 4
+
+MMR - Maximum marginal relevance (relevancy and diversity)
+
+```py
+retriever = db.as_retriever(search_type='mmr', search_kwargs={"k": 1})
+
+matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+```
+
+      > [Document(page_content="Elon Musk's paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, ...", metadata={'source': 'https://en.wikipedia.org/wiki/Musk_family', 'summary': 'The Musk family ...', 'title': 'Musk family'})]
+
+Similarity Score threshold
+
+```py
+retriever = db.as_retriever(search_type="similarity_score_threshold", search_kwargs={"score_threshold": 0.5})
+
+matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+```
+

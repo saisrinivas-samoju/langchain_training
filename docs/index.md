@@ -3,12 +3,27 @@
 
 
 ## Content
-1. Introduction
+<!-- 1. Introduction
 2. Model I/O
 3. Retreival
 4. Chains
 5. Memory
-6. Agents
+6. Agents -->
+
+<div class="columns">
+    <div class="column-left">
+        <ol>1. Introduction</ol>
+        <ol>2. Model I/O</ol>
+        <ol>3. Retreival</ol>
+        <ol>4. Chains</ol>
+        <ol>5. Memory</ol>
+        <ol>6. Agents</ol>
+    </div>
+    <div class="column-right">
+        <img src='img/langchain_thumbnail.png' width=300px>
+    </div>
+</div>
+
 
 ## Topics covered
 
@@ -35,6 +50,9 @@
     * Introduction
     * Data Loaders (with Assignment)
     * Text Splitters
+    * Embedding Functions
+    * Vector Stores
+    * Retrievers
 
 
 ## Upcoming topics

@@ -57,6 +57,8 @@ theme:
       repo: fontawesome/brands/github
   custom.css: custom.css
     
+extra_css:
+  - custom.css
 
 extra_javascript:
   - javascripts/mathjax.js
