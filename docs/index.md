@@ -46,7 +46,7 @@
     * Sample Project
     * Deploying Project with a Frontend (Local & Cloud)
 
-3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [4.5 Hours]
+3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [6 Hours]
     * Introduction
     * Data Loaders (with Assignment)
     * Text Splitters
