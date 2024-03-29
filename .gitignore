@@ -167,3 +167,7 @@ models/cache.db
 notebooks/retrieval.ipynb
 output/elon_musk_db/
 docs/img/langchain_icon.ico
+
+output/steve_job_hyde/
+output/steve_jobs_db/
+notebooks/retrieval.ipynb
