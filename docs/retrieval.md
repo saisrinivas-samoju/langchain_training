@@ -1313,7 +1313,7 @@ reordered_docs
       ...
       Document(page_content="In 1985, Jobs departed Apple after a long power struggle with the company's board and its then-CEO, John Sculley...", metadata={'source': 'https://en.wikipedia.org/wiki/Steve_Jobs', 'summary': 'Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...', 'title': 'Steve Jobs'})]
 
-# RAG Pipelines
+## RAG Pipelines
 
 Let's setup the stage for the working on the RAG Pipelines
 
@@ -1383,7 +1383,7 @@ Fixing a standard query for RAG
 query = "How does the declaration address the discrimination?"
 ```
 
-## Exercise 1
+### Exercise 1
 Building a RAG pipeline with Contextual Compression and Multi-query retrieval processes. And Perform Generation using Prompt Templates and Chat Models.
 
 * Compressor -> Contextual Compressor
@@ -1447,7 +1447,7 @@ response
 ```
       > 'The declaration addresses discrimination by stating that everyone is entitled to all rights and freedoms without any distinction based on race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, or other status. It also mentions that everyone has the right to equal pay for equal work without any discrimination.
 
-## Exercise 2
+### Exercise 2
 
 In this exercise, let's combine multiple compressors and retrievers and build a RAG pipeline using Chains.
 
