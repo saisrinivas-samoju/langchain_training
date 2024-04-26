@@ -46,19 +46,20 @@
     * Sample Project
     * Deploying Project with a Frontend (Local & Cloud)
 
-3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [6 Hours]
+3. [Retreival](https://saisrinivas-samoju.github.io/langchain_training/retrieval/) [9 Hours]
     * Introduction
     * Data Loaders (with Assignment)
     * Text Splitters
     * Embedding Functions
     * Vector Stores
     * Retrievers
+    * RAG
 
 
 ## Upcoming topics
 
 <!-- * Deploying Gradio Applications in Hugging Face Spaces -->
-* [Retreival](https://python.langchain.com/docs/modules/data_connection/)
+* [Chains](https://python.langchain.com/docs/modules/chains/)
     
 
 ## Latest available Tutorial code
@@ -75,6 +76,9 @@
 ## Smart Chef Project code
 * [Smart Chef Code](https://saisrinivas-samoju.github.io/langchain_training/model_io/#exercise-create-a-smart-chef-bot-that-can-give-you-recipes-based-on-the-available-food-items-you-have-in-your-kitchen)
 
+## Few Shot Prompting with RAG
+* [Few Shot Prompting with RAG](https://github.com/saisrinivas-samoju/langchain_training/blob/main/tutorials/rag%2Bfew_shot_prompting.ipynb)
+
 ## Tasks/Exercies/Projects assigned
 * Create a cross-questioning model with and without a system prompt
 * Write a blog on few shot prompting
@@ -85,3 +89,8 @@
     * Travel Planner
     * Tweet Responder
 * Deploy your own project or the sample project
+* Explore Text Chunking on the given sample datasets
+* Learn about NSW and HSNW
+* Combine Multiple Retrievers and Experiment
+* Build PrivateGPT using RAG
+
