@@ -72,6 +72,7 @@
 
 * [Model Connection](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_connection.ipynb)
 * [Model I/O](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/model_io.ipynb)
+* [Retreival](https://github.com/saisrinivas-samoju/langchain_training/blob/main/notebooks/retrieval.ipynb)
 
 ## Smart Chef Project code
 * [Smart Chef Code](https://saisrinivas-samoju.github.io/langchain_training/model_io/#exercise-create-a-smart-chef-bot-that-can-give-you-recipes-based-on-the-available-food-items-you-have-in-your-kitchen)
