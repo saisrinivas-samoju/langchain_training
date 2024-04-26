@@ -1313,6 +1313,8 @@ reordered_docs
       ...
       Document(page_content="In 1985, Jobs departed Apple after a long power struggle with the company's board and its then-CEO, John Sculley...", metadata={'source': 'https://en.wikipedia.org/wiki/Steve_Jobs', 'summary': 'Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...', 'title': 'Steve Jobs'})]
 
+
+
 ## RAG Pipelines
 
 Let's setup the stage for the working on the RAG Pipelines
