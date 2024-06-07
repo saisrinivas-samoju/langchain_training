@@ -1,0 +1,1125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This website contains all the course materials and quick revision concepts.">
+      
+      
+        <meta name="author" content="Sai Srinivas">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Python Basics - Langchain Training Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Langchain Training Material" class="md-header__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Langchain Training Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model_connection/" class="md-tabs__link">
+        
+  
+    
+  
+  Model Connection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model_io/" class="md-tabs__link">
+        
+  
+    
+  
+  Model IO
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../retrieval/" class="md-tabs__link">
+        
+  
+    
+  
+  Retrieval
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Langchain Training Material" class="md-nav__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    Langchain Training Material
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_connection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retrieval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Retrieval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="python-basics">Python Basics</h1>
+<p>Questions:
+* What all data structures take position in count? (list, tuple, string does) (dictionary and set doesn't)
+* What are <em>args &amp; </em>*kwargs?</p>
+<p>*args -&gt; For any number of positional arguments</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_prod</span>(*args):
+    res = <span style="color: #B452CD">1</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> arg <span style="color: #8B008B">in</span> args:
+        res = res*arg
+    <span style="color: #8B008B; font-weight: bold">return</span> res
+
+get_prod(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">5</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>&gt; 120
+</code></pre></div>
+<p>**kwargs -&gt; For any number of keywrod arguments</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">greet</span>(**kwargs):
+    greeting = <span style="color: #CD5555">&quot;Hello&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;name&#39;</span> <span style="color: #8B008B">in</span> kwargs:
+        greeting += <span style="color: #CD5555">f&quot;, {</span>kwargs[<span style="color: #CD5555">&#39;name&#39;</span>]<span style="color: #CD5555">}&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;age&#39;</span> <span style="color: #8B008B">in</span> kwargs:
+        greeting += <span style="color: #CD5555">f&quot;, you are {</span>kwargs[<span style="color: #CD5555">&#39;age&#39;</span>]<span style="color: #CD5555">} years old&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #CD5555">&#39;location&#39;</span> <span style="color: #8B008B">in</span> kwargs:
+        greeting += <span style="color: #CD5555">f&quot; from {</span>kwargs[<span style="color: #CD5555">&#39;location&#39;</span>]<span style="color: #CD5555">}&quot;</span>
+    greeting+=<span style="color: #CD5555">&quot;!&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> greeting
+
+<span style="color: #658b00">print</span>(greet(name=<span style="color: #CD5555">&quot;John&quot;</span>))
+<span style="color: #658b00">print</span>(greet(name=<span style="color: #CD5555">&quot;John&quot;</span>, age=<span style="color: #B452CD">24</span>))
+<span style="color: #658b00">print</span>(greet(name=<span style="color: #CD5555">&quot;John&quot;</span>, location=<span style="color: #CD5555">&#39;New York&#39;</span>))
+<span style="color: #658b00">print</span>(greet(name=<span style="color: #CD5555">&quot;John&quot;</span>, age=<span style="color: #B452CD">24</span>, location=<span style="color: #CD5555">&#39;New York&#39;</span>))
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>Hello, John!
+Hello, John, you are 24 years old!
+Hello, John from New York!
+Hello, John, you are 24 years old from New York!
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">arg_test</span>(*args):
+    <span style="color: #8B008B; font-weight: bold">return</span> args
+
+arg_test(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>&gt; (1, 2, 3)
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">kwarg_test</span>(**kwargs):
+    <span style="color: #8B008B; font-weight: bold">return</span> kwargs
+
+kwarg_test(a=<span style="color: #B452CD">1</span>, b=<span style="color: #B452CD">3</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>&gt; {&#39;a&#39;: 1, &#39;b&#39;: 3}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Always args should be followed by kwargs</span>
+<span style="color: #228B22"># args/positional arguments are read in the form of a tuple (where position matters)</span>
+<span style="color: #228B22"># While kwargs/keyword arguments are read in dictionaries (where positions doesn&#39;t matter)</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Decorators</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">datetime</span> <span style="color: #8B008B; font-weight: bold">import</span> datetime
+
+get_curr_time = <span style="color: #8B008B; font-weight: bold">lambda</span> :datetime.now().time().strftime(<span style="color: #CD5555">&quot;%H:%M:%S&quot;</span>)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">timer</span>(func):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_timings</span>(*args, **kwargs): <span style="color: #228B22"># Wrapper function</span>
+        start_time = get_curr_time()
+        val = func(*args, **kwargs)
+        time.sleep(<span style="color: #B452CD">5</span>)
+        end_time = get_curr_time()
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Start time: {</span>start_time<span style="color: #CD5555">} | End time: {</span>end_time<span style="color: #CD5555">} &quot;</span>)
+        <span style="color: #8B008B; font-weight: bold">return</span> val
+    <span style="color: #8B008B; font-weight: bold">return</span> get_timings
+
+<span style="color: #707a7c">@timer</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_sq</span>(a):
+    <span style="color: #8B008B; font-weight: bold">return</span> a**<span style="color: #B452CD">2</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>get_sq(<span style="color: #B452CD">4</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>Start time: 14:56:15 | End time: 14:56:20
+
+16
+</code></pre></div>
+<h1 id="chains">Chains</h1>
+<ul>
+<li>Chains allows us to connect one LLM response to another.</li>
+</ul>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">dotenv</span> <span style="color: #8B008B; font-weight: bold">import</span> load_dotenv
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_openai.llms</span> <span style="color: #8B008B; font-weight: bold">import</span> OpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_openai.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatPromptTemplate, HumanMessagePromptTemplate
+
+load_dotenv()
+llm = OpenAI()
+chat = ChatOpenAI()
+set_llm_cache(InMemoryCache())
+</code></pre></div>
+
+<h2 id="llmchain">LLMChain</h2>
+<ul>
+<li>Basic Building Block of the Chains..</li>
+<li>Simple LLM call with an input and output.</li>
+<li>This is not exactly a chain but a building block of it.</li>
+</ul>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Previously, we created functions to take the input from the use for the prompt template and get the response using the LLM</span>
+<span style="color: #228B22"># Using LLM Chain, this becomes easy</span>
+
+human_template = <span style="color: #CD5555">&quot;Write a film story outline on the topic: {topic}&quot;</span>
+
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> LLMChain
+
+chain = LLMChain(llm=chat, prompt=chat_prompt) <span style="color: #228B22"># Chain with one block</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># For making a call</span>
+
+result = chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+result
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>{&#39;topic&#39;: &#39;Growth of India&#39;,
+ &#39;text&#39;: &quot;Title: Rising India\n\nAct 1:\n- The film opens with a montage of historical footage ... to shape a better future for themselves and generations to come.&quot;}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># How to do it LCEL</span>
+
+lcel_chain = chat_prompt | chat <span style="color: #228B22"># same as chat_prompt -&gt; chat -&gt; get the response</span>
+
+lcel_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>AIMessage(content=&quot;Title: Rising India\n\nAct 1:\n- The film opens with a montage of historical footage ... to shape a better future for themselves and generations to come.&quot;)
+</code></pre></div>
+<h2 id="simple-sequential-chain">Simple Sequential Chain</h2>
+<p>The blocks in the simple sequential chain produce a single output</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>story_line_template = <span style="color: #CD5555">&quot;Write a film story outline on the topic: {topic}&quot;</span>
+story_line_prompt = ChatPromptTemplate.from_template(template=story_line_template)
+story_line_chain = LLMChain(llm=chat, prompt=story_line_prompt)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>full_story_template = <span style="color: #CD5555">&quot;Write a short film story on the given story outline: {story_line}&quot;</span>
+full_story_prompt = ChatPromptTemplate.from_template(template=full_story_template)
+full_story_chain = LLMChain(llm=chat, prompt=full_story_prompt)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>reviewer_template = <span style="color: #CD5555">&quot;Act as a reviewer in rotten tomatoes and rate the given story: {full_story}&quot;</span>
+reviewer_prompt = ChatPromptTemplate.from_template(template=reviewer_template)
+reviewer_chain = LLMChain(llm=chat, prompt=reviewer_prompt)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> SimpleSequentialChain
+
+film_chain = SimpleSequentialChain(
+    chains = [story_line_chain, full_story_chain, reviewer_chain], <span style="color: #228B22"># In order, the intermediate input and ouptuts acts as &#39;args&#39; in python.</span>
+    verbose=<span style="color: #8B008B; font-weight: bold">True</span> <span style="color: #228B22"># to look at the internal response</span>
+)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>result = film_chain.run(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+result
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new SimpleSequentialChain chain...[0m
+
+
+[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a film story outline on the topic: Growth of India[0m
+
+[1m&gt; Finished chain.[0m
+[36;1m[1;3mTitle: Rising India
+
+Act 1:
+- The film opens ...
+
+Act 2:
+- As Ravi&#39;s career progresses, ...
+
+Act 3:
+- The tension between Ravi and ...
+
+Rising India is a story of resilience,... to come.[0m
+
+...
+
+[1m&gt; Finished chain.[0m
+
+
+&#39;As a reviewer on Rotten Tomatoes, I would rate &quot;Rising India&quot; with a solid 4 out of 5 stars. ... circumstances, and a testament to the power of individuals to make a difference.&#39;
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Let&#39;s try it with the existing LLMChain blocks and LCEL (This won&#39;t work)</span>
+
+lcel_film_chain = story_line_chain | full_story_chain | reviewer_chain
+
+lcel_film_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+
+
+<span style="color: #228B22"># This won&#39;t work as the output from one chain is not targetted to the input in another chain with the same key/variable name in LCEL.</span>
+<span style="color: #228B22"># As the intermediate input and output in LCEL only takes as &#39;kwargs&#39; in python</span>
+<span style="color: #228B22"># To do that, we need to use something called as RunnableLambda class that is accepted by the LCEL chains</span>
+<span style="color: #228B22"># Let&#39;s see how below</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a film story outline on the topic: Growth of India[0m
+
+[1m&gt; Finished chain.[0m
+
+
+[1m&gt; Entering new LLMChain chain...[0m
+
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+Cell In[77], line 5
+      1 # Let&#39;s try it with the existing LLMChain blocks and LCEL (This won&#39;t work)
+      3 lcel_film_chain = story_line_chain | full_story_chain | reviewer_chain
+----&gt; 5 lcel_film_chain.invoke(input={&quot;topic&quot;: &quot;Growth of India&quot;})
+
+ValueError: Missing some input keys: {&#39;story_line&#39;}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>full_story_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;story_line&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a short film story on the given story outline: Growth of India[0m
+
+[1m&gt; Finished chain.[0m
+
+
+&gt; {&#39;story_line&#39;: &#39;Growth of India&#39;,
+ &#39;text&#39;: &quot;Title: Rising India\n\nIn a small village in rural India, a group of children play cricket .... India is rising, and nothing can stop its upward trajectory.&quot;}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Using Expression Language with the existing LLMChain blocks</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema.runnable</span> <span style="color: #8B008B; font-weight: bold">import</span> RunnableLambda
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_story_line</span>(response):
+    <span style="color: #8B008B; font-weight: bold">return</span> {<span style="color: #CD5555">&quot;story_line&quot;</span>: response[<span style="color: #CD5555">&#39;text&#39;</span>]}
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_full_story</span>(response):
+    <span style="color: #8B008B; font-weight: bold">return</span> {<span style="color: #CD5555">&quot;full_story&quot;</span>: response[<span style="color: #CD5555">&#39;text&#39;</span>]}
+
+story_line_lcel_chain = story_line_chain | RunnableLambda(get_story_line)
+full_story_lcel_chain = full_story_chain | RunnableLambda(get_full_story)
+
+lcel_film_chain = story_line_lcel_chain | full_story_lcel_chain | reviewer_chain
+
+lcel_film_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a film story outline on the topic: Growth of India[0m
+...
+
+&gt; {&#39;full_story&#39;: &#39;The film &quot;Rising India&quot; follows the journey of Ravi, a young man ... unity, and the unstoppable rise of a nation on the brink of greatness.&#39;,
+ &#39;text&#39;: &#39;As a reviewer on Rotten Tomatoes, ... of individuals to make a difference.&#39;}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Completly using LCEL</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema.runnable</span> <span style="color: #8B008B; font-weight: bold">import</span> RunnableLambda
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_story_line</span>(ai_message):
+    <span style="color: #8B008B; font-weight: bold">return</span> {<span style="color: #CD5555">&quot;story_line&quot;</span>: ai_message.content}
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_full_story</span>(ai_message):
+    <span style="color: #8B008B; font-weight: bold">return</span> {<span style="color: #CD5555">&quot;full_story&quot;</span>: ai_message.content}
+
+
+story_line_template = <span style="color: #CD5555">&quot;Write a film story outline on the topic: {topic}&quot;</span>
+story_line_prompt = ChatPromptTemplate.from_template(template=story_line_template)
+story_line_chain = story_line_prompt | chat | RunnableLambda(get_story_line)
+
+full_story_template = <span style="color: #CD5555">&quot;Write a short film story on the given story outline: {story_line}&quot;</span>
+full_story_prompt = ChatPromptTemplate.from_template(template=full_story_template)
+full_story_chain = full_story_prompt | chat | RunnableLambda(get_full_story)
+
+reviewer_template = <span style="color: #CD5555">&quot;Act as a reviewer in rotten tomatoes and rate the given story: {full_story}&quot;</span>
+reviewer_prompt = ChatPromptTemplate.from_template(template=reviewer_template)
+reviewer_chain = reviewer_prompt | chat
+
+lcel_film_chain = story_line_chain | full_story_chain | reviewer_chain
+
+lcel_film_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+
+<span style="color: #228B22"># from langchain.callbacks.tracers import ConsoleCallbackHandler # for verbose</span>
+<span style="color: #228B22"># lcel_film_chain.invoke(input={&quot;topic&quot;: &quot;Growth of India&quot;}, config={&#39;callbacks&#39;: [ConsoleCallbackHandler()]})</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>AIMessage(content=&#39;As a reviewer on Rotten Tomatoes, I would rate &quot;Rising India&quot; with a solid 4 out of 5 stars. ... circumstances, and a testament to the power of individuals to make a difference.&#39;)
+</code></pre></div>
+<h2 id="sequential-chain">Sequential Chain</h2>
+<p>Similar to Simple Sequential Chains but it allows us to access all the intermediate outputs.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>story_line_template = <span style="color: #CD5555">&quot;Write a film story outline on the topic: {topic}&quot;</span>
+story_line_prompt = ChatPromptTemplate.from_template(template=story_line_template)
+story_line_chain = LLMChain(llm=chat, prompt=story_line_prompt, output_key=<span style="color: #CD5555">&quot;story_line&quot;</span>)
+
+full_story_template = <span style="color: #CD5555">&quot;Write a short film story on the given story outline: {story_line}&quot;</span>
+full_story_prompt = ChatPromptTemplate.from_template(template=full_story_template)
+full_story_chain = LLMChain(llm=chat, prompt=full_story_prompt, output_key=<span style="color: #CD5555">&quot;full_story&quot;</span>)
+
+reviewer_template = <span style="color: #CD5555">&quot;Act as a reviewer in rotten tomatoes and rate the given story: {full_story}&quot;</span>
+reviewer_prompt = ChatPromptTemplate.from_template(template=reviewer_template)
+reviewer_chain = LLMChain(llm=chat, prompt=reviewer_prompt, output_key=<span style="color: #CD5555">&quot;reviewer_response&quot;</span>)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> SequentialChain
+
+seq_chain = SequentialChain(
+    chains = [story_line_chain, full_story_chain, reviewer_chain],
+    input_variables=[<span style="color: #CD5555">&#39;topic&#39;</span>],
+    output_variables=[<span style="color: #CD5555">&#39;story_line&#39;</span>, <span style="color: #CD5555">&#39;full_story&#39;</span>, <span style="color: #CD5555">&#39;reviewer_response&#39;</span>],
+    verbose=<span style="color: #8B008B; font-weight: bold">True</span>, <span style="color: #228B22"># doesn&#39;t matter here, as we get full output from each block with SequentialChain.</span>
+)
+
+seq_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&#39;topic&#39;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new SequentialChain chain...[0m
+
+
+[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a film story outline on the topic: Growth of India[0m
+
+Act 1:
+- The film opens with a montage of historical footage showcasing India&#39;s struggle for independence and ...
+
+Act 2:
+- As Ravi&#39;s career progresses, we see the economic and social changes happening in India. ...
+
+Act 3:
+- The tension between Ravi and the powerful forces trying to silence him comes to a head....
+
+Rising India is a story of resilience, hope, and the power of ordinary people to ... come.[0m
+
+
+&gt; {&#39;topic&#39;: &#39;Growth of India&#39;,
+ &#39;story_line&#39;: &quot;Title: Rising India\n\nAct 1:\n- The film opens with a montage of historical footage ... individuals to make a difference.&#39;}
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Using LCEL with the existing LLMChain objects (This will work)</span>
+
+lcel_film_chain = story_line_chain | full_story_chain | reviewer_chain
+
+lcel_film_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;topic&quot;</span>: <span style="color: #CD5555">&quot;Growth of India&quot;</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a film story outline on the topic: Growth of India[0m
+
+[1m&gt; Finished chain.[0m
+
+
+[1m&gt; Entering new LLMChain chain...[0m
+Prompt after formatting:
+[32;1m[1;3mHuman: Write a short film story on the given story outline: Title: Rising India
+
+Act 1:
+- The film opens with a montage of ... communities.
+
+Act 2:
+- As Ravi&#39;s career progresses, ... power and profits.
+
+Act 3:
+- The tension between Ravi ... to come.[0m
+
+[1m&gt; Finished chain.[0m
+
+
+&gt; {&#39;topic&#39;: &#39;Growth of India&#39;,
+ &#39;story_line&#39;: &quot;Title: Rising India\n\nAct 1:\n- The film opens with a montage of historical footage showcasing India&#39;s ... testament to the power of individuals to make a difference.&#39;}
+</code></pre></div>
+<h2 id="lcel">LCEL</h2>
+<p>What exactly is this LCEL and why the syntax is like this?</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema.runnable</span> <span style="color: #8B008B; font-weight: bold">import</span> RunnableLambda, RunnablePassthrough, RunnableParallel
+
+<span style="color: #228B22"># RunnableLambda -&gt; Takes a function -&gt; Returns the output</span>
+<span style="color: #228B22">## Can be added in chains</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">square</span>(a):
+    <span style="color: #8B008B; font-weight: bold">return</span> a**<span style="color: #B452CD">2</span>
+
+sq_runnable = RunnableLambda(square)
+
+sq_runnable
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>RunnableLambda(square)
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">type</span>(sq_runnable)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>langchain_core.runnables.base.RunnableLambda
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>sq_runnable.invoke(<span style="color: #B452CD">4</span>) <span style="color: #228B22"># Chain object, so invoke would work</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>16
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema.runnable</span> <span style="color: #8B008B; font-weight: bold">import</span> RunnablePassthrough
+
+<span style="color: #228B22"># RunnablePassthrough -&gt; Takes the input -&gt; Returns the input</span>
+<span style="color: #228B22">## Use to pass the input from one chain block to another</span>
+
+runnable_sq_pass = RunnablePassthrough()
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>runnable_sq_pass.invoke(<span style="color: #B452CD">4</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>4
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema.runnable</span> <span style="color: #8B008B; font-weight: bold">import</span> RunnableParallel
+
+<span style="color: #228B22"># RunnableParellel -&gt; Runs multiple chain blocks at a time</span>
+<span style="color: #707a7c">@timer</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">times2</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x*<span style="color: #B452CD">2</span>
+<span style="color: #707a7c">@timer</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">times3</span>(y):
+    <span style="color: #8B008B; font-weight: bold">return</span> y*<span style="color: #B452CD">3</span>
+<span style="color: #707a7c">@timer</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add</span>(res_dict):
+    <span style="color: #8B008B; font-weight: bold">return</span> res_dict[<span style="color: #CD5555">&#39;a&#39;</span>] + res_dict[<span style="color: #CD5555">&#39;b&#39;</span>]
+
+runnable_times2 = RunnableLambda(times2)
+runnable_times3 = RunnableLambda(times3)
+par_chain = RunnableParallel({<span style="color: #CD5555">&quot;a&quot;</span>: runnable_times2, <span style="color: #CD5555">&quot;b&quot;</span>: runnable_times3}) <span style="color: #228B22"># Runs parallelly</span>
+runnable_sum = RunnableLambda(add)
+
+calc_chain = par_chain | runnable_sum
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># If you want to pass different values</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">operator</span> <span style="color: #8B008B; font-weight: bold">import</span> itemgetter
+par_chain = RunnableParallel(
+    {
+        <span style="color: #CD5555">&quot;a&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;x&quot;</span>) | runnable_times2, 
+        <span style="color: #CD5555">&quot;b&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;y&quot;</span>) | runnable_times3
+    }
+)
+
+calc_chain = par_chain | runnable_sum
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>calc_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;x&quot;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&quot;y&quot;</span>: <span style="color: #B452CD">3</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>Start time: 01:39:04 | End time: 01:39:09 Start time: 01:39:04 | End time: 01:39:09
+
+Start time: 01:39:09 | End time: 01:39:14
+
+&gt; 13
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Let&#39;s use all the above runnables together</span>
+
+<span style="color: #707a7c">@timer</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sum_up</span>(res_dict):
+    res = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> k, v <span style="color: #8B008B">in</span> res_dict.items():
+        res+=v
+    <span style="color: #8B008B; font-weight: bold">return</span> res
+
+runnable_sum_up = RunnableLambda(sum_up)
+
+par_chain2 = RunnableParallel(
+    {
+        <span style="color: #CD5555">&quot;a&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;x&quot;</span>) | runnable_times2, 
+        <span style="color: #CD5555">&quot;b&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;y&quot;</span>) | runnable_times3,
+        <span style="color: #CD5555">&quot;x&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;x&quot;</span>) | RunnablePassthrough(),
+        <span style="color: #CD5555">&quot;y&quot;</span>: itemgetter(<span style="color: #CD5555">&quot;y&quot;</span>) | RunnablePassthrough()
+    }
+)
+
+calc_chain = par_chain2 | runnable_sum_up
+
+calc_chain.invoke(<span style="color: #658b00">input</span>={<span style="color: #CD5555">&quot;x&quot;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&quot;y&quot;</span>: <span style="color: #B452CD">3</span>})
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>Start time: 01:43:45 | End time: 01:43:50 
+Start time: 01:43:45 | End time: 01:43:50 
+Start time: 01:43:50 | End time: 01:43:55
+
+&gt; 18
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Now that we understood how to use the syntax, let&#39;s understand why the syntax is like this (with a pipe operator)</span>
+
+<span style="color: #228B22"># Class</span>
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">RunnableLambdaTest</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, func):
+        <span style="color: #658b00">self</span>.func = func
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__or__</span>(<span style="color: #658b00">self</span>, other_runnable_obj):
+        <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">chained_func</span>(*args, **kwargs):
+            <span style="color: #8B008B; font-weight: bold">return</span> other_runnable_obj.invoke(*args, **kwargs)
+        <span style="color: #8B008B; font-weight: bold">return</span> RunnableLambdaTest(chained_func)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">invoke</span>(<span style="color: #658b00">self</span>, *args, **kwargs):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.func(*args, **kwargs)
+
+<span style="color: #228B22"># Implementation</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">times2</span>(a):
+    <span style="color: #8B008B; font-weight: bold">return</span> a*<span style="color: #B452CD">2</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">times3</span>(a):
+    <span style="color: #8B008B; font-weight: bold">return</span> a*<span style="color: #B452CD">3</span>
+
+runnable_2 = RunnableLambdaTest(times2)
+runnable_3 = RunnableLambdaTest(times3)
+
+test_chain = runnable_2 | runnable_3
+
+test_chain.invoke(<span style="color: #B452CD">2</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>&gt; 6
+</code></pre></div>
+<h2 id="llm-router-chain">LLM Router Chain</h2>
+<p>LLMRouterChain can take in an input and redirect it to the most appropriate LLMChain Sequence.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/saisrinivas-samoju"  target="_blank" rel="noopener">Sai Srinivas</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/saisrinivas-samoju" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sai-srinivas-samoju/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

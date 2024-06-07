@@ -1,0 +1,2413 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This website contains all the course materials and quick revision concepts.">
+      
+      
+        <meta name="author" content="Sai Srinivas">
+      
+      
+      
+        <link rel="prev" href="../model_io/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Retrieval - Langchain Training Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#retrieval" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Langchain Training Material" class="md-header__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Langchain Training Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Retrieval
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model_connection/" class="md-tabs__link">
+        
+  
+    
+  
+  Model Connection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model_io/" class="md-tabs__link">
+        
+  
+    
+  
+  Model IO
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Retrieval
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Langchain Training Material" class="md-nav__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    Langchain Training Material
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_connection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Retrieval
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Retrieval
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-loaders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Loaders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Document Loaders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSV Loader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML Loader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown Loader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDF Loader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wikipedia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wikipedia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arxiv-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      ArXiv Loader
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-splitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Splitter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Splitter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split-by-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split by character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-text-splitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character Text Splitter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-character-splitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursive Character Splitter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-by-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split by tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Splitting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Chunking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embeddings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embeddings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bge-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      BGE Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fake-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fake Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Store
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#faiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAISS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ChromaDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrievers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrievers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrievers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-store-backed-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector store-backed retriever
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-retrievers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Retrievers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Retrievers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-query-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Query Retriever
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contextual-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contextual Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parent-document-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parent Document Retriever
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-weighted-vector-store-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-weighted Vector Store Retriever
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hypothetical-document-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hypothetical Document Retriever
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hypothetical Document Retriever">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hyde-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      HyDE from Scratch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyde-from-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      HyDE from chains
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensemble-retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensemble Retriever
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-embedding-redundant-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter - Embedding Redundant Filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-embedding-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter - Embedding Filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reordering-long-content-reorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reordering - Long Content Reorder
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAG Pipelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RAG Pipelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="retrieval">Retrieval</h1>
+<p>Large language models are trained on massive datasets, but they don't know everything. That's where Retrieval Augmented Generation (RAG) comes in, and LangChain has you covered with all the basics to Advanced bulding blocks:</p>
+<p><img src='https://python.langchain.com/assets/images/data_connection-95ff2033a8faa5f3ba41376c0f6dd32a.jpg' width=750></p>
+<ol>
+<li>
+<p><strong>Document loaders:</strong>
+   Learn how to put your own information into the training mix.</p>
+</li>
+<li>
+<p><strong>Text Splitters:</strong>
+   Find out how to tweak your data to make the model understand better.</p>
+</li>
+<li>
+<p><strong>Text Embedding Models:</strong>
+   Discover ways to seamlessly include your information within the model.</p>
+</li>
+<li>
+<p><strong>Vector Stores:</strong>
+   Explore ways to save these tweaks for quick and efficient retrieval.</p>
+</li>
+<li>
+<p><strong>Retrievers:</strong>
+   Learn how to ask the model for the information you stored.</p>
+</li>
+</ol>
+<p>LangChain breaks down each step, making it easy for you to make the most of RAG with your language models.</p>
+<hr />
+<h2 id="document-loaders">Document Loaders</h2>
+<h3 id="csv-loader">CSV Loader</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> CSVLoader
+loader = CSVLoader(file_path=<span style="color: #CD5555">&#39;../datasets/sns_datasets/titanic.csv&#39;</span>) <span style="color: #228B22"># Lazy Loader</span>
+loader
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; &lt;langchain_community.document_loaders.csv_loader.CSVLoader at 0x147b62e5760&gt;
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>data = loader.load()
+
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;survived: 0\npclass: 3\nsex: male\nage: 22.0\nsibsp: 1\nparch: 0\nfare: 7.25\nembarked: S\nclass: Third\nwho: man\nadult_male: True\ndeck: \nembark_town: Southampton\nalive: no\nalone: False&#39;, metadata={&#39;source&#39;: &#39;../datasets/sns_datasets/titanic.csv&#39;, &#39;row&#39;: 0}), Document(page_content=&#39;survived: 1\npclass: 1\nsex: female\nage: 38.0\nsibsp: 1\nparch: 0\nfare: 71.2833\nembarked: C\nclass: First\nwho: woman\nadult_male: False\ndeck: C\nembark_town: Cherbourg\nalive: yes\nalone: False&#39;, metadata={&#39;source&#39;: &#39;../datasets/sns_datasets/titanic.csv&#39;, &#39;row&#39;: 1}), ...]
+</code></pre></div>
+<p>Python list of document objects; Each row in a separate document object</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>data[<span style="color: #B452CD">0</span>] <span style="color: #228B22"># Single Row</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; Document(page_content=&#39;survived: 0\npclass: 3\nsex: male\nage: 22.0\nsibsp: 1\nparch: 0\nfare: 7.25\nembarked: S\nclass: Third\nwho: man\nadult_male: True\ndeck: \nembark_town: Southampton\nalive: no\nalone: False&#39;, metadata={&#39;source&#39;: &#39;../datasets/sns_datasets/titanic.csv&#39;, &#39;row&#39;: 0})
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">type</span>(data[<span style="color: #B452CD">0</span>])
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; langchain_core.documents.base.Document
+</code></pre></div>
+<p>To get the document content</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(data[<span style="color: #B452CD">0</span>].page_content)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt;  survived: 0
+     pclass: 3
+     sex: male
+     age: 22.0
+     sibsp: 1
+     parch: 0
+     fare: 7.25
+     embarked: S
+     class: Third
+     who: man
+     adult_male: True
+     deck: 
+     embark_town: Southampton
+     alive: no
+     alone: False
+</code></pre></div>
+<p>To get the metadata</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(data[<span style="color: #B452CD">0</span>].metadata)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; {&#39;source&#39;: &#39;../datasets/sns_datasets/titanic.csv&#39;, &#39;row&#39;: 0}
+</code></pre></div>
+<p>Specify a column name to identify the dataset</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>data = CSVLoader(file_path=<span style="color: #CD5555">&#39;../datasets/sns_datasets/titanic.csv&#39;</span>, source_column= <span style="color: #CD5555">&#39;sex&#39;</span>).load()
+</code></pre></div>
+
+<h3 id="html-loader">HTML Loader</h3>
+<p>Similar syntax</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> UnstructuredHTMLLoader
+loader = UnstructuredHTMLLoader(<span style="color: #CD5555">&#39;../datasets/harry_potter_html/001.htm&#39;</span>)
+data = loader.load()
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;A Day of Very Low Probability\n\nBeneath the moonlight glints a tiny fragment of silver, a fraction of a line…\n\n ...
+</code></pre></div>
+<p>Loading HTML documents with BeautifulSoup</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> BSHTMLLoader
+loader = BSHTMLLoader(<span style="color: #CD5555">&#39;../datasets/harry_potter_html/001.htm&#39;</span>)
+data = loader.load()
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; A Day of Very Low Probability
+
+  Beneath the moonlight glints a tiny fragment of silver, a fraction of a line…
+  (black robes, falling)
+  …blood spills out in litres, and someone screams a word. ...
+</code></pre></div>
+<p>This response is close to the content in the HTML file.</p>
+<h3 id="markdown-loader">Markdown Loader</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> UnstructuredMarkdownLoader
+
+md_filepath = <span style="color: #CD5555">&quot;../datasets/harry_potter_md/001.md&quot;</span>
+
+loader = UnstructuredMarkdownLoader(file_path=md_filepath)
+
+data = loader.load()
+
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;A Day of Very Low Probability\n\nBeneath the moonlight glints a tiny fragment of silver ...
+</code></pre></div>
+<h3 id="pdf-loader">PDF Loader</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> PyPDFLoader
+
+loader = PyPDFLoader(<span style="color: #CD5555">&#39;../datasets/harry_potter_pdf/hpmor-trade-classic.pdf&#39;</span>)
+
+data = loader.load()
+
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  [Document(page_content=&#39;Harry Potter and the Methods of Rationality&#39;, metadata={&#39;source&#39;: &#39;../datasets/harry_potter_pdf/hpmor-trade-classic.pdf&#39;, &#39;page&#39;: 0}),
+  Document(page_content=&#39;&#39;, metadata={&#39;source&#39;: &#39;../datasets/harry_potter_pdf/hpmor-trade-classic.pdf&#39;, &#39;page&#39;: 1}), ...
+</code></pre></div>
+<h3 id="wikipedia">Wikipedia</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> WikipediaLoader
+loader = WikipediaLoader(query=<span style="color: #CD5555">&#39;India&#39;</span>, load_max_docs=<span style="color: #B452CD">1</span>)
+data = loader.load()
+
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;India, officially the Republic of India (ISO: Bhārat Gaṇarājya), ...
+</code></pre></div>
+<p>Since we are only loading one document, the number of document objects in the response list is also 1</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">len</span>(data)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; 1
+</code></pre></div>
+<p>To get the metadata</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># select the document object</span>
+data[<span style="color: #B452CD">0</span>].metadata
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; {&#39;title&#39;: &#39;India&#39;,
+  &#39;summary&#39;: &quot;India, officially the Republic of India (ISO: Bhārat Gaṇarājya), ...&quot;,
+  &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/India&#39;}
+</code></pre></div>
+<p>Call the keys of the dictionary to get the specific information from the metadata.</p>
+<p>Information from the metadata can be used to filter you data in the later stages.</p>
+<h3 id="arxiv-loader">ArXiv Loader</h3>
+<p>Loading the content from the famous scientific article publisher</p>
+<p>To get the article IDs of any ArXiv papers, check the URL of the page or header of the page.</p>
+<p><img src="img/article_id_in_arXiv.png"></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> ArxivLoader
+
+loader = ArxivLoader(query=<span style="color: #CD5555">&#39;2201.03916&#39;</span>, load_max_docs=<span style="color: #B452CD">1</span>) <span style="color: #228B22"># AutoRL paper (article ID -&gt; 2201.03916)</span>
+
+data = loader.load()
+
+data
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;Journal of Artiﬁcial Intelligence Research 74 (2022) ...
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">len</span>(data) <span style="color: #228B22"># since load_max_docs=1</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; 1
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(data[<span style="color: #B452CD">0</span>].page_content)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; Journal of Artiﬁcial Intelligence Research 74 (2022) 517-568
+  Submitted 01/2022; published 06/2022
+  Automated Reinforcement Learning (AutoRL):
+</code></pre></div>
+<p>Getting the metadata similar to the previous steps</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>data[<span style="color: #B452CD">0</span>].metadata
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; {&#39;Published&#39;: &#39;2022-06-02&#39;,
+  &#39;Title&#39;: &#39;Automated Reinforcement Learning (AutoRL): A Survey and Open Problems&#39;,
+  &#39;Authors&#39;: &#39;Jack Parker-Holder, Raghu Rajan, Xingyou Song, André Biedenkapp, Yingjie Miao, Theresa Eimer, Baohe Zhang, Vu Nguyen, Roberto Calandra, Aleksandra Faust, Frank Hutter, Marius Lindauer&#39;,
+  &#39;Summary&#39;: &#39;The combination of Reinforcement Learning (RL) ...&quot;}
+</code></pre></div>
+<p>Let's connect the retrieved information to the LLM</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_openai</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&quot;../openai_api_key.txt&quot;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = f.read()
+
+chat = ChatOpenAI()
+set_llm_cache(InMemoryCache())
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Setting up the prompt templates</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate, AIMessagePromptTemplate
+
+system_template = <span style="color: #CD5555">&quot;You are Peer Reviewer&quot;</span>
+human_template = <span style="color: #CD5555">&quot;Read the paper with the title: &#39;{title}&#39;\n\nAnd Content: {content} and critically list down all the issues in the paper&quot;</span>
+
+system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+chat_prompt = ChatPromptTemplate.from_messages(messages=[system_message_prompt, human_message_prompt])
+prompt = chat_prompt.format_prompt(title=data[<span style="color: #B452CD">0</span>].metadata[<span style="color: #CD5555">&#39;Title&#39;</span>], content=data[<span style="color: #B452CD">0</span>].page_content)
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+<span style="color: #658b00">print</span>(response.content)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; Overall, the paper &quot;Attention Is All You Need&quot; presents a novel model architecture, the Transformer, which is based solely on attention mechanisms and dispenses with recurrence and convolutions. The paper provides a detailed description of the model architecture, background information, model variations, training process, and results in machine translation and English constituency parsing tasks. The paper also includes attention visualizations to illustrate the behavior of the attention heads.
+
+  Here are some key points to consider for a critical review of the paper: ...
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">peer_review</span>(article_id):
+    chat = ChatOpenAI(max_tokens=<span style="color: #B452CD">500</span>)
+    loader = ArxivLoader(query=article_id, load_max_docs=<span style="color: #B452CD">1</span>)
+    data = loader.load()
+    page_content = data[<span style="color: #B452CD">0</span>].page_content
+    title = data[<span style="color: #B452CD">0</span>].metadata[<span style="color: #CD5555">&#39;Title&#39;</span>]
+    summary = data[<span style="color: #B452CD">0</span>].metadata[<span style="color: #CD5555">&#39;Summary&#39;</span>]
+
+    system_template = <span style="color: #CD5555">&quot;You are Peer Reviewer&quot;</span>
+    human_template = <span style="color: #CD5555">&quot;Read the paper with the title: &#39;{title}&#39;\n\nAnd Content: {content} and critically list down all the issues in the paper&quot;</span>
+
+    system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
+    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+    chat_prompt = ChatPromptTemplate.from_messages(messages=[system_message_prompt, human_message_prompt])
+
+    <span style="color: #8B008B; font-weight: bold">try</span>:
+        prompt = chat_prompt.format_prompt(title=title, content=page_content) <span style="color: #228B22"># Suggest not to go with this</span>
+        messages = prompt.to_messages()
+        response = chat(messages=messages)
+    <span style="color: #8B008B; font-weight: bold">except</span>:
+        prompt = chat_prompt.format_prompt(title=title, content=summary)
+        messages = prompt.to_messages()
+        response = chat(messages=messages)
+
+    <span style="color: #8B008B; font-weight: bold">return</span> response.content
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(peer_review(article_id=<span style="color: #CD5555">&#39;2201.03514&#39;</span>)) <span style="color: #228B22"># Black-Box Tuning for Language-Model-as-a-Service</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; After reviewing the paper titled &#39;Black-Box Tuning for Language-Model-as-a-Service&#39;, I have identified several issues in the paper that need to be addressed before it can be considered for publication:
+
+  1. Lack of Clarity in Problem Statement: The paper does not clearly define the problem statement or research question it aims to address. It is unclear why optimizing task prompts through black-box tuning for Language-Model-as-a-Service (LMaaS) is important or how it contributes to the existing body of knowledge.
+</code></pre></div>
+<h2 id="text-splitter">Text Splitter</h2>
+<h3 id="split-by-character">Split by character</h3>
+<p>Reading the data</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>filepath = <span style="color: #CD5555">&quot;../datasets/Harry Potter 1 - Sorcerer&#39;s Stone.txt&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(filepath, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    hp_book = f.read()
+
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Number of characters letters in the document:&quot;</span>, <span style="color: #658b00">len</span>(hp_book))
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Number of words in the document:&quot;</span>, <span style="color: #658b00">len</span>(hp_book.split()))
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Number of lines in the document:&quot;</span>, <span style="color: #658b00">len</span>(hp_book.split(<span style="color: #CD5555">&quot;\n&quot;</span>)))
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  Number of characters letters in the document: 439742
+  Number of words in the document: 78451
+  Number of lines in the document: 10703
+</code></pre></div>
+<p>To understand the how the number of characters if we use any separator manually</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">collections</span> <span style="color: #8B008B; font-weight: bold">import</span> Counter
+
+line_len_list = []
+
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> hp_book.split(<span style="color: #CD5555">&quot;\n&quot;</span>):
+    curr_line_len = <span style="color: #658b00">len</span>(line)
+    line_len_list.append(curr_line_len)
+
+Counter(line_len_list) <span style="color: #228B22"># It show how many those chunks with the same character length is present</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; Counter({37: 57,
+        0: 3057,
+        11: 38,
+  ...
+        4: 15,
+        3: 9,
+        2: 1})
+</code></pre></div>
+<h3 id="character-text-splitter">Character Text Splitter</h3>
+<p>Splitting the text at a specific character only if the chunk exceeds the given chunk size</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> CharacterTextSplitter
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">len_func</span>(text): <span style="color: #228B22"># In this case, you can just use &gt;len&lt;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">len</span>(text)
+
+text_splitter = CharacterTextSplitter(
+    separator=<span style="color: #CD5555">&quot;\n\n&quot;</span>,
+    chunk_size=<span style="color: #B452CD">1200</span>,
+    chunk_overlap=<span style="color: #B452CD">100</span>,
+    length_function=len_func,
+    is_separator_regex=<span style="color: #8B008B; font-weight: bold">False</span>
+)
+
+para_list = text_splitter.create_documents(texts=[hp_book])
+
+para_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Harry Potter and the Sorcerer&#39;s Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+  ...
+  I\&#39;m going to have a lot of fun with Dudley this summer....&quot;\n\nTHE END&#39;)]
+</code></pre></div>
+<p>To add metadata for the document objects</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>first_chunk = para_list[<span style="color: #B452CD">0</span>]
+
+<span style="color: #228B22"># Just assign/reassign</span>
+first_chunk.metadata = {<span style="color: #CD5555">&quot;source&quot;</span>: filepath}
+
+first_chunk.metadata
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; {&#39;source&#39;: &quot;../datasets/Harry Potter 1 - Sorcerer&#39;s Stone.txt&quot;}
+</code></pre></div>
+<p>What if the text exceeds the chunk length and there is not separator to chunk the text?</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Adding the extra line</span>
+extra_line = <span style="color: #CD5555">&quot; &quot;</span>.join([<span style="color: #CD5555">&#39;word&#39;</span>]*<span style="color: #B452CD">500</span>)
+
+para_list = text_splitter.create_documents(texts = [extra_line + hp_book])
+
+<span style="color: #228B22"># checking the length of the first line as the extra line is added there</span>
+first_chunk_text = para_list[<span style="color: #B452CD">0</span>].page_content
+
+<span style="color: #658b00">len</span>(first_chunk_text)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  Created a chunk of size 2536, which is longer than the specified 1200
+  &gt; 2536
+</code></pre></div>
+<p>Can we add multiple separators to make it working better?</p>
+<p>That's where Recursive Character Text Splitter comes in.</p>
+<h3 id="recursive-character-splitter">Recursive Character Splitter</h3>
+<p>It tries to split on them in order until the chunks are small enough.
+The default list is <code>["\n\n", "\n", " ", ""]</code>. This has the effect of trying to keep all paragraphs (and then sentences, and then words) together as long as possible, as those would generically seem to be the strongest semantically related pieces of text.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter
+
+text_splitter = RecursiveCharacterTextSplitter(
+    separators=[<span style="color: #CD5555">&quot;\n\n&quot;</span>, <span style="color: #CD5555">&quot;\n&quot;</span>, <span style="color: #CD5555">&#39; &#39;</span>],
+    chunk_size = <span style="color: #B452CD">200</span>,
+    chunk_overlap = <span style="color: #B452CD">100</span>,
+    length_function = len_func,
+    is_separator_regex=<span style="color: #8B008B; font-weight: bold">False</span>
+)
+
+<span style="color: #228B22"># Here, the split first happens at &quot;\n\n&quot;, if the chunk size exceeds, it will move to the next separator, if it still exceeds, it will move to the next separator which is a &quot; &quot;.</span>
+
+chunk_list = text_splitter.create_documents(texts = [hp_book])
+
+chunk_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;CHAPTER ONE\n\nTHE BOY WHO LIVED&#39;),
+  ...]
+</code></pre></div>
+<p>Let's see how this chunking process work in the previous scenario</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>chunk_list = text_splitter.create_documents(texts = [extra_line + hp_book]) <span style="color: #228B22"># Adding the extra line</span>
+
+chunk_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;word word word word word word ...
+
+  ...]
+</code></pre></div>
+<p>The text got chunked at spaces to maintain the chunk size in the first line.</p>
+<h3 id="split-by-tokens">Split by tokens</h3>
+<p>tiktoken is a python library developed by openAI to count the number of tokens in a string without making an API call.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #888888">pip install tiktoken</span>
+</code></pre></div>
+
+<p>Splitting based on the token limit</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> CharacterTextSplitter
+
+text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
+    separator=<span style="color: #CD5555">&quot;\n\n&quot;</span>, 
+    chunk_size=<span style="color: #B452CD">1200</span>, 
+    chunk_overlap=<span style="color: #B452CD">100</span>, 
+    is_separator_regex=<span style="color: #8B008B; font-weight: bold">False</span>,
+    model_name=<span style="color: #CD5555">&#39;text-embedding-3-small&#39;</span>,
+    encoding_name=<span style="color: #CD5555">&#39;text-embedding-3-small&#39;</span>, <span style="color: #228B22"># same as model name</span>
+)
+
+doc_list = text_splitter.create_documents([hp_book])
+
+doc_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Harry Potter and the Sorcerer&#39;s Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+  ...
+  I\&#39;m going to have a lot of fun with Dudley this summer....&quot;\n\nTHE END&#39;)]
+</code></pre></div>
+<p>The model name here refers to the model used for calculating the tokens.</p>
+<p>To split the text and return the text chunks</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>line_list = text_splitter.split_text(hp_book)
+
+line_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [&#39;Harry Potter and the Sorcerer\&#39;s Stone\n\n\nCHAPTER ONE\...
+  ...Dudley this summer....&quot;\n\nTHE END&#39;]
+</code></pre></div>
+<p>If you want to convert the split text into list of document objects</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.docstore.document</span> <span style="color: #8B008B; font-weight: bold">import</span> Document
+
+doc_list = []
+
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> line_list:
+    curr_doc = Document(page_content=line, metadata={<span style="color: #CD5555">&quot;source&quot;</span>: filepath})
+    doc_list.append(curr_doc)
+
+doc_list
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Harry Potter and the Sorcerer&#39;s Stone\n\n\nCHAPTER ONE\n\nTHE BOY WHO LIVED
+  ...
+  I\&#39;m going to have a lot of fun with Dudley this summer....&quot;\n\nTHE END&#39;)]
+</code></pre></div>
+<h3 id="code-splitting">Code Splitting</h3>
+<p>Let's learn a generic way of splitting code that's written in any language. For this let's convert the previous peer_review function code into text.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>python_code = <span style="color: #CD5555">&quot;&quot;&quot;def peer_review(article_id):</span>
+<span style="color: #CD5555">    chat = ChatOpenAI()</span>
+<span style="color: #CD5555">    loader = ArxivLoader(query=article_id, load_max_docs=2)</span>
+<span style="color: #CD5555">    data = loader.load()</span>
+<span style="color: #CD5555">    first_record = data[0]</span>
+<span style="color: #CD5555">    page_content = first_record.page_content</span>
+<span style="color: #CD5555">    title = first_record.metadata[&#39;Title&#39;]</span>
+<span style="color: #CD5555">    summary = first_record.metadata[&#39;Summary&#39;]</span>
+
+<span style="color: #CD5555">    summary_list = []</span>
+<span style="color: #CD5555">    for record in data:</span>
+<span style="color: #CD5555">        summary_list.append(record.metadata[&#39;Summary&#39;])</span>
+<span style="color: #CD5555">    full_summary = &quot;\n\n&quot;.join(summary_list)</span>
+
+<span style="color: #CD5555">    system_template = &quot;You are a Peer Reviewer&quot;</span>
+<span style="color: #CD5555">    human_template = &quot;Read the paper with the title: &#39;{title}&#39;\n\nAnd Content: {content} and critically list down all the issues in the paper&quot;</span>
+
+<span style="color: #CD5555">    systemp_message_prompt = SystemMessagePromptTemplate.from_template(system_template)</span>
+<span style="color: #CD5555">    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)</span>
+
+<span style="color: #CD5555">    chat_prompt = ChatPromptTemplate.from_messages([systemp_message_prompt, human_message_prompt])</span>
+<span style="color: #CD5555">    prompt = chat_prompt.format_prompt(title=title, content=page_content)</span>
+
+<span style="color: #CD5555">    response = chat(messages = prompt.to_messages())</span>
+
+<span style="color: #CD5555">    return response.content&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter, Language
+
+text_splitter = RecursiveCharacterTextSplitter.from_language(
+    language=Language.PYTHON,
+    chunk_size=<span style="color: #B452CD">50</span>,
+    chunk_overlap=<span style="color: #B452CD">10</span>
+)
+
+text_splitter.create_documents(texts = [python_code])
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;def peer_review(article_id):&#39;),
+  Document(page_content=&#39;chat = ChatOpenAI()&#39;),
+  ...
+  Document(page_content=&#39;= prompt.to_messages())&#39;),
+  Document(page_content=&#39;return response.content&#39;)]
+</code></pre></div>
+<p>Similar to python code, you can also split any the code in programming language. For example: To split javascript code use <code>Language.JS</code></p>
+<h3 id="semantic-chunking">Semantic Chunking</h3>
+<h3 id="embeddings">Embeddings</h3>
+<p>Embeddngs are stored along with their corresponding text in the vector database. When queried, the query text is converted to embeddngs using the same embedding function and find the similar embeddings in the vector database and returns corresponding matching text.</p>
+<h4 id="openai-embeddings">OpenAI Embeddings</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> OpenAIEmbeddings
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;../openai_api_key.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    api_key = f.read()
+
+os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = api_key
+</code></pre></div>
+
+<p>Either set the environment variable or pass it as a keyword parameter as shown below, just like any llm</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+</code></pre></div>
+
+<p>Creating a sample text</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>text = <span style="color: #CD5555">&quot;The scar had not pained Harry for nineteen years. All was well.&quot;</span>
+</code></pre></div>
+
+<p>Embedding the text</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>embedded_text = embeddings.embed_query(text)
+
+embedded_text
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [-0.00598582291957263,
+  0.02148159007746089,
+  ...]
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">len</span>(embedded_text)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; 1536
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># If we have n lines in langchain document format</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.docstore.document</span> <span style="color: #8B008B; font-weight: bold">import</span> Document
+
+doc_lines = [
+    Document(page_content=text, metadata={<span style="color: #CD5555">&quot;source&quot;</span>: <span style="color: #CD5555">&quot;Harry Potter&quot;</span>}),
+    Document(page_content=<span style="color: #CD5555">&quot;It is our choices, Harry, that show what we truly are, far more than our abilities&quot;</span>,
+             metadata={<span style="color: #CD5555">&quot;source&quot;</span>: <span style="color: #CD5555">&quot;Harry Potter&quot;</span>})
+]
+
+doc_lines <span style="color: #228B22"># consider this to be the response from text splitters</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;The scar had not pained Harry for nineteen years. All was well.&#39;, metadata={&#39;source&#39;: &#39;Harry Potter&#39;}),
+  Document(page_content=&#39;It is our choices, Harry, that show what we truly are, far more than our abilities&#39;, metadata={&#39;source&#39;: &#39;Harry Potter&#39;})]
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># We will extract the page content</span>
+
+line_list = [doc.page_content <span style="color: #8B008B; font-weight: bold">for</span> doc <span style="color: #8B008B">in</span> doc_lines]
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>embedded_docs = [embeddings.embed_query(line) <span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> line_list]
+
+np.array(embedded_docs).shape
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; (2, 1536)
+</code></pre></div>
+<ul>
+<li>OpenAI embeddings are not the best ranked MTEB (Massive text embedding benchmark) models (https://huggingface.co/spaces/mteb/leaderboard)</li>
+<li>On top of it, they are expensive.</li>
+<li>*So, let's explore some open source best performing text embedding models</li>
+</ul>
+<h4 id="bge-embeddings">BGE Embeddings</h4>
+<ul>
+<li>BGE models on the HuggingFace are the best open-source embedding models that are also integrated with langchain as of now.</li>
+<li>BGE Model is created by the Beijing Academy of Artificial Intelligence (BAAI).</li>
+<li>BAAI is a private non-profit organization engaged in AI research and development.</li>
+</ul>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #888888">pip install sentence_transformers</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> HuggingFaceBgeEmbeddings
+
+model_name = <span style="color: #CD5555">&quot;BAAI/bge-base-en-v1.5&quot;</span>
+model_kwargs = {<span style="color: #CD5555">&quot;device&quot;</span>: <span style="color: #CD5555">&quot;cpu&quot;</span>}
+encode_kwargs = {<span style="color: #CD5555">&quot;normalize_embeddings&quot;</span>: <span style="color: #8B008B; font-weight: bold">True</span>}
+
+hf = HuggingFaceBgeEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+    encode_kwargs=encode_kwargs
+)
+</code></pre></div>
+
+<h4 id="fake-embeddings">Fake Embeddings</h4>
+<p>For testing purposes, if you have some hardware restrictions, you can use Fake Embeddings from Langchain</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> FakeEmbeddings
+fake_embeddings = FakeEmbeddings(size=<span style="color: #B452CD">300</span>) <span style="color: #228B22"># Define the embedding size</span>
+
+fake_embedded_record = fake_embeddings.embed_query(<span style="color: #CD5555">&quot;This is some random text&quot;</span>)
+fake_embedded_records = fake_embeddings.embed_documents([<span style="color: #CD5555">&quot;This is some random text&quot;</span>])
+</code></pre></div>
+
+<p>Single record</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>np.array(fake_embedded_record).shape
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  (300,)
+</code></pre></div>
+<p>For multiple records</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>np.array(fake_embedded_records).shape
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  (1, 300)
+</code></pre></div>
+<h3 id="vector-store">Vector Store</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #888888">pip install chromadb qdrant-client faiss-cpu</span>
+</code></pre></div>
+
+<p>Imports</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> WikipediaLoader
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> HuggingFaceBgeEmbeddings
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.vectorstores</span> <span style="color: #8B008B; font-weight: bold">import</span> FAISS
+</code></pre></div>
+
+<p>Document Loading</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>loader = WikipediaLoader(query=<span style="color: #CD5555">&#39;Elon Musk&#39;</span>, load_max_docs=<span style="color: #B452CD">5</span>)
+documents = loader.load()
+documents
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman...)
+  Document(page_content=&#39;Business magnate Elon Musk initiated an acquisition of American...
+  Document(page_content=&#39;Elon Musk completed his acquisition of Twitter...
+  Document(page_content=&#39;The Musk family is a wealthy family of South African origin...
+  Document(page_content=&#39;Elon Musk is the CEO or owner of multiple companies including Tesla...]
+</code></pre></div>
+<p>Text splitting</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>text_splitter = RecursiveCharacterTextSplitter(chunk_size=<span style="color: #B452CD">400</span>, chunk_overlap=<span style="color: #B452CD">100</span>)
+docs = text_splitter.split_documents(documents=documents)
+<span style="color: #658b00">print</span>(<span style="color: #658b00">len</span>(docs))
+docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor...
+  Document(page_content=&#39;of Neuralink and OpenAI; and president of the Musk Foundation....
+  Document(page_content=&quot;Tesla and SpaceX.A member of the wealthy South African Musk family,...
+  ...]
+</code></pre></div>
+<p>Defining the embedding function</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>model_name = <span style="color: #CD5555">&quot;BAAI/bge-large-en-v1.5&quot;</span>
+model_kwargs = {<span style="color: #CD5555">&#39;device&#39;</span>: <span style="color: #CD5555">&#39;cpu&#39;</span>}
+encode_kwargs = {<span style="color: #CD5555">&quot;normalize_embeddings&quot;</span>: <span style="color: #8B008B; font-weight: bold">True</span>}
+
+embedding_function = HuggingFaceBgeEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+    encode_kwargs=encode_kwargs
+)
+</code></pre></div>
+
+<p>Query:</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>query = <span style="color: #CD5555">&quot;Who is elon musk&#39;s father?&quot;</span>
+</code></pre></div>
+
+<h4 id="faiss">FAISS</h4>
+<p>Creating a vector database (FAISS - in memory database)</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>db = FAISS.from_documents(
+    docs,
+    embedding_function
+)
+</code></pre></div>
+
+<p>Querying the vector database</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_docs = db.similarity_search(query=query, k=<span style="color: #B452CD">5</span>)
+
+matched_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Elon Musk&#39;s paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk&#39;s father, Errol Musk, is a South African former electrical ...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Musk_family&#39;}),
+  Document(page_content=&quot;Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa&#39;s administrative capital. ...,
+  Document(page_content=&#39;Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....,
+  Document(page_content=&#39;father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...,
+  Document(page_content=&quot;Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]
+</code></pre></div>
+<p>Check if the answer is present in results</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>[<span style="color: #CD5555">&#39;errol musk&#39;</span> <span style="color: #8B008B">in</span> doc.page_content.lower() <span style="color: #8B008B; font-weight: bold">for</span> doc <span style="color: #8B008B">in</span> matched_docs] <span style="color: #228B22"># Errol Musk is the answer</span>
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [True, True, False, True, False]
+</code></pre></div>
+<p>FAISS is an in-memory vector store.</p>
+<p>And most of the times, we don't use these in-memory vector stores.</p>
+<h4 id="chromadb">ChromaDB</h4>
+<p>Let's start with chromaDB and understand how to...
+* Save the vector store
+* Load the vector store
+* Add new records to vector store.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">chromadb</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.vectorstores</span> <span style="color: #8B008B; font-weight: bold">import</span> Chroma
+</code></pre></div>
+
+<p>Creating a Chroma Vector Store</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>db = Chroma.from_documents(docs, embedding_function, persist_directory=<span style="color: #CD5555">&#39;../output/elon_musk_db&#39;</span>)
+</code></pre></div>
+
+<p>Loading the db</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>laoded_db = Chroma(persist_directory=<span style="color: #CD5555">&quot;../output/elon_musk_db&quot;</span>, embedding_function=embedding_function)
+</code></pre></div>
+
+<p>Querying the DBs</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(query)
+
+matched_docs = db.similarity_search(
+    query = query,
+    k = <span style="color: #B452CD">5</span>
+)
+
+matched_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  Who is elon musk&#39;s father?
+  &gt; [Document(page_content=&quot;Elon Musk&#39;s paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk&#39;s father, Errol Musk, is a South African former electrical ...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Musk_family&#39;}),
+  Document(page_content=&quot;Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa&#39;s administrative capital. ...,
+  Document(page_content=&#39;Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....,
+  Document(page_content=&#39;father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...,
+  Document(page_content=&quot;Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]
+</code></pre></div>
+<p>As the embedding function and the text splitter are same in both the previous FAISS and current ChromaDB, the results are also the same.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>[<span style="color: #CD5555">&#39;errol musk&#39;</span> <span style="color: #8B008B">in</span> doc.page_content.lower() <span style="color: #8B008B; font-weight: bold">for</span> doc <span style="color: #8B008B">in</span> matched_docs]
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [True, True, False, True, False]
+</code></pre></div>
+<p>Adding a new record to the existing vector store</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>family_data_loader = WikipediaLoader(query=<span style="color: #CD5555">&#39;Musk Family&#39;</span>, load_max_docs=<span style="color: #B452CD">1</span>)
+family_documents = family_data_loader.load()
+family_documents
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;The Musk family is a wealthy family of South African origin that is largely active in the United States and Canada. ... metadata={&#39;title&#39;: &#39;Musk family&#39;, &#39;summary&#39;: &#39;The Musk family is a wealthy family ...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Musk_family&#39;})]
+</code></pre></div>
+<p>Using the exising text splitter</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>family_docs = text_splitter.split_documents(documents=family_documents)
+<span style="color: #658b00">print</span>(<span style="color: #658b00">len</span>(family_docs))
+family_docs
+</code></pre></div>
+
+<p>11
+      [Document(page_content='The Musk family is a wealthy family of South African...', metadata={'title': 'Musk family', 'summary': 'The Musk family is a wealthy family...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content='in the world, with an estimated net worth of US$232 billion ...', 'summary': 'The Musk family is a wealthy family...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content='== History ==', metadata={'title': 'Musk family', 'summary': 'The Musk...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      Document(page_content="Elon Musk's paternal great-grandmother...', metadata={'title': 'Musk family', 'summary': 'The Musk family ...', 'source': 'https://en.wikipedia.org/wiki/Musk_family'}),
+      ...]</p>
+<p>Using the same loaded embedded function</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>db = Chroma.from_documents(
+    family_docs, <span style="color: #228B22"># The new docs that we want to add</span>
+    embedding_function, <span style="color: #228B22"># Should be the same embedding function</span>
+    persist_directory=<span style="color: #CD5555">&quot;../output/elon_musk_db&quot;</span> <span style="color: #228B22"># Existing vectorstore where we want to add the new records</span>
+)
+</code></pre></div>
+
+<p>Getting the matching documents with the query</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_docs = db.similarity_search(query=query, k=<span style="color: #B452CD">5</span>)
+
+[<span style="color: #CD5555">&#39;errol musk&#39;</span> <span style="color: #8B008B">in</span> doc.page_content.lower() <span style="color: #8B008B; font-weight: bold">for</span> doc <span style="color: #8B008B">in</span> matched_docs]
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [True, True, True, False, True]
+</code></pre></div>
+<p>More number of records are getting matched.</p>
+<h2 id="retrievers">Retrievers</h2>
+<p>Making a retriever from vector store</p>
+<p>We can also define how the vectorstores should search and how many items to return</p>
+<h3 id="vector-store-backed-retriever">Vector store-backed retriever</h3>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retriever = db.as_retriever()
+
+retriever
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; VectorStoreRetriever(tags=[&#39;Chroma&#39;, &#39;HuggingFaceBgeEmbeddings&#39;], vectorstore=&lt;langchain_community.vectorstores.chroma.Chroma object at 0x000001B97D293EE0&gt;
+</code></pre></div>
+<p>Querying a retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span><span style="color: #1e889b">[</span><span style="color: #658b00">Document</span>(page_content=<span style="color: #CD5555">&quot;Elon Musk&#39;s paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, while one of his maternal great-grandparents came from Switzerland. Elon Musk&#39;s father, Errol Musk, is a South African former electrical ...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Musk_family&#39;})&quot;</span>),
+<span style="color: #658b00">Document</span>(page_content=<span style="color: #CD5555">&quot;Elon Reeve Musk was born on June 28, 1971, in Pretoria, South Africa&#39;s administrative capital. ...&quot;</span>),
+<span style="color: #658b00">Document</span>(page_content=<span style="color: #CD5555">&#39;Elon Reeve Musk (; EE-lon; born June 28, 1971) is a businessman and investor....&#39;</span>),
+<span style="color: #658b00">Document</span>(page_content=<span style="color: #CD5555">&#39;father, Errol Musk, is a South African former electrical and mechanical engineer consultant and property developer, ...&#39;</span>),
+<span style="color: #658b00">Document</span>(page_content=<span style="color: #CD5555">&quot;Elon Musk (born 1971), entrepreneur and business magnate. Variously CEO, CTO, and/or Chairman of SpaceX, Tesla, Twitter (now X), and Neuralink...]&quot;</span>)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">len</span>(matched_docs)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; 4
+</code></pre></div>
+<p>MMR - Maximum marginal relevance (relevancy and diversity)</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retriever = db.as_retriever(search_type=<span style="color: #CD5555">&#39;mmr&#39;</span>, search_kwargs={<span style="color: #CD5555">&quot;k&quot;</span>: <span style="color: #B452CD">1</span>})
+
+matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Elon Musk&#39;s paternal great-grandmother was a Dutchwoman descended from the Dutch Free Burghers, ...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Musk_family&#39;, &#39;summary&#39;: &#39;The Musk family ...&#39;, &#39;title&#39;: &#39;Musk family&#39;})]
+</code></pre></div>
+<p>Similarity Score threshold</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retriever = db.as_retriever(search_type=<span style="color: #CD5555">&quot;similarity_score_threshold&quot;</span>, search_kwargs={<span style="color: #CD5555">&quot;score_threshold&quot;</span>: <span style="color: #B452CD">0.5</span>})
+
+matched_docs = retriever.get_relevant_documents(query=query)
+
+matched_docs
+</code></pre></div>
+
+<h3 id="advanced-retrievers">Advanced Retrievers</h3>
+<p>Let's setup the stage for the working on the following advanced retrievers</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Imports</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">chromadb</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">dotenv</span> <span style="color: #8B008B; font-weight: bold">import</span> load_dotenv
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> WikipediaLoader
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> HuggingFaceBgeEmbeddings
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.vectorstores</span> <span style="color: #8B008B; font-weight: bold">import</span> Chroma
+
+chunk_size = <span style="color: #B452CD">400</span>
+chunk_overlap = <span style="color: #B452CD">100</span>
+
+<span style="color: #228B22"># Loading the environment variables</span>
+load_dotenv()
+
+<span style="color: #228B22"># Loading the chat model</span>
+chat = ChatOpenAI()
+
+<span style="color: #228B22"># Loading data</span>
+loader = WikipediaLoader(query=<span style="color: #CD5555">&#39;Steve Jobs&#39;</span>, load_max_docs=<span style="color: #B452CD">5</span>)
+documents = loader.load()
+
+<span style="color: #228B22"># Text splitting</span>
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+docs = text_splitter.split_documents(documents=documents)
+
+<span style="color: #228B22"># Embedding function</span>
+embedding_function = HuggingFaceBgeEmbeddings(
+    model_name=<span style="color: #CD5555">&quot;BAAI/bge-large-en-v1.5&quot;</span>,
+    model_kwargs={<span style="color: #CD5555">&#39;device&#39;</span>: <span style="color: #CD5555">&#39;cpu&#39;</span>},
+    encode_kwargs={<span style="color: #CD5555">&quot;normalize_embeddings&quot;</span>: <span style="color: #8B008B; font-weight: bold">True</span>}
+)
+
+<span style="color: #228B22"># Vector store</span>
+db = Chroma.from_documents(docs, embedding_function, persist_directory=<span style="color: #CD5555">&quot;../output/steve_jobs_db&quot;</span>)
+
+<span style="color: #228B22"># Retriever</span>
+retriever = db.as_retriever()
+
+<span style="color: #228B22"># Query</span>
+query = <span style="color: #CD5555">&quot;When was Steve Jobs fired from Apple?&quot;</span>
+</code></pre></div>
+
+<h4 id="multi-query-retriever">Multi-Query Retriever</h4>
+<p>For paraphrasing queries in different ways to reduce the emphasis on the way the query is written and increase on the emphasis on the key points of the query.</p>
+<p>LLMs are used to do this.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.multi_query</span> <span style="color: #8B008B; font-weight: bold">import</span> MultiQueryRetriever
+
+retriever_from_llm = MultiQueryRetriever.from_llm(
+    retriever=retriever,
+    llm=chat
+)
+</code></pre></div>
+
+<p>To understand how to multiple queries are genered in the background; Let's define a logger.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">logging</span>
+logging.basicConfig()
+logging.getLogger(<span style="color: #CD5555">&#39;langchain.retrievers.multi_query&#39;</span>).setLevel(logging.INFO)
+</code></pre></div>
+
+<p>Get the responses from the vector database</p>
+<p>Since, we performed logging we can see the generated queries</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retrieved_docs = retriever_from_llm.get_relevant_documents(query=query)
+
+retrieved_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  INFO:langchain.retrievers.multi_query:Generated queries: [&quot;1. What was the date of Steve Jobs&#39; departure from Apple due to termination?&quot;, &#39;2. At what point in time was Steve Jobs ousted from his position at Apple?&#39;, &quot;3. When did Steve Jobs face dismissal from Apple&#39;s leadership role?&quot;]
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">[Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board ...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),</span>
+...
+ Document(page_content=&quot;== Plot ==\nIn 1984, the Apple Macintosh 128K&#39;s voice demo fails ...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle ...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+
+<p>Note: Though we are using LLMs in our retreiver, it won't answer any of our questions. It will only return the top k records/chunks that can be helpful to answer our questions.</p>
+<h4 id="contextual-compression">Contextual Compression</h4>
+<p>Multiquery retriever works at the input side.</p>
+<p>With Contextual compression we will use the LLM to distill the extracted data from the retriever to give us the most relevant information for our query.</p>
+<p>Steps to follow</p>
+<ul>
+<li>Step 1: Connect to the database</li>
+<li>Step 1.1: Specify the user query</li>
+<li>Step 1.2: Get the most relevant documents for thre user quey.</li>
+<li>Step 2: Convert the db to retriever</li>
+<li>Step 3: Create an instance of LLM with temperature=0</li>
+<li>Step 4: Create an instance of the compressor</li>
+<li>Step 5: Create an instance of the compression_retriever</li>
+<li>Step 6: Get the most relevant documents for the given query</li>
+<li>Step 7: Explore the results</li>
+</ul>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Connect to the database</span>
+db = Chroma(persist_directory=<span style="color: #CD5555">&quot;../output/steve_jobs_db&quot;</span>, embedding_function=embedding_function)
+
+<span style="color: #228B22"># Specify the query</span>
+query = <span style="color: #CD5555">&quot;When was Steve Jobs fired from Apple?&quot;</span>
+
+<span style="color: #228B22"># Get the most relevant documents</span>
+sim_docs = db.similarity_search(query=query)
+
+sim_docs
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">[Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),</span>
+ ...
+Document(page_content=&#39;Jobs, specifically ahead of three press conferences he gave during that time ...&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+
+<p>Vector store-backed retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retriever = db.as_retriever()
+retriever
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; VectorStoreRetriever(tags=[&#39;Chroma&#39;, &#39;HuggingFaceBgeEmbeddings&#39;], vectorstore=&lt;langchain_community.vectorstores.chroma.Chroma object at 0x0000026084293910&gt;)
+</code></pre></div>
+<p>Create an instance of llm/chat model with temperature 0</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>load_dotenv()
+chat = ChatOpenAI(temperature=<span style="color: #B452CD">0</span>) <span style="color: #228B22"># To get the same results all the time; as the response goes to the query later on.</span>
+</code></pre></div>
+
+<p>Document Compressor</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.document_compressors</span> <span style="color: #8B008B; font-weight: bold">import</span> LLMChainExtractor
+
+compressor = LLMChainExtractor.from_llm(llm=chat)
+
+compressor
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; LLMChainExtractor(llm_chain=LLMChain(prompt=PromptTemplate(input_variables=...)
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(compressor.llm_chain.prompt.template)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  Given the following question and context, extract any part of the context *AS IS* that is relevant to answer the question. If none of the context is relevant return NO_OUTPUT.
+
+  Remember, *DO NOT* edit the extracted parts of the context.
+
+  &gt; Question: {question}
+  &gt; Context:
+  &gt;&gt;&gt;
+  {context}
+  &gt;&gt;&gt;
+  Extracted relevant parts:
+</code></pre></div>
+<p>Compression Retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> ContextualCompressionRetriever
+
+compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor, base_retriever=retriever)
+
+compression_retriever
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; ContextualCompressionRetriever(base_compressor=LLMChainExtractor(llm_chain=LLMChain(prompt=PromptTemplate(...)))
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matching_docs = compression_retriever.get_relevant_documents(query=query)
+
+matching_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley.&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),
+  Document(page_content=&#39;Jobs was actually forced out by the Apple board&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle and written by ...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+<p>The results are the extract of the loaded data only and not the generated responses</p>
+<h4 id="parent-document-retriever">Parent Document Retriever</h4>
+<p>The embeddings of the smaller text chunks can reflect the meaning better than the larger chunks. But, you would also want larger chunks with more context for the LLMs to answer the given question.</p>
+<p>Parent Document Retriever helps to find the balance between both the cases. During retrieval, it first fetches the small chunks but then looks up the parent ids for those chunks and returns those larger documents.</p>
+<p>Let's understand how to build it using langchain.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Imports</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> CharacterTextSplitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> ParentDocumentRetriever
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.storage</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryStore
+
+<span style="color: #228B22"># Text splitters</span>
+parent_splitter = CharacterTextSplitter(separator=<span style="color: #CD5555">&quot;\n\n&quot;</span>, chunk_size=<span style="color: #B452CD">1000</span>, chunk_overlap=<span style="color: #B452CD">100</span>)
+child_splitter = CharacterTextSplitter(separator=<span style="color: #CD5555">&quot;\n&quot;</span>, chunk_size=<span style="color: #B452CD">200</span>, chunk_overlap=<span style="color: #B452CD">50</span>)
+
+<span style="color: #228B22"># Temporary storage for parent documents</span>
+store = InMemoryStore()
+
+<span style="color: #228B22"># Creating an instance of parent document retriever</span>
+par_doc_retriever = ParentDocumentRetriever(
+    vectorstore=db,
+    docstore=store,
+    child_splitter=child_splitter,
+    parent_splitter=parent_splitter,
+)
+
+<span style="color: #228B22"># Adding documents to the retriever</span>
+par_doc_retriever.add_documents(docs)
+
+<span style="color: #228B22"># Getting the parent content for the query</span>
+matched_par_docs = par_doc_retriever.get_relevant_documents(query=query)
+
+matched_par_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, ...&quot;, metadata={&#39;title&#39;: &#39;Steve Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, ...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;}),
+  Document(page_content=&#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor...&#39;, metadata={&#39;title&#39;: &#39;Steve Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman...&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;})]
+</code></pre></div>
+<h4 id="time-weighted-vector-store-retriever">Time-weighted Vector Store Retriever</h4>
+<p>when used time-weighted vector store retriever the latest records have more weight along with the semantic similarity.</p>
+<p>matching_score = semantic_similarity + (1.0 - decay_rate) <sup>hours_passed</sup></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Import</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">faiss</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.vectorstores</span> <span style="color: #8B008B; font-weight: bold">import</span> FAISS
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.docstore</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryDocstore
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> TimeWeightedVectorStoreRetriever
+</code></pre></div>
+
+<p>As we are adding datetime in metadata, let's create temporary database</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>emb_size = <span style="color: #B452CD">1024</span>
+index = faiss.IndexFlatL2(emb_size)
+temp_db = FAISS(embedding_function, index,
+                docstore=InMemoryDocstore({}), index_to_docstore_id={})
+</code></pre></div>
+
+<p>Create an instance of the Time Weighted Vector Store Retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>tw_retriever = TimeWeightedVectorStoreRetriever(
+    vectorstore=temp_db, decay_rate=<span style="color: #B452CD">0.8</span>, k=<span style="color: #B452CD">1</span>)
+</code></pre></div>
+
+<p>Let's add some documents with time stamps</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">datetime</span> <span style="color: #8B008B; font-weight: bold">import</span> datetime, timedelta
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_core.documents</span> <span style="color: #8B008B; font-weight: bold">import</span> Document
+
+<span style="color: #228B22"># yesterday = str(datetime.now() - timedelta(days=1))</span>
+yesterday = datetime.now() - timedelta(days=<span style="color: #B452CD">1</span>)
+tw_retriever.add_documents(
+    [Document(page_content=<span style="color: #CD5555">&quot;what is John doing?&quot;</span>, metadata={<span style="color: #CD5555">&quot;last_accessed_at&quot;</span>: yesterday})]
+)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>tw_retriever.add_documents([Document(page_content=<span style="color: #CD5555">&quot;what is Jack doing?&quot;</span>)])
+tw_retriever.get_relevant_documents(<span style="color: #CD5555">&quot;What are you doing?&quot;</span>)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;what is Jack doing?&#39;, metadata={&#39;last_accessed_at&#39;: datetime.datetime(2024, 4, 21, 9, 34, 58, 641604), &#39;created_at&#39;: datetime.datetime(2024, 4, 21, 9, 34, 58, 23364), &#39;buffer_idx&#39;: 1})]
+</code></pre></div>
+<p>For the above question, there should be an equal chance of returning both the added docuemnts. Since, the document with text "What is Jack doing?" is added later; It has been returned as TWVS Retriever considers time.</p>
+<h4 id="hypothetical-document-retriever">Hypothetical Document Retriever</h4>
+<p>One of the key issues in retrieving a document for a given query is, we are matching the query with the content that we believe has the information to answer the query. Essentially, we are comparing question with answer and retrieving based on the similarity score we got.</p>
+<p>To have a proper apples-to-apples comparison, it's good to match answers to answers rather than questions to answers.</p>
+<p>That's where, Hypothetical document embeddings come in handy.</p>
+<p><strong>Other Retrivers:</strong></p>
+<p>Query -&gt; Embeddings - Similarity Matching with the Embeddings in the vector store -&gt; Return the matched documents from vector store.</p>
+<p><strong>Hypothetical Document Retriever:</strong></p>
+<p>Query -&gt; LLM -&gt; Answer for the Query -&gt; Embeddings - Similarity Matching with the Embeddings in the vector store -&gt; Return the matched documents from vector store.</p>
+<h5 id="hyde-from-scratch">HyDE from Scratch</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> SystemMessagePromptTemplate, ChatPromptTemplate
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_hypo_doc</span>(query):
+    template = <span style="color: #CD5555">&quot;&quot;&quot;Imagine you are an expert writing a detailed answer for the given query: &#39;{query}&#39;.</span>
+<span style="color: #CD5555">    Your response should be comprehensive and include key points that would be found in a top search result.&quot;&quot;&quot;</span>
+    system_message_prompt = SystemMessagePromptTemplate.from_template(
+        template=template)
+    chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt])
+    messages = chat_prompt.format_prompt(query=query).to_messages()
+    response = chat(messages=messages)
+    hypo_doc = response.content
+    <span style="color: #8B008B; font-weight: bold">return</span> hypo_doc
+
+base_retriever = db.as_retriever(search_kwargs={<span style="color: #CD5555">&quot;k&quot;</span>: <span style="color: #B452CD">1</span>})
+
+matched_doc = base_retriever.get_relevant_documents(query=get_hypo_doc(query=query))
+
+matched_doc
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;doc_id&#39;: &#39;0ee72998-1887-4e48-b316-2b7284fe9808&#39;, &#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;})]
+</code></pre></div>
+<h5 id="hyde-from-chains">HyDE from chains</h5>
+<p>Generate hypothetical documents to answer the query using the LLM, get their embeddings, and ask</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> HypotheticalDocumentEmbedder
+
+hyde_embedding_function = HypotheticalDocumentEmbedder.from_llm(llm=chat, base_embeddings=embedding_function, prompt_key=<span style="color: #CD5555">&quot;web_search&quot;</span>)
+</code></pre></div>
+
+<p>Default prompts: ['web_search', 'sci_fact', 'arguana', 'trec_covid', 'fiqa', 'dbpedia_entity', 'trec_news', 'mr_tydi']</p>
+<p>All these prompts are present in the paper: https://arxiv.org/pdf/2212.10496.pdf</p>
+<ul>
+<li><code>web_search</code>: This key is likely used for general web search tasks where the goal is to retrieve the most relevant documents from the web based on a user’s query.</li>
+<li><code>sci_fact</code>: This could be related to scientific fact verification, where the system retrieves documents that can confirm or refute a scientific claim.</li>
+<li><code>arguana</code>: This key might be for argument understanding and analysis, possibly to retrieve documents that contain arguments or discussions on a given topic.</li>
+<li><code>trec_covid</code>: This is likely associated with the TREC-COVID challenge, which involves retrieving scientific literature related to COVID-19.
+fiqa: Stands for Financial Opinion Mining and Question Answering, which involves retrieving information relevant to financial domains.</li>
+<li><code>dbpedia_entity</code>: This key suggests a task related to retrieving information about entities from the structured data in DBpedia, which is a crowd-sourced community effort to extract structured content from the information created in various Wikimedia projects.</li>
+<li><code>trec_news</code>: This could be associated with the Text REtrieval Conference (TREC) News Track, focusing on news-related document retrieval.</li>
+<li><code>mr_tydi</code>: This key might refer to a multilingual retrieval task, possibly related to the Typologically Diverse Information Retrieval (TyDi) dataset, which focuses on information-seeking questions in multiple languages.</li>
+</ul>
+<p>Either assign one of these prompt_keys or create your own prompt_key. (Let's cover this after we start chains, if you hare interested.)</p>
+<p>Creating the database with Hypothetical Document Embedding function</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>doc_db = Chroma.from_documents(docs, hyde_embedding_function, persist_directory=<span style="color: #CD5555">&#39;../output/steve_job_hyde&#39;</span>)
+</code></pre></div>
+
+<p>Gettting the matching documents</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_docs = doc_db.similarity_search(query)
+
+matched_docs
+</code></pre></div>
+
+<p>Note: Hypothetical Document Retriever works better than other retrievers in most the cases only when the LLM has some knowledge about the asked question. If the LLM has no clue of the asked question, the results can be quite messy. So, look at the responses of the LLM for the sample set of the questions before proceeding with it.</p>
+<h4 id="ensemble-retriever">Ensemble Retriever</h4>
+<p>Using Ensemble Retriever, we can combine multiple retrievers and get the relevant documents after querying based on all the results from all retrievers after reranking them using Reciprocal Rank Fusion Algorithm.</p>
+<p>Let's build a Hybrid Search Retriever using a sparse retriever like BM25 and Dense Retriever like parent document retriever.</p>
+<p><strong>keyword search + semantic search</strong></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Import</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> EnsembleRetriever
+
+<span style="color: #228B22"># Creating an instance of the retriever using the previously defined retrievers in the above.</span>
+ensemble_retriever = EnsembleRetriever(
+    retrievers=[bm25_retriever, par_doc_retriever], weights=[<span style="color: #B452CD">0.5</span>, <span style="color: #B452CD">0.5</span>]
+)
+
+<span style="color: #228B22"># Getting the hybrid matched documents</span>
+hybrid_matched_docs = ensemble_retriever.get_relevant_documents(query=query)
+
+hybrid_matched_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),
+  ...
+  Document(page_content=&#39;Jobs, specifically ahead of three press conferences he gave during that time ...&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+<h3 id="filter-embedding-redundant-filter">Filter - Embedding Redundant Filter</h3>
+<p>Filter that drops redundant documents by comparing their embeddings.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_transformers</span> <span style="color: #8B008B; font-weight: bold">import</span> EmbeddingsRedundantFilter
+
+redundant_filter = EmbeddingsRedundantFilter(embeddings=embedding_function) <span style="color: #228B22"># Or hyde_embedding_function</span>
+
+redundant_filter.transform_documents(hybrid_matched_docs)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),
+  ...
+  Document(page_content=&#39;Jobs, specifically ahead of three press conferences he gave during that time ...&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+<p>If there are any redundant documents, they will be dropped. In this case, all the 4 results are relevant. Thus, the filter is not dropping anything.</p>
+<h3 id="filter-embedding-filter">Filter - Embedding Filter</h3>
+<p>Document compressor that uses embeddings to drop documents unrelated to the query.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.document_compressors</span> <span style="color: #8B008B; font-weight: bold">import</span> EmbeddingsFilter
+
+embdeddings_filter = EmbeddingsFilter(embeddings=embedding_function)
+
+embdeddings_filter.compress_documents(hybrid_matched_docs, query=query)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),
+  ...
+  Document(page_content=&#39;Jobs, specifically ahead of three press conferences he gave during that time ...&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs_(film)&#39;, &#39;summary&#39;: &quot;Steve Jobs is a 2015 biographical drama film directed by Danny Boyle...&quot;, &#39;title&#39;: &#39;Steve Jobs (film)&#39;})]
+</code></pre></div>
+<p>The documents that are far from the query embeddings in the embedding space will be dropped. In this case, all the 4 results are relevant. Thus, the filter is not dropping anything.</p>
+<h3 id="reordering-long-content-reorder">Reordering - Long Content Reorder</h3>
+<p>Important docs will be moved to beggining and the end</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_transformers</span> <span style="color: #8B008B; font-weight: bold">import</span> LongContextReorder
+
+reorder = LongContextReorder()
+
+reordered_docs = reorder.transform_documents(hybrid_matched_docs)
+
+reordered_docs
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&quot;Apple CEO John Sculley demands to know why the world believes he fired Jobs...&#39;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;}),
+  ...
+  Document(page_content=&quot;In 1985, Jobs departed Apple after a long power struggle with the company&#39;s board and its then-CEO, John Sculley...&quot;, metadata={&#39;source&#39;: &#39;https://en.wikipedia.org/wiki/Steve_Jobs&#39;, &#39;summary&#39;: &#39;Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American businessman, inventor, and investor best known for co-founding the technology giant Apple Inc. ...&#39;, &#39;title&#39;: &#39;Steve Jobs&#39;})]
+</code></pre></div>
+<h2 id="rag-pipelines">RAG Pipelines</h2>
+<p>Let's setup the stage for the working on the RAG Pipelines</p>
+<p>Loading the chat Model</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">dotenv</span> <span style="color: #8B008B; font-weight: bold">import</span> load_dotenv
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+
+load_dotenv()
+
+chat = ChatOpenAI()
+set_llm_cache(InMemoryCache())
+</code></pre></div>
+
+<p>Setting up the data loader</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_loaders</span> <span style="color: #8B008B; font-weight: bold">import</span> PyPDFLoader
+
+loader = PyPDFLoader(file_path=<span style="color: #CD5555">&#39;../datasets/udhr_booklet_en_web.pdf&#39;</span>)
+
+documents = loader.load()
+
+documents
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; [Document(page_content=&#39;&#39;, metadata={&#39;source&#39;: &#39;../datasets/udhr_booklet_en_web.pdf&#39;, &#39;page&#39;: 0}),
+  Document(page_content=&#39;© 2015 United Nations  \nAll rights reserved worldwide\nIllustrations by Yacine Ait Kaci (YAK)\nThis illustrated edition of the Universal Declaration of Human Rights \n(UDHR)  is published by the United Nations...&#39;, metadata={&#39;source&#39;: &#39;../datasets/udhr_booklet_en_web.pdf&#39;, &#39;page&#39;: 1}),
+  ...
+  Document(page_content=&#39;| Universal Declaration of Human Rights | 62\nArticleUNITED\nNATIONS\nNothing in this Declaration ...&#39;, metadata={&#39;source&#39;: &#39;../datasets/udhr_booklet_en_web.pdf&#39;, &#39;page&#39;: 70}),
+  Document(page_content=&#39;&#39;, metadata={&#39;source&#39;: &#39;../datasets/udhr_booklet_en_web.pdf&#39;, &#39;page&#39;: 71})]
+</code></pre></div>
+<p>Setting up the text splitter</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter
+
+chunk_size = <span style="color: #B452CD">500</span>
+chunk_overlap = <span style="color: #B452CD">100</span>
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+docs = text_splitter.split_documents(documents=documents)
+
+<span style="color: #658b00">len</span>(docs)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; 61
+</code></pre></div>
+<p>Setting up the Embedding Function</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.embeddings</span> <span style="color: #8B008B; font-weight: bold">import</span> HuggingFaceBgeEmbeddings
+
+embedding_function = HuggingFaceBgeEmbeddings(
+    model_name=<span style="color: #CD5555">&quot;BAAI/bge-large-en-v1.5&quot;</span>,
+    model_kwargs={<span style="color: #CD5555">&#39;device&#39;</span>: <span style="color: #CD5555">&#39;cpu&#39;</span>},
+    encode_kwargs={<span style="color: #CD5555">&quot;normalize_embeddings&quot;</span>: <span style="color: #8B008B; font-weight: bold">True</span>}
+)
+</code></pre></div>
+
+<p>Setting up the Vector store</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.vectorstores</span> <span style="color: #8B008B; font-weight: bold">import</span> Chroma
+
+db = Chroma.from_documents(docs, embedding_function, persist_directory=<span style="color: #CD5555">&quot;../output/human_rights&quot;</span>)
+base_retriever = db.as_retriever()
+</code></pre></div>
+
+<p>Fixing a standard query for RAG</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>query = <span style="color: #CD5555">&quot;How does the declaration address the discrimination?&quot;</span>
+</code></pre></div>
+
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Building a RAG pipeline with Contextual Compression and Multi-query retrieval processes. And Perform Generation using Prompt Templates and Chat Models.</p>
+<ul>
+<li>Compressor -&gt; Contextual Compressor</li>
+<li>Retriever -&gt; Muti-query retreiver</li>
+</ul>
+<p>Compressor</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.document_compressors</span> <span style="color: #8B008B; font-weight: bold">import</span> LLMChainExtractor
+
+base_compressor = LLMChainExtractor.from_llm(llm=chat)
+</code></pre></div>
+
+<p>Retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.multi_query</span> <span style="color: #8B008B; font-weight: bold">import</span> MultiQueryRetriever
+
+mq_retriever = MultiQueryRetriever.from_llm(retriever=base_retriever, llm=chat)
+</code></pre></div>
+
+<p>Compression Retriever</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> ContextualCompressionRetriever
+
+compression_retriever = ContextualCompressionRetriever(base_compressor=base_compressor, base_retriever=mq_retriever)
+</code></pre></div>
+
+<p>Getting the matched documents</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_docs = compression_retriever.get_relevant_documents(query=query)
+</code></pre></div>
+
+<p>Getting the text content from the matched docs</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>matched_content = <span style="color: #CD5555">&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> doc <span style="color: #8B008B">in</span> matched_docs:
+    page_content = doc.page_content
+    matched_content+=page_content
+    matched_content += <span style="color: #CD5555">&quot;\n\n&quot;</span>
+</code></pre></div>
+
+<p>Performing Query Augmentation and Response Generation</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatPromptTemplate, HumanMessagePromptTemplate
+
+template = <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">Answer the following question only by using the context given below in the triple backticks, do not use any other information to answer the question. If you can&#39;t answer the given question with the given context, you can return an emtpy string (&#39;&#39;)</span>
+
+<span style="color: #CD5555">Context: ```{context}```</span>
+<span style="color: #CD5555">----------------------------</span>
+<span style="color: #CD5555">Question: {query}</span>
+<span style="color: #CD5555">----------------------------</span>
+<span style="color: #CD5555">Answer: &quot;&quot;&quot;</span>
+
+human_message_prompt = HumanMessagePromptTemplate.from_template(template=template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(query=query, context=matched_content)
+response = chat(messages = prompt.to_messages()).content
+
+response
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; &#39;The declaration addresses discrimination by stating that everyone is entitled to all rights and freedoms without any distinction based on race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, or other status. It also mentions that everyone has the right to equal pay for equal work without any discrimination.
+</code></pre></div>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>In this exercise, let's combine multiple compressors and retrievers and build a RAG pipeline using Chains.</p>
+<ul>
+<li>Compressor -&gt; Custom Compressor + Contextual Compressor + redundant filter, reordering</li>
+<li>Retriever -&gt; Ensemble Retriver (Muti-query retreiver, BM25, Parent Document)</li>
+</ul>
+<p>Compressors</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Imports</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> HypotheticalDocumentEmbedder
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.document_transformers</span> <span style="color: #8B008B; font-weight: bold">import</span> EmbeddingsRedundantFilter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_community.document_transformers</span> <span style="color: #8B008B; font-weight: bold">import</span> LongContextReorder
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers.document_compressors</span> <span style="color: #8B008B; font-weight: bold">import</span> DocumentCompressorPipeline
+
+<span style="color: #228B22"># Filtering</span>
+hyde_embedding_function = HypotheticalDocumentEmbedder.from_llm(llm=chat, base_embeddings=embedding_function, prompt_key=<span style="color: #CD5555">&quot;web_search&quot;</span>)
+redundant_filter = EmbeddingsRedundantFilter(embeddings=hyde_embedding_function)
+
+<span style="color: #228B22"># Reordering</span>
+lcr = LongContextReorder()
+
+compression_pipeline = DocumentCompressorPipeline(transformers=[redundant_filter, lcr])
+
+compression_pipeline
+</code></pre></div>
+
+<p>Individual Retrievers</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Imports</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.text_splitter</span> <span style="color: #8B008B; font-weight: bold">import</span> RecursiveCharacterTextSplitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.storage</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryStore
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.retrievers</span> <span style="color: #8B008B; font-weight: bold">import</span> TFIDFRetriever, MultiQueryRetriever, ParentDocumentRetriever, EnsembleRetriever, ContextualCompressionRetriever
+
+<span style="color: #228B22">## TFIDF</span>
+tfidf_retriever = TFIDFRetriever.from_documents(docs)
+
+<span style="color: #228B22">## Multi-Query Retriver</span>
+mq_retriever = MultiQueryRetriever.from_llm(retriever=base_retriever, llm=chat)
+
+<span style="color: #228B22">## Parent-Document Retriver</span>
+parent_splitter = RecursiveCharacterTextSplitter(chunk_size=<span style="color: #B452CD">400</span>, chunk_overlap=<span style="color: #B452CD">100</span>)
+child_splitter = CharacterTextSplitter(chunk_size=<span style="color: #B452CD">200</span>, chunk_overlap=<span style="color: #B452CD">50</span>)
+store = InMemoryStore()
+
+<span style="color: #228B22">### Creating an instance of parent document retriever</span>
+par_doc_retriever = ParentDocumentRetriever(
+    vectorstore=db,
+    docstore=store,
+    child_splitter=child_splitter,
+    parent_splitter=parent_splitter,
+)
+
+<span style="color: #228B22"># Adding documents to the Parent-Document Retriever</span>
+par_doc_retriever.add_documents(docs)
+</code></pre></div>
+
+<p>Ensemble Retriver</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>retriever_pipeline = EnsembleRetriever(retrievers=[tfidf_retriever, mq_retriever, par_doc_retriever], weights=[<span style="color: #B452CD">0.4</span>, <span style="color: #B452CD">0.3</span>, <span style="color: #B452CD">0.3</span>])
+
+compression_retriever = ContextualCompressionRetriever(base_compressor=compression_pipeline, base_retriever=retriever_pipeline)
+
+matched_docs = compression_retriever.get_relevant_documents(query=query)
+
+<span style="color: #228B22"># matched_docs # Getting the matched documents</span>
+</code></pre></div>
+
+<p>Creating an instance of Retrieval QA Chain for RAG</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chains</span> <span style="color: #8B008B; font-weight: bold">import</span> RetrievalQA
+
+qa_chain = RetrievalQA.from_chain_type(
+    llm=chat,
+    chain_type=<span style="color: #CD5555">&#39;stuff&#39;</span>,
+    retriever=compression_retriever,
+    return_source_documents=<span style="color: #8B008B; font-weight: bold">True</span>
+)
+</code></pre></div>
+
+<p>Checking the internal prompt created for Retrieval QA Chain</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(qa_chain.combine_documents_chain.llm_chain.prompt)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; input_variables=[&#39;context&#39;, &#39;question&#39;] messages=[SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[&#39;context&#39;], template=&quot;Use the following pieces of context to answer the user&#39;s question. \nIf you don&#39;t know the answer, just say that you don&#39;t know, don&#39;t try to make up an answer.\n----------------\n{context}&quot;)), HumanMessagePromptTemplate(prompt=PromptTemplate(input_variables=[&#39;question&#39;], template=&#39;{question}&#39;))]
+</code></pre></div>
+<p>Response Generation for the given Query</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>qa_chain(query)
+</code></pre></div>
+
+<div class="language-text highlight"><pre><span></span><code>  &gt; {&#39;query&#39;: &#39;How does the declaration address the discrimination?&#39;,
+  &#39;result&#39;: &#39;The Universal Declaration of Human Rights addresses discrimination by stating that everyone is entitled to all the rights and freedoms set forth in the Declaration without any distinction of any kind, such as race, color, sex, language, religion, political or other opinion, national or social origin, property, birth, or other status. It ensures equal protection of the law and protection against any form of discrimination.&#39;,
+  ...
+  _DocumentWithState(page_content=&#39;| Universal Declaration of Human Rights | 16\nArticleUNITED\nNATIONS\nAll are equal before the law and are \nentitled  without any  discrimination \nto equal protection of the law. All are entitled to  equal protection against any discrimination in violation of this \nDeclaration and against any incitement \nto such discrimination.&#39;, metadata={&#39;source&#39;: &#39;../datasets/udhr_booklet_en_web.pdf&#39;, &#39;page&#39;: 24}, state={&#39;embedded_doc&#39;: [-0.05549198389053345, ..., -0.009328608401119709]})]}
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/saisrinivas-samoju"  target="_blank" rel="noopener">Sai Srinivas</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/saisrinivas-samoju" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sai-srinivas-samoju/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

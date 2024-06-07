@@ -1,0 +1,1942 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This website contains all the course materials and quick revision concepts.">
+      
+      
+        <meta name="author" content="Sai Srinivas">
+      
+      
+      
+        <link rel="prev" href="../model_connection/">
+      
+      
+        <link rel="next" href="../retrieval/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Model IO - Langchain Training Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-io" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Langchain Training Material" class="md-header__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Langchain Training Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model IO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model_connection/" class="md-tabs__link">
+        
+  
+    
+  
+  Model Connection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Model IO
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../retrieval/" class="md-tabs__link">
+        
+  
+    
+  
+  Retrieval
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Langchain Training Material" class="md-nav__button md-logo" aria-label="Langchain Training Material" data-md-component="logo">
+      
+  <img src="../img/langchain_icon.png" alt="logo">
+
+    </a>
+    Langchain Training Material
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saisrinivas-samoju/langchain_training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    saisrinivas-samoju/langchain_training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_connection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Model IO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Model IO
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-part-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation - Part 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation - Part 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-key-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      API key loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-the-text-completion-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load the text completion model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Prompt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple prompts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-usage-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM usage Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#few-shot-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Few Shot Prompting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-part-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation - Part 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation - Part 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-templating-text-completion-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Templating - Text Completion models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Templating - Text Completion models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-templating-format-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt templating - format strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-templating-f-string-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt templating - f-string literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-templating-text-completion-models_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt templating - text completion models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-templating-chat-completion-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt templating - chat completion models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-part-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation - Part 3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation - Part 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Parsers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-use-the-output-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to use the output parser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-parser-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      When parser fails?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When parser fails?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outputfixingparser" class="md-nav__link">
+    <span class="md-ellipsis">
+      OutputFixingParser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-parsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Parsers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structured-output-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structured Output Parser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydanticoutputparser" class="md-nav__link">
+    <span class="md-ellipsis">
+      PydanticOutputParser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydanticstructuredoutputparser" class="md-nav__link">
+    <span class="md-ellipsis">
+      PydanticStructuredOutputParser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project ideas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retrieval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Retrieval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="model-io">Model IO</h1>
+<h2 id="implementation-part-1">Implementation - Part 1</h2>
+<h3 id="steps">Steps:</h3>
+<h4 id="api-key-loading">API key loading</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">warnings</span>
+warnings.filterwarnings(<span style="color: #CD5555">&#39;ignore&#39;</span>)
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;../openai_api_key.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    api_key = f.read()
+
+os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = api_key
+
+<span style="color: #228B22"># os.getenv(&#39;OPENAI_API_KEY&#39;)</span>
+</code></pre></div>
+
+<hr />
+<h4 id="load-the-text-completion-model">Load the text completion model</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.llms</span> <span style="color: #8B008B; font-weight: bold">import</span> OpenAI
+llm = OpenAI()
+</code></pre></div>
+
+<hr />
+<h4 id="single-prompt">Single Prompt</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt = <span style="color: #CD5555">&quot;The impact of the globalization on diverse cultures can be explained as:&quot;</span>
+
+response = llm(prompt=prompt)
+
+response
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;\n\n1. Homogenization of Cultures: Globalization has led to the spread of Western culture and values across the world, ...
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(response)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; 1. Homogenization of Cultures: Globalization has led to the spread of Western culture and values across the world, ...
+</code></pre></div>
+
+<hr />
+<h4 id="multiple-prompts">Multiple prompts</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompts = [
+    <span style="color: #CD5555">&quot;The impact of the globalization on diverse cultures can be explained as:&quot;</span>,
+    <span style="color: #CD5555">&quot;Ecosystems maintains biodiversity as follows:&quot;</span>
+]
+
+response = llm.generate(prompts=prompts)
+
+response
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; LLMResult(generations=[[Generation(text=&#39;\n\n1. Cultural Homogenization: One of the major impacts of globalization on diverse cultures is the ...
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(response.generations[<span style="color: #B452CD">0</span>][<span style="color: #B452CD">0</span>].text)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; 1. Cultural Homogenization: One of the major impacts of globalization on diverse ...
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Print individual responses</span>
+<span style="color: #8B008B; font-weight: bold">for</span> gen_list <span style="color: #8B008B">in</span> response.generations:
+    gen = gen_list[<span style="color: #B452CD">0</span>]
+    text = gen.text
+    <span style="color: #658b00">print</span>(text)
+    <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;-&quot;</span>*<span style="color: #B452CD">50</span>)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; 1. Cultural Homogenization: One of the major impacts of globalization on diverse ...
+</code></pre></div>
+
+<h4 id="llm-usage-information">LLM usage Information</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response.llm_output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">{&#39;token_usage&#39;: {&#39;completion_tokens&#39;: 512,</span>
+&#39;prompt_tokens&#39;: 21,
+&#39;total_tokens&#39;: 533},
+&#39;model_name&#39;: &#39;gpt-3.5-turbo-instruct&#39;}
+</code></pre></div>
+
+<hr />
+<h4 id="response-caching">Response Caching</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+
+<span style="color: #228B22"># In memory caching</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+
+set_llm_cache(InMemoryCache())
+
+<span style="color: #228B22"># SQLite caching</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> SQLiteCache
+
+set_llm_cache(SQLiteCache(database_path=<span style="color: #CD5555">&#39;../models/cache.db&#39;</span>))
+</code></pre></div>
+
+<p>With this, your responses for the same prompts and parameters will be cached. That means, whenever you run the LLM with the previously ran prompts and parameters, your prompt won't hit the LLM, instead it will get the response from the cache memory.</p>
+<p>Example: Let's get the response from the LLM for a random prompt</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = llm(<span style="color: #CD5555">&quot;Give all the details about Bali...&quot;</span>)
+<span style="color: #228B22"># time: 2.8s</span>
+</code></pre></div>
+
+<p>When we run the same command again, after running the caching code</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = llm(<span style="color: #CD5555">&quot;Give all the details about Bali...&quot;</span>)
+<span style="color: #228B22"># time: 0.0s</span>
+</code></pre></div>
+
+<hr />
+<h4 id="schema">Schema</h4>
+<div class="language-text highlight"><pre><span></span><code>* SystemMessage: Role assigned to the AI.
+* HumanMessage: Human request or the prompt.
+* AIMessage: AI Response as per it&#39;s role to the Human request.
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema</span> <span style="color: #8B008B; font-weight: bold">import</span> SystemMessage, HumanMessage
+
+response = chat(messages = [HumanMessage(content=<span style="color: #CD5555">&#39;What is the longest river in the world?&#39;</span>)])
+
+response <span style="color: #228B22"># Response is an AIMessage</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span><span style="color: #00688B">AIMessage</span><span style="color: #CD5555">(</span><span style="color: #00688B">content</span>=<span style="color: #CD5555">&#39;The longest river in the world is the Nile River, which flows through northeastern Africa for about 4,135 miles (6,650 kilometers).&#39;)</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># Adding system message</span>
+
+messages = [
+    SystemMessage(content=<span style="color: #CD5555">&#39;Act as a funny anthropologist&#39;</span>),
+    HumanMessage(content=<span style="color: #CD5555">&quot;The impact of the globalization on diverse cultures can be explained as:&quot;</span>)
+]
+
+response = chat(messages=messages)
+
+response
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; AIMessage(content=&quot;Ah, yes, the fascinating topic of globalization and its impact on diverse
+</code></pre></div>
+
+<hr />
+<h4 id="parameters">Parameters</h4>
+<div class="language-text highlight"><pre><span></span><code>[Click Here](https://platform.openai.com/docs/api-reference/chat/create) for the official documentation
+</code></pre></div>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = chat(
+    messages=[
+        SystemMessage(content=<span style="color: #CD5555">&#39;You are an angry doctor&#39;</span>),
+        HumanMessage(content=<span style="color: #CD5555">&#39;Explain the digestion process in human bodies&#39;</span>)
+    ],
+    model = <span style="color: #CD5555">&quot;gpt-3.5-turbo&quot;</span>, <span style="color: #228B22"># Model for generation,</span>
+    temperature=<span style="color: #B452CD">2</span>, <span style="color: #228B22"># [0, 2] Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.</span>
+    presence_penalty=<span style="color: #B452CD">2</span>, <span style="color: #228B22"># [-2.0, 2.0]  increasing the model&#39;s likelihood to talk about new topics.</span>
+    max_tokens=<span style="color: #B452CD">100</span>
+)
+
+<span style="color: #658b00">print</span>(response.content)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;   Ugh Cyril hung increased values Guards gala? Buck through ik St battleground
+</code></pre></div>
+
+<hr />
+<h4 id="few-shot-prompting">Few Shot Prompting</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.schema</span> <span style="color: #8B008B; font-weight: bold">import</span> AIMessage
+
+system_message = <span style="color: #CD5555">&quot;You are a funny doctor&quot;</span>
+
+patient_dialogue1 = <span style="color: #CD5555">&quot;Doctor, I have been feeling a bit under the weather lately.&quot;</span>
+sample_response1 = <span style="color: #CD5555">&quot;Under the weather? Did you try checking the forecast before stepping out? You might need a weather app prescription!&quot;</span>
+
+patient_dialogue2 = <span style="color: #CD5555">&quot;My throat has been sore, and I have a cough.&quot;</span>
+sample_response2 = <span style="color: #CD5555">&quot;The classic sore throat symphony! I recommend a strong dose of chicken soup and a dialy karaoke session. Sing it out, and your throat will thank you.&quot;</span>
+
+patient_dialogue3 = <span style="color: #CD5555">&quot;I have a headache.&quot;</span>
+sample_response3 = <span style="color: #CD5555">&quot;Headache, you say? Have you tried negotiating with it? Maybe it&#39;s just looking for a better job inside your brain!&quot;</span>
+
+messages = [
+    <span style="color: #228B22"># SystemMessage(content=system_message),</span>
+
+    HumanMessage(content=patient_dialogue1),
+    AIMessage(content=sample_response1),
+
+    HumanMessage(content=patient_dialogue2),
+    AIMessage(content=sample_response2),
+
+    HumanMessage(content=patient_dialogue3),
+    AIMessage(content=sample_response3),
+
+    HumanMessage(content=<span style="color: #CD5555">&#39;I have a stomach pain&#39;</span>)
+]
+
+response = chat(messages=messages)
+
+<span style="color: #658b00">print</span>(response.content)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;   Stomach pain, huh? Maybe your stomach is just trying to tell a joke! Have you tried asking it to lighten up a bit?
+</code></pre></div>
+
+<hr />
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Create a cross-questioning bot with and without a system prompt</li>
+<li>Create a bad comedian bot that tries to crack jokes on every single thing that you say playing with the words in your dialogue.</li>
+</ul>
+<hr />
+<h2 id="tasks">Tasks</h2>
+<ul>
+<li>Write a blog on few shot prompting</li>
+<li>Create a GitHub account</li>
+</ul>
+<hr />
+<h2 id="implementation-part-2">Implementation - Part 2</h2>
+<h3 id="steps_1">Steps:</h3>
+<h4 id="prompt-templating-text-completion-models">Prompt Templating - Text Completion models</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># loading the models</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.llms</span> <span style="color: #8B008B; font-weight: bold">import</span> OpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">warnings</span>
+warnings.filterwarnings(<span style="color: #CD5555">&quot;ignore&quot;</span>)
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;../openai_api_key.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = f.read()
+
+llm = OpenAI()
+chat = ChatOpenAI()
+
+<span style="color: #228B22"># Cache</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+
+set_llm_cache(InMemoryCache())
+</code></pre></div>
+
+<h5 id="prompt-templating-format-strings">Prompt templating - format strings</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template = <span style="color: #CD5555">&quot;write an essay on {topic}&quot;</span>
+
+prompt = prompt_template.format(topic=<span style="color: #CD5555">&#39;data science&#39;</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;write an essay on data science&#39;
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">print</span>(llm(prompt_template.format(topic=<span style="color: #CD5555">&#39;science&#39;</span>)))
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; 
+
+Science is a systematic and logical approach to understanding the natural world. It is a method of acquiring knowledge through observation, experimentation, and analysis. ...
+</code></pre></div>
+
+<h5 id="prompt-templating-f-string-literals">Prompt templating - f-string literals</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>topic = <span style="color: #CD5555">&#39;data science&#39;</span> <span style="color: #228B22"># Need a global variable</span>
+
+prompt = <span style="color: #CD5555">f&quot;Write an essay on {</span>topic<span style="color: #CD5555">}&quot;</span>
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Write an essay on data science&#39;
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># To use a local variable, create a function</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_prompt</span>(topic):
+
+    prompt = <span style="color: #CD5555">f&quot;Write an essay on {</span>topic<span style="color: #CD5555">}&quot;</span>
+
+    <span style="color: #8B008B; font-weight: bold">return</span> prompt
+
+get_prompt(topic=<span style="color: #CD5555">&#39;data science&#39;</span>)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Write an essay on data science&#39;
+</code></pre></div>
+
+<p>These approaches won't scale up when we work with complex tasks like chains.</p>
+<p>Let's learn how to use prompt templates in langchain</p>
+<p>Prompt templating using langchain prompt template</p>
+<h5 id="prompt-templating-text-completion-models_1">Prompt templating - text completion models</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts</span> <span style="color: #8B008B; font-weight: bold">import</span> PromptTemplate
+
+prompt_template = PromptTemplate(
+    input_variables=[<span style="color: #CD5555">&#39;topic&#39;</span>],
+    template = <span style="color: #CD5555">&quot;Write an essay on {topic}&quot;</span>
+)
+
+prompt = prompt_template.format(topic=<span style="color: #CD5555">&#39;data science&#39;</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Write an essay on data science&#39;
+</code></pre></div>
+
+<p>Another prompt with more inputs</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template = PromptTemplate(
+    input_variables=[<span style="color: #CD5555">&#39;topic&#39;</span>, <span style="color: #CD5555">&#39;num_words&#39;</span>],
+    template = <span style="color: #CD5555">&quot;Write an essay on {topic} in {num_words} words&quot;</span>
+)
+
+prompt = prompt_template.format(topic=<span style="color: #CD5555">&#39;data science&#39;</span>, num_words=<span style="color: #B452CD">200</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Write an essay on data science in 200 words&#39;
+</code></pre></div>
+
+<p>For the same prompt_tempate, if you put a placeholder for the input_variable, it would still work the same way.</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template = PromptTemplate(
+    input_variables=[],
+    template = <span style="color: #CD5555">&quot;Write an essay on {topic} in {num_words} words&quot;</span>
+)
+
+prompt = prompt_template.format(topic=<span style="color: #CD5555">&#39;data science&#39;</span>, num_words=<span style="color: #B452CD">200</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Write an essay on data science in 200 words&#39;
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = llm(prompt)
+
+<span style="color: #658b00">print</span>(response)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>
+
+Data<span style="color: #bbbbbb"> </span>science<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">is</span><span style="color: #bbbbbb"> </span>an<span style="color: #bbbbbb"> </span>interdisciplinary<span style="color: #bbbbbb"> </span>field<span style="color: #bbbbbb"> </span>that<span style="color: #bbbbbb"> </span>combines<span style="color: #bbbbbb"> </span>techniques<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>tools<span style="color: #bbbbbb"> </span>from<span style="color: #bbbbbb"> </span>statistics,<span style="color: #bbbbbb"> </span>mathematics,<span style="color: #bbbbbb"> </span>computer<span style="color: #bbbbbb"> </span>science,<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>information<span style="color: #bbbbbb"> </span>science<span style="color: #bbbbbb"> </span>to<span style="color: #bbbbbb"> </span>extract<span style="color: #bbbbbb"> </span>useful<span style="color: #bbbbbb"> </span>insights<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>knowledge<span style="color: #bbbbbb"> </span>from<span style="color: #bbbbbb"> </span>large<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>complex<span style="color: #bbbbbb"> </span>datasets.<span style="color: #bbbbbb"> </span>...
+</code></pre></div>
+
+<h5 id="serialization">Serialization</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>PromptTemplate(input_variables=[<span style="color: #CD5555">&#39;num_words&#39;</span>,<span style="color: #bbbbbb"> </span><span style="color: #CD5555">&#39;topic&#39;</span>],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;Write an essay on {topic} in {num_words} words&#39;</span>)
+</code></pre></div>
+
+<p>Saving the prompt templates</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template.save(<span style="color: #CD5555">&quot;../output/prompt_template.json&quot;</span>)
+</code></pre></div>
+
+<p>Loading the prompt templates</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts</span> <span style="color: #8B008B; font-weight: bold">import</span> load_prompt
+
+loaded_prompt_template = load_prompt(<span style="color: #CD5555">&#39;../output/prompt_template.json&#39;</span>)
+
+loaded_prompt_template
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>PromptTemplate(input_variables=[<span style="color: #CD5555">&#39;num_words&#39;</span>,<span style="color: #bbbbbb"> </span><span style="color: #CD5555">&#39;topic&#39;</span>],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;Write an essay on {topic} in {num_words} words&#39;</span>)
+</code></pre></div>
+
+<h5 id="prompt-templating-chat-completion-models">Prompt templating - chat completion models</h5>
+<p>Using format strings or f-string literals with langchain schema objects</p>
+<p>format strings</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt_template = <span style="color: #CD5555">&quot;Write a essay on {topic}&quot;</span>
+
+system_message_prompt = SystemMessage(prompt_template.format(topic = <span style="color: #CD5555">&quot;data science&quot;</span>))
+
+system_message_prompt
+</code></pre></div>
+
+<p>f-string literals</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>topic = <span style="color: #CD5555">&quot;data science&quot;</span>
+
+prompt_template = <span style="color: #CD5555">f&quot;Write a essay on {</span>topic<span style="color: #CD5555">}&quot;</span>
+
+system_message_prompt = SystemMessage(prompt_template)
+
+system_message_prompt
+</code></pre></div>
+
+<p>Issue: We are defining our inputs way ahead while using this type of prompt templating or making the inputs as global variables</p>
+<p>Prompt templating using langchain prompt template</p>
+<p>Starting with a simple Human Message Prompt Template</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> HumanMessagePromptTemplate, ChatPromptTemplate
+
+human_template = <span style="color: #CD5555">&quot;Write an essay on {topic}&quot;</span>
+
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+
+prompt = chat_prompt.format_prompt(topic=<span style="color: #CD5555">&#39;data science&#39;</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; ChatPromptValue(messages=[HumanMessage(content=&#39;Write an essay on data science&#39;)])
+</code></pre></div>
+
+<p>To get the messages from teh ChatPromptValue</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #228B22"># messages = prompt.to_messages()</span>
+messages = prompt.messages
+
+messages
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; [HumanMessage(content=&#39;Write an essay on data science&#39;)]
+</code></pre></div>
+
+<p>Getting the response from the chat model</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = chat(messages=messages)
+
+response
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; AIMessage(content=&quot;Data science is a rapidly growing field that involves the collection, analysis, and interpretation...
+</code></pre></div>
+
+<p>Similarly, let's do it with Other schema of messages</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts.chat</span> <span style="color: #8B008B; font-weight: bold">import</span> SystemMessagePromptTemplate, HumanMessagePromptTemplate, AIMessagePromptTemplate, ChatPromptTemplate
+</code></pre></div>
+
+<p>System Message Prompt Template</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>system_template = <span style="color: #CD5555">&quot;You are a nutritionist&quot;</span>
+system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
+system_message_prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;You are a nutritionist&#39;</span>))
+</code></pre></div>
+
+<p>Human Message Prompt Template</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>human_template = <span style="color: #CD5555">&quot;Tell the impact of {food_item} on human body when consumed regularly&quot;</span>
+human_message_prompt = HumanMessagePromptTemplate.from_template(template=human_template)
+human_message_prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>HumanMessagePromptTemplate(prompt=PromptTemplate(input_variables=[<span style="color: #CD5555">&#39;food_item&#39;</span>],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;Tell the impact of {food_item} on human body when consumed regularly&#39;</span>))
+</code></pre></div>
+
+<p>Chat Prompt Template</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
+
+chat_prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>ChatPromptTemplate(input_variables=[<span style="color: #CD5555">&#39;food_item&#39;</span>],<span style="color: #bbbbbb"> </span>messages=[SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;You are a nutritionist&#39;</span>)),<span style="color: #bbbbbb"> </span>HumanMessagePromptTemplate(prompt=PromptTemplate(input_variables=[<span style="color: #CD5555">&#39;food_item&#39;</span>],<span style="color: #bbbbbb"> </span>template=<span style="color: #CD5555">&#39;Tell the impact of {food_item} on human body when consumed regularly&#39;</span>))])
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>prompt = chat_prompt.format_prompt(food_item=<span style="color: #CD5555">&#39;rice&#39;</span>)
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>ChatPromptValue(messages=[SystemMessage(content=&#39;You<span style="color: #bbbbbb"> </span>are<span style="color: #bbbbbb"> </span>a<span style="color: #bbbbbb"> </span>nutritionist&#39;),<span style="color: #bbbbbb"> </span>HumanMessage(content=&#39;Tell<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>impact<span style="color: #bbbbbb"> </span>of<span style="color: #bbbbbb"> </span>rice<span style="color: #bbbbbb"> </span>on<span style="color: #bbbbbb"> </span>human<span style="color: #bbbbbb"> </span>body<span style="color: #bbbbbb"> </span>when<span style="color: #bbbbbb"> </span>consumed<span style="color: #bbbbbb"> </span>regularly&#39;)])
+</code></pre></div>
+
+<p>Chat Prompt Value to messages to pass to the chat model</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>messages = prompt.to_messages()
+
+messages
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>[SystemMessage(content=&#39;You<span style="color: #bbbbbb"> </span>are<span style="color: #bbbbbb"> </span>a<span style="color: #bbbbbb"> </span>nutritionist&#39;),
+<span style="color: #bbbbbb"> </span>HumanMessage(content=&#39;Tell<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>impact<span style="color: #bbbbbb"> </span>of<span style="color: #bbbbbb"> </span>rice<span style="color: #bbbbbb"> </span>on<span style="color: #bbbbbb"> </span>human<span style="color: #bbbbbb"> </span>body<span style="color: #bbbbbb"> </span>when<span style="color: #bbbbbb"> </span>consumed<span style="color: #bbbbbb"> </span>regularly&#39;)]
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>response = chat(messages=messages)
+
+response
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>AIMessage(content=<span style="color: #CD5555">&quot;Rice is a staple food for many people around the world and can provide several health benefits when consumed regularly as part of a balanced diet. ...</span>
+</code></pre></div>
+
+<hr />
+<h2 id="implementation-part-3">Implementation - Part 3</h2>
+<h3 id="steps_2">Steps</h3>
+<h4 id="output-parsers">Output Parsers</h4>
+<p>Loading the language model and setting the cache</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.llms</span> <span style="color: #8B008B; font-weight: bold">import</span> OpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.globals</span> <span style="color: #8B008B; font-weight: bold">import</span> set_llm_cache
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.cache</span> <span style="color: #8B008B; font-weight: bold">import</span> InMemoryCache
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">warnings</span>
+warnings.filterwarnings(<span style="color: #CD5555">&#39;ignore&#39;</span>)
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;../openai_api_key.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    api_key = f.read()
+
+os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = api_key
+
+llm = OpenAI()
+chat = ChatOpenAI()
+
+
+set_llm_cache(InMemoryCache())
+</code></pre></div>
+
+<h5 id="steps-to-use-the-output-parser">Steps to use the output parser</h5>
+<ul>
+<li>format_instructions</li>
+<li>parse</li>
+</ul>
+<p>Step 1: Create and instance of the parser</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> CommaSeparatedListOutputParser
+
+output_parser = CommaSeparatedListOutputParser()
+
+output_parser
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; CommaSeparatedListOutputParser()
+</code></pre></div>
+
+<p>Step 2: Get the format instructions</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>output_parser.get_format_instructions()
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;Your response should be a list of comma separated values, eg: `foo, bar, baz`&#39;
+</code></pre></div>
+
+<p>Step 3: Send the instructions to the model</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts</span> <span style="color: #8B008B; font-weight: bold">import</span> HumanMessagePromptTemplate, ChatPromptTemplate
+
+human_template = <span style="color: #CD5555">&quot;{user_request}\n{format_instructions}&quot;</span>
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(user_request=<span style="color: #CD5555">&quot;What are the 7 wonders?&quot;</span>, format_instructions=output_parser.get_format_instructions())
+
+prompt
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; ChatPromptValue(messages=[HumanMessage(content=&#39;What are the 7 wonders?\nYour response should be a list of comma separated values, eg: `foo, bar, baz`&#39;)])
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+<span style="color: #658b00">print</span>(response.content)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; Great Pyramid of Giza, Hanging Gardens of Babylon, Statue of Zeus at Olympia, Temple of Artemis at Ephesus, Mausoleum at Halicarnassus, Colossus of Rhodes, Lighthouse of Alexandria
+</code></pre></div>
+
+<p>Step 4: use the parser to parse the output</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>output_parser.parse(response.content)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; [&#39;Great Pyramid of Giza&#39;,
+ &#39;Hanging Gardens of Babylon&#39;,
+ &#39;Statue of Zeus at Olympia&#39;,
+ &#39;Temple of Artemis at Ephesus&#39;,
+ &#39;Mausoleum at Halicarnassus&#39;,
+ &#39;Colossus of Rhodes&#39;,
+ &#39;Lighthouse of Alexandria&#39;]
+</code></pre></div>
+
+<h4 id="when-parser-fails">When parser fails?</h4>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> DatetimeOutputParser
+
+output_parser = DatetimeOutputParser()
+
+format_instructions = output_parser.get_format_instructions()
+
+<span style="color: #658b00">print</span>(format_instructions)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span><span style="color: #00688B">Write</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">a</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">datetime</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">string</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">that</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">matches</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">the</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">following</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">pattern</span>:<span style="color: #bbbbbb"> </span><span style="color: #CD5555">&#39;%Y-%m-%dT%H:%M:%S.%fZ&#39;</span>.
+
+<span style="color: #00688B">Examples</span>:<span style="color: #bbbbbb"> </span><span style="color: #B452CD">0278</span>-<span style="color: #B452CD">08</span>-<span style="color: #B452CD">03</span><span style="color: #00688B">T19</span>:<span style="color: #B452CD">42</span>:<span style="color: #B452CD">55</span>.<span style="color: #B452CD">481110</span><span style="color: #00688B">Z</span>,<span style="color: #bbbbbb"> </span><span style="color: #B452CD">1567</span>-<span style="color: #B452CD">04</span>-<span style="color: #B452CD">05</span><span style="color: #00688B">T01</span>:<span style="color: #B452CD">30</span>:<span style="color: #B452CD">42</span>.<span style="color: #B452CD">197571</span><span style="color: #00688B">Z</span>,<span style="color: #bbbbbb"> </span><span style="color: #B452CD">0101</span>-<span style="color: #B452CD">06</span>-<span style="color: #B452CD">24</span><span style="color: #00688B">T18</span>:<span style="color: #B452CD">20</span>:<span style="color: #B452CD">21</span>.<span style="color: #B452CD">443663</span><span style="color: #00688B">Z</span>
+
+<span style="color: #8B008B; font-weight: bold">Return</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">ONLY</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">this</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">string</span>,<span style="color: #bbbbbb"> </span><span style="color: #00688B">no</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">other</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">words</span>!
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>human_template = <span style="color: #CD5555">&quot;{human_messsage}\n{format_instructions}&quot;</span>
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_messsage=<span style="color: #CD5555">&quot;When was Jesus Christ born?&quot;</span>, format_instructions=format_instructions)
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+output = output_parser.parse(response.content)
+
+output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>---------------------------------------------------------------------------
+ValueError<span style="color: #bbbbbb">                                </span>Traceback<span style="color: #bbbbbb"> </span>(most<span style="color: #bbbbbb"> </span>recent<span style="color: #bbbbbb"> </span>call<span style="color: #bbbbbb"> </span>last)
+File<span style="color: #bbbbbb"> </span>d:<span style="color: #a61717; background-color: #e3d2d2">\</span>CodeWork<span style="color: #a61717; background-color: #e3d2d2">\</span>GitHub<span style="color: #a61717; background-color: #e3d2d2">\</span>langchain_training<span style="color: #a61717; background-color: #e3d2d2">\</span>.venv<span style="color: #a61717; background-color: #e3d2d2">\</span>lib<span style="color: #a61717; background-color: #e3d2d2">\</span>site-packages<span style="color: #a61717; background-color: #e3d2d2">\</span>langchain<span style="color: #a61717; background-color: #e3d2d2">\</span>output_parsers<span style="color: #a61717; background-color: #e3d2d2">\</span>datetime.py:<span style="color: #B452CD">50</span>,<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">in</span><span style="color: #bbbbbb"> </span>DatetimeOutputParser.parse(<span style="color: #8B008B; font-weight: bold">self</span>,<span style="color: #bbbbbb"> </span>response)
+<span style="color: #bbbbbb">     </span><span style="color: #B452CD">49</span><span style="color: #bbbbbb"> </span>try:
+---&gt;<span style="color: #bbbbbb"> </span><span style="color: #B452CD">50</span><span style="color: #bbbbbb">     </span><span style="color: #8B008B; font-weight: bold">return</span><span style="color: #bbbbbb"> </span>datetime.strptime(response.strip(),<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">self</span>.format)
+<span style="color: #bbbbbb">     </span><span style="color: #B452CD">51</span><span style="color: #bbbbbb"> </span>except<span style="color: #bbbbbb"> </span>ValueError<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">as</span><span style="color: #bbbbbb"> </span>e:<span style="color: #bbbbbb"> </span>...
+</code></pre></div>
+
+<h5 id="outputfixingparser">OutputFixingParser</h5>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> OutputFixingParser
+
+fixing_parser = OutputFixingParser.from_llm(parser=output_parser, llm=chat)
+
+fixed_output = fixing_parser.parse(response.content)
+
+fixed_output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; datetime.datetime(1, 1, 1, 0, 0)
+</code></pre></div>
+
+<p>Fixing might not always work, So let's try multiple times</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">for</span> chance <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">10</span>):
+    <span style="color: #8B008B; font-weight: bold">try</span>:
+        fixed_output = fixing_parser.parse(response.content)
+    <span style="color: #8B008B; font-weight: bold">except</span>:
+        <span style="color: #8B008B; font-weight: bold">continue</span>
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">break</span>
+
+fixed_output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; datetime.datetime(1, 1, 1, 0, 0)
+</code></pre></div>
+
+<h4 id="custom-parsers">Custom Parsers</h4>
+<h5 id="structured-output-parser">Structured Output Parser</h5>
+<p>Define the response schema</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> ResponseSchema, StructuredOutputParser
+
+response_schemas = [
+    ResponseSchema(name=<span style="color: #CD5555">&quot;answer&quot;</span>, description=<span style="color: #CD5555">&quot;answer to the user&#39;s question&quot;</span>),
+    ResponseSchema(
+        name=<span style="color: #CD5555">&quot;source&quot;</span>,
+        description=<span style="color: #CD5555">&quot;source used to answer the user&#39;s question, should be a website.&quot;</span>,
+    ),
+]
+</code></pre></div>
+
+<p>Define the output parser</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> StructuredOutputParser
+
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+output_parser
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span>StructuredOutputParser(response_schemas=[ResponseSchema(name=<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>answer<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>,<span style="color: #bbbbbb"> </span>description=<span style="color: #CD5555">&quot;answer to the user&#39;s question&quot;</span>,<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">type</span>=<span style="color: #a61717; background-color: #e3d2d2">&#39;</span><span style="color: #00688B; font-weight: bold">string</span><span style="color: #a61717; background-color: #e3d2d2">&#39;</span>),<span style="color: #bbbbbb"> </span>ResponseSchema(name=<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>source<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>,<span style="color: #bbbbbb"> </span>description=<span style="color: #CD5555">&quot;source used to answer the user&#39;s question, should be a website.&quot;</span>,<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">type</span>=<span style="color: #a61717; background-color: #e3d2d2">&#39;</span><span style="color: #00688B; font-weight: bold">string</span><span style="color: #a61717; background-color: #e3d2d2">&#39;</span>)])
+</code></pre></div>
+
+<p>Get the format instructions</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>format_instructions = output_parser.get_format_instructions()
+format_instructions
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;The output should be a markdown code snippet formatted in the following schema, including the leading and trailing &quot;```json&quot; and &quot;```&quot;:\n\n```json\n{\n\t&quot;answer&quot;: string  // answer to the user\&#39;s question\n\t&quot;source&quot;: string  // source used to answer the user\&#39;s question, should be a website.\n}\n```
+</code></pre></div>
+
+<p>Get the response</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>human_template = <span style="color: #CD5555">&quot;{human_message}\n{format_instructions}&quot;</span>
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_message = <span style="color: #CD5555">&quot;What&#39;s the world&#39;s largest man made structure?&quot;</span>, format_instructions=format_instructions)
+messages = prompt.to_messages()
+
+response = chat(messages=messages)
+
+output = output_parser.parse(response.content)
+
+output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; {&#39;answer&#39;: &#39;The Great Wall of China&#39;,
+ &#39;source&#39;: &#39;https://www.history.com/topics/great-wall-of-china&#39;}
+</code></pre></div>
+
+<p>Let's look at the more powerful way of creating custom parser</p>
+<h4 id="pydanticoutputparser">PydanticOutputParser</h4>
+<p>Let's quickly learn about pydantic</p>
+<p>Conventional pythonic way of building classes</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Student</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, name: <span style="color: #658b00">str</span>):
+        <span style="color: #658b00">self</span>.name = name
+
+john = Student(name=<span style="color: #CD5555">&#39;John&#39;</span>)
+john.name
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;John&#39;
+</code></pre></div>
+
+<p>Similarily</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>jane = Student(name=<span style="color: #B452CD">1</span>) <span style="color: #228B22"># Taking int even after defining the name to be str</span>
+jane.name
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; 1
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">type</span>(jane.name) <span style="color: #228B22"># Returning int too</span>
+
+<span style="color: #228B22"># Conventional approach doesn&#39;t have strict type validation</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; int
+</code></pre></div>
+
+<p>Pydantic has simple syntax with strict type validation</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pydantic</span> <span style="color: #8B008B; font-weight: bold">import</span> BaseModel
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Student</span>(BaseModel):
+    name: <span style="color: #658b00">str</span>
+
+jane = Student(name=<span style="color: #B452CD">1</span>) <span style="color: #228B22"># THIS WILL THROW AN ERROR</span>
+
+jane = Student(name=<span style="color: #CD5555">&#39;jane&#39;</span>)
+jane.name
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt; &#39;jane&#39;
+</code></pre></div>
+
+<p>Let's get back to langchain</p>
+<p>When we want our output to be in a specific class object format</p>
+<p>First let's define the class</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pydantic</span> <span style="color: #8B008B; font-weight: bold">import</span> BaseModel, Field
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">typing</span> <span style="color: #8B008B; font-weight: bold">import</span> List
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Car</span>(BaseModel):
+    name: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Name of the car&quot;</span>)
+    model_number: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Model number of the car&quot;</span>)
+    features: List[<span style="color: #658b00">str</span>] = Field(description=<span style="color: #CD5555">&quot;List of features of the car&quot;</span>)
+</code></pre></div>
+
+<p>create an instance of our custom parser</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> PydanticOutputParser
+
+output_parser = PydanticOutputParser(pydantic_object=Car)
+
+<span style="color: #658b00">print</span>(output_parser.get_format_instructions())
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>&gt;<span style="color: #bbbbbb"> </span><span style="color: #00688B">The</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">output</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">should</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">be</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">formatted</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">as</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">a</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">JSON</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">instance</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">that</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">conforms</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">to</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">the</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">JSON</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">schema</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">below</span>.
+
+<span style="color: #00688B">As</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">an</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">example</span>,<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">the</span><span style="color: #bbbbbb"> </span><span style="color: #00688B">schema</span><span style="color: #bbbbbb"> </span>...
+</code></pre></div>
+
+<p>Getting the response</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code>human_template = <span style="color: #CD5555">&quot;{human_message}\n{format_instructions}&quot;</span>
+human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+prompt = chat_prompt.format_prompt(human_message=<span style="color: #CD5555">&#39;Tell me about the most expensive car in the world&#39;</span>,
+                                   format_instructions=output_parser.get_format_instructions())
+
+response = chat(messages=prompt.to_messages())
+output = output_parser.parse(response.content)
+
+output
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">Car(name=&#39;Bugatti La Voiture Noire&#39;, model_number=&#39;Divo&#39;, features=[&#39;1500 horsepower engine&#39;, &#39;8.0-liter quad-turbocharged W16 engine&#39;, &#39;carbon fiber body&#39;, &#39;top speed of 261 mph&#39;])</span>
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #658b00">type</span>(output)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">__main__.Car</span>
+</code></pre></div>
+
+<h4 id="pydanticstructuredoutputparser">PydanticStructuredOutputParser</h4>
+<p>The new ChatOpenAI model from langchain_openai supports <code>with_structured_output</code> method, which can take the pydantic models built with <strong>pydantic_v1</strong> from <strong>langchain_core</strong></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #888888">pip install langchain_openai</span>
+</code></pre></div>
+
+<p>We will still be using <code>from langchain.chat_models import ChatOpenAI</code> for loading the chat model, to follow the standard structure of langchain (though it is depreciated)</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">typing</span> <span style="color: #8B008B; font-weight: bold">import</span> List
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_openai</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_core.pydantic_v1</span> <span style="color: #8B008B; font-weight: bold">import</span> BaseModel, Field
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;../openai_api_key.txt&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = f.read()
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Car</span>(BaseModel):
+    name: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Name of the car&quot;</span>)
+    model_number: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Model number of the car&quot;</span>)
+    features: List[<span style="color: #658b00">str</span>] = Field(description=<span style="color: #CD5555">&quot;List of features of the car&quot;</span>)
+
+model = ChatOpenAI()
+model_with_structure = model.with_structured_output(Car)
+model_with_structure.invoke(<span style="color: #CD5555">&#39;Tell me about the most expensive car in the world&#39;</span>)
+</code></pre></div>
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">&gt; </span><span style="font-style: italic">Car(name=&#39;Bugatti La Voiture Noire&#39;, model_number=&#39;1&#39;, features=[&#39;Luxurious design&#39;, &#39;Powerful engine&#39;, &#39;Top speed of 261 mph&#39;, &#39;Exclusive and limited edition&#39;])</span>
+</code></pre></div>
+
+<h4 id="project-ideas">Project ideas</h4>
+<ul>
+<li>Real time text translation</li>
+<li>Text Summarization tool</li>
+<li>Q&amp;A System</li>
+<li>Travel Planner</li>
+<li>Tweet Responder</li>
+</ul>
+<h4 id="exercise_1">Exercise</h4>
+<p><strong>Create a Smart Chef bot that can give you recipes based on the available food items you have in your kitchen.</strong></p>
+<p>Let's build a gradio app</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">typing</span> <span style="color: #8B008B; font-weight: bold">import</span> List
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gradio</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">gr</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pydantic</span> <span style="color: #8B008B; font-weight: bold">import</span> Field, BaseModel
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.chat_models</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts</span> <span style="color: #8B008B; font-weight: bold">import</span> HumanMessagePromptTemplate, ChatPromptTemplate
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> PydanticOutputParser
+
+<span style="color: #228B22"># Creating the instance of the chat model</span>
+
+<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;openai_api_key.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
+    api_key = f.read()
+
+os.environ[<span style="color: #CD5555">&#39;OPENAI_API_KEY&#39;</span>] = api_key
+
+chat = ChatOpenAI()
+
+<span style="color: #228B22"># Define the Pydantic Model</span>
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">SmartChef</span>(BaseModel):
+    name: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Name fo the dish&quot;</span>)
+    ingredients: <span style="color: #658b00">dict</span> = Field(description=<span style="color: #CD5555">&quot;Python dictionary of ingredients and their corresponding quantities as keys and values of the python dictionary respectively&quot;</span>)
+    instructions: List[<span style="color: #658b00">str</span>] = Field(description=<span style="color: #CD5555">&quot;Python list of instructions to prepare the dish&quot;</span>)
+
+<span style="color: #228B22"># Get format instructions</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> PydanticOutputParser
+
+output_parser = PydanticOutputParser(pydantic_object=SmartChef)
+format_instructions = output_parser.get_format_instructions()
+format_instructions
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">smart_chef</span>(food_items: <span style="color: #658b00">str</span>) -&gt; <span style="color: #658b00">list</span>:
+
+    <span style="color: #228B22"># Getting the response</span>
+    human_template = <span style="color: #CD5555">&quot;&quot;&quot;I have the following list of the food items:</span>
+
+<span style="color: #CD5555">    {food_items}</span>
+
+<span style="color: #CD5555">    Suggest me a recipe only using these food items</span>
+
+<span style="color: #CD5555">    {format_instructions}&quot;&quot;&quot;</span>
+
+    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+    chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+    prompt = chat_prompt.format_prompt(
+        food_items=food_items, format_instructions=format_instructions)
+
+    messages = prompt.to_messages()
+    response = chat(messages=messages)
+    output = output_parser.parse(response.content)
+
+    dish_name, ingredients, instructions = output.name, output.ingredients, output.instructions
+    <span style="color: #8B008B; font-weight: bold">return</span> dish_name, ingredients, instructions
+
+<span style="color: #228B22"># Building interface</span>
+<span style="color: #8B008B; font-weight: bold">with</span> gr.Blocks() <span style="color: #8B008B; font-weight: bold">as</span> demo:
+    gr.HTML(<span style="color: #CD5555">&quot;&lt;h1 align=&#39;center&#39;&gt;Smart Chef&lt;/h1&gt;&quot;</span>)
+    gr.HTML(<span style="color: #CD5555">&quot;&lt;h3 align=&#39;center&#39;&gt;&lt;i&gt;Cook with whatever you have&lt;/i&gt;&lt;/h3&gt;&quot;</span>)
+    inputs = [gr.Textbox(label=<span style="color: #CD5555">&#39;Enter the list of ingredients you have, in a comma separated text&#39;</span>, lines=<span style="color: #B452CD">3</span>, placeholder=<span style="color: #CD5555">&#39;Example: Chicken, Onion, Tomatoes, ... etc.&#39;</span>)]
+    generate_btn = gr.Button(value=<span style="color: #CD5555">&quot;Generate&quot;</span>)
+    outputs = [gr.Text(label=<span style="color: #CD5555">&#39;Name of the dish&#39;</span>), gr.JSON(label=<span style="color: #CD5555">&quot;Ingredients with corresponding quantities&quot;</span>), gr.Textbox(label=<span style="color: #CD5555">&quot;Instructions to prepare&quot;</span>)]
+    generate_btn.click(fn=smart_chef, inputs=inputs, outputs=outputs)
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span>==<span style="color: #CD5555">&quot;__main__&quot;</span>:
+    demo.launch(share=<span style="color: #8B008B; font-weight: bold">True</span>)
+</code></pre></div>
+
+<p>In the terminal, run the following command</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #888888">python src/app.py</span>
+</code></pre></div>
+
+<p><strong>Deploying Gradio application in HuggingFace Spaces</strong>
+* Create a HuggingFace account
+* Install Gitbash (Optional)</p>
+<p><strong>For Deploying</strong></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%;"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">typing</span> <span style="color: #8B008B; font-weight: bold">import</span> List
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gradio</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">gr</span>
+<span style="color: #228B22"># from pydantic import Field, BaseModel</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_core.pydantic_v1</span> <span style="color: #8B008B; font-weight: bold">import</span> BaseModel, Field
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain_openai</span> <span style="color: #8B008B; font-weight: bold">import</span> ChatOpenAI
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.prompts</span> <span style="color: #8B008B; font-weight: bold">import</span> HumanMessagePromptTemplate, ChatPromptTemplate
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> PydanticOutputParser
+
+<span style="color: #228B22"># Creating the instance of the chat model</span>
+
+<span style="color: #228B22"># with open(&#39;openai_api_key.txt&#39;, &#39;r&#39;) as f:</span>
+<span style="color: #228B22">#     api_key = f.read()</span>
+
+<span style="color: #228B22"># os.environ[&#39;OPENAI_API_KEY&#39;] = api_key</span>
+
+chat = ChatOpenAI()
+
+<span style="color: #228B22"># Define the Pydantic Model</span>
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">SmartChef</span>(BaseModel):
+    name: <span style="color: #658b00">str</span> = Field(description=<span style="color: #CD5555">&quot;Name fo the dish&quot;</span>)
+    ingredients: <span style="color: #658b00">dict</span> = Field(description=<span style="color: #CD5555">&quot;Python dictionary of ingredients and their corresponding quantities as keys and values of the python dictionary respectively&quot;</span>)
+    instructions: List[<span style="color: #658b00">str</span>] = Field(description=<span style="color: #CD5555">&quot;Python list of instructions to prepare the dish&quot;</span>)
+
+<span style="color: #228B22"># Get format instructions</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">langchain.output_parsers</span> <span style="color: #8B008B; font-weight: bold">import</span> PydanticOutputParser
+
+output_parser = PydanticOutputParser(pydantic_object=SmartChef)
+format_instructions = output_parser.get_format_instructions()
+format_instructions
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">smart_chef</span>(food_items: <span style="color: #658b00">str</span>) -&gt; <span style="color: #658b00">list</span>:
+    <span style="color: #228B22"># Getting the response</span>
+
+    human_template = <span style="color: #CD5555">&quot;&quot;&quot;I have the following list of the food items:</span>
+<span style="color: #CD5555">    {food_items}</span>
+<span style="color: #CD5555">    Suggest me a recipe only using these food items</span>
+<span style="color: #CD5555">    {format_instructions}&quot;&quot;&quot;</span>
+
+    human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+    chat_prompt = ChatPromptTemplate.from_messages([human_message_prompt])
+    prompt = chat_prompt.format_prompt(
+        food_items=food_items, format_instructions=format_instructions)
+
+    messages = prompt.to_messages()
+    response = chat(messages=messages)
+    output = output_parser.parse(response.content)
+
+    dish_name, ingredients, instructions = output.name, output.ingredients, output.instructions
+    <span style="color: #8B008B; font-weight: bold">return</span> dish_name, ingredients, instructions
+
+
+<span style="color: #8B008B; font-weight: bold">with</span> gr.Blocks() <span style="color: #8B008B; font-weight: bold">as</span> demo:
+    gr.HTML(<span style="color: #CD5555">&quot;&lt;h1 align=&#39;center&#39;&gt;Smart Chef&lt;/h1&gt;&quot;</span>)
+    gr.HTML(<span style="color: #CD5555">&quot;&lt;h3 align=&#39;center&#39;&gt;&lt;i&gt;Cook with whatever you have&lt;/i&gt;&lt;/h3&gt;&quot;</span>)
+    <span style="color: #228B22"># gr.HTML(&quot;## Cook with whatever you have&quot;)</span>
+    inputs = [gr.Textbox(label=<span style="color: #CD5555">&#39;Enter the list of ingredients you have, in a comma separated text&#39;</span>, lines=<span style="color: #B452CD">3</span>, placeholder=<span style="color: #CD5555">&#39;Example: Chicken, Onion, Tomatoes, ... etc.&#39;</span>)]
+    generate_btn = gr.Button(value=<span style="color: #CD5555">&quot;Generate&quot;</span>)
+    outputs = [gr.Text(label=<span style="color: #CD5555">&#39;Name of the dish&#39;</span>), gr.JSON(label=<span style="color: #CD5555">&quot;Ingredients with corresponding quantities&quot;</span>), gr.Textbox(label=<span style="color: #CD5555">&quot;Instructions to prepare&quot;</span>)]
+    generate_btn.click(fn=smart_chef, inputs=inputs, outputs=outputs)
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span>==<span style="color: #CD5555">&quot;__main__&quot;</span>:
+    demo.launch()
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/saisrinivas-samoju"  target="_blank" rel="noopener">Sai Srinivas</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/saisrinivas-samoju" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sai-srinivas-samoju/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
